@@ -7,11 +7,136 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame
+                        Grid.Row="0"
+                        Padding="15,5"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Weeks}" />
+                                    <Span Text=" Weeks" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="addWeeksTapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        Grid.Row="1"
+                        Padding="15,5"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Days}" />
+                                    <Span Text=" Days" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="addDaysTapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        Grid.Row="2"
+                        Padding="15,5"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Hours}" />
+                                    <Span Text=" Hours" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="addHoursTapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        Grid.Row="3"
+                        Padding="15,5"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                            VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Minutes}" />
+                                    <Span Text=" Minutes" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="addMinutesTapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="{Binding TimestampText}" />
+            </StackLayout>
+            <Button
+                x:Name="btnTest"
+                Clicked="btnTest_Clicked"
+                HorizontalOptions="Center"
+                Text="test"
+                VerticalOptions="End" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
