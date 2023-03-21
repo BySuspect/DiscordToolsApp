@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DiscordToolsApp.Pages.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <Label Text="Hi" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
