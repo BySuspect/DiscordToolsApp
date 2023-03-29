@@ -5,131 +5,345 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
     <ContentPage.Content>
         <Grid>
             <StackLayout>
-                <Grid>
+                <Grid
+                    Margin="0,20,0,5"
+                    HorizontalOptions="Center"
+                    WidthRequest="350">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Frame
                         Grid.Row="0"
-                        Padding="15,5"
-                        xct:TouchEffect.NativeAnimation="true"
-                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                        xct:TouchEffect.PressedAnimationDuration="500"
-                        xct:TouchEffect.PressedOpacity="0.6"
-                        xct:TouchEffect.PressedScale="0.98"
+                        Padding="1,1"
                         BackgroundColor="Transparent"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontSize="Medium"
-                            HorizontalOptions="Center"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Weeks}" />
-                                    <Span Text=" Weeks" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="addWeeksTapped" />
-                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="-"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                            </Frame>
+                            <Label
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                FontSize="Medium"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Weeks}" />
+                                        <Span Text=" Weeks" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addWeeksTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="0,15,0,15"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="+"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addWeeksTapped" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
                     </Frame>
                     <Frame
                         Grid.Row="1"
-                        Padding="15,5"
-                        xct:TouchEffect.NativeAnimation="true"
-                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                        xct:TouchEffect.PressedAnimationDuration="500"
-                        xct:TouchEffect.PressedOpacity="0.6"
-                        xct:TouchEffect.PressedScale="0.98"
+                        Padding="1,1"
                         BackgroundColor="Transparent"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontSize="Medium"
-                            HorizontalOptions="Center"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Days}" />
-                                    <Span Text=" Days" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="addDaysTapped" />
-                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="-"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                            </Frame>
+                            <Label
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                FontSize="Medium"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Days}" />
+                                        <Span Text=" Days" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addDaysTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="0,15,0,15"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="+"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addDaysTapped" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
                     </Frame>
                     <Frame
                         Grid.Row="2"
-                        Padding="15,5"
-                        xct:TouchEffect.NativeAnimation="true"
-                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                        xct:TouchEffect.PressedAnimationDuration="500"
-                        xct:TouchEffect.PressedOpacity="0.6"
-                        xct:TouchEffect.PressedScale="0.98"
+                        Padding="1,1"
                         BackgroundColor="Transparent"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontSize="Medium"
-                            HorizontalOptions="Center"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Hours}" />
-                                    <Span Text=" Hours" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="addHoursTapped" />
-                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="-"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                            </Frame>
+                            <Label
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                FontSize="Medium"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Hours}" />
+                                        <Span Text=" Hours" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addHoursTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="0,15,0,15"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="+"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addHoursTapped" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
                     </Frame>
                     <Frame
                         Grid.Row="3"
-                        Padding="15,5"
-                        xct:TouchEffect.NativeAnimation="true"
-                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                        xct:TouchEffect.PressedAnimationDuration="500"
-                        xct:TouchEffect.PressedOpacity="0.6"
-                        xct:TouchEffect.PressedScale="0.98"
+                        Padding="1,1"
                         BackgroundColor="Transparent"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
-                        <Label
-                            FontSize="Medium"
-                            HorizontalOptions="Center"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                            VerticalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Minutes}" />
-                                    <Span Text=" Minutes" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="addMinutesTapped" />
-                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="-"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                            </Frame>
+                            <Label
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                FontSize="Medium"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Minutes}" />
+                                        <Span Text=" Minutes" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addMinutesTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Frame
+                                Padding="0"
+                                xct:CornerRadiusEffect.CornerRadius="0,15,0,15"
+                                xct:TouchEffect.NativeAnimation="true"
+                                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                xct:TouchEffect.PressedAnimationDuration="500"
+                                xct:TouchEffect.PressedOpacity="0.6"
+                                xct:TouchEffect.PressedScale="0.98"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalOptions="Center"
+                                        Text="+"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="addMinutesTapped" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
                     </Frame>
                 </Grid>
                 <Label
                     FontSize="Medium"
                     HorizontalOptions="Center"
-                    Text="{Binding TimestampText}" />
+                    TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding TimestampText}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    BackgroundColor="Transparent"
+                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                    BorderWidth="1"
+                    CornerRadius="15                     "
+                    HorizontalOptions="Center"
+                    Text="Copy"
+                    TextColor="{x:Static helpers:ThemeColors.TextColor}" />
             </StackLayout>
             <Button
                 x:Name="btnTest"

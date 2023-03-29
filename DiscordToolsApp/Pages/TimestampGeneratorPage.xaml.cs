@@ -11,12 +11,88 @@ namespace DiscordToolsApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TimestampGeneratorPage : ContentPage
     {
+        /*
+         *<t:---:R>  - Relative
+         *<t:---:t>  - Time
+         *<t:---:T>  - Long Time
+         *<t:---:d>  - Date
+         *<t:---:D>  - Long Date
+         *<t:---:f>  - Date Time
+         *<t:---:F>  - Date Weekday
+         */
+        string format = "relative";
+
         public TimestampGeneratorPage()
         {
             InitializeComponent();
             BindingContext = this;
             startTimeUpdate();
         }
+
+        string _timestampText = $"<t:{AddTimeToTimestamp(0, 0, 0, 0)}:R>";
+        public string TimestampText
+        {
+            get
+            {
+                return _timestampText;
+            }
+            set
+            {
+                switch (format)
+                {
+                    case "relative":
+                        if (_timestampText != $"<t:{value}:R>")
+                        {
+                            _timestampText = $"<t:{value}:R>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                    case "time":
+                        if (_timestampText != $"<t:{value}:t>")
+                        {
+                            _timestampText = $"<t:{value}:t>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                    case "longtime":
+                        if (_timestampText != $"<t:{value}:T>")
+                        {
+                            _timestampText = $"<t:{value}:T>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                    case "date":
+                        if (_timestampText != $"<t:{value}:d>")
+                        {
+                            _timestampText = $"<t:{value}:d>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                    case "longdate":
+                        if (_timestampText != $"<t:{value}:D>")
+                        {
+                            _timestampText = $"<t:{value}:D>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                    case "datetime":
+                        if (_timestampText != $"<t:{value}:f>")
+                        {
+                            _timestampText = $"<t:{value}:f>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                    case "dateweektime":
+                        if (_timestampText != $"<t:{value}:F>")
+                        {
+                            _timestampText = $"<t:{value}:F>";
+                            OnPropertyChanged(nameof(TimestampText));
+                        }
+                        break;
+                }
+            }
+        }
+
         void startTimeUpdate()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -99,23 +175,6 @@ namespace DiscordToolsApp.Pages
                 {
                     _minutes = value;
                     OnPropertyChanged(nameof(Minutes));
-                }
-            }
-        }
-
-        string _timestampText = AddTimeToTimestamp(0, 0, 0, 0).ToString();
-        public string TimestampText
-        {
-            get
-            {
-                return _timestampText;
-            }
-            set
-            {
-                if (_timestampText != value)
-                {
-                    _timestampText = value;
-                    OnPropertyChanged(nameof(TimestampText));
                 }
             }
         }
