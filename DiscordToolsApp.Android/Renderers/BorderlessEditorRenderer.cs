@@ -14,9 +14,12 @@ using Xamarin.Forms;
 using DiscordToolsApp.CustomItems;
 using DiscordToolsApp.Droid.Renderers;
 
+#pragma warning disable CS0612 // Type or member is obsolete
 [assembly: ExportRenderer(typeof(BorderlessEditor), typeof(BorderlessEditorRenderer))]
+#pragma warning restore CS0612 // Type or member is obsolete
 namespace DiscordToolsApp.Droid.Renderers
 {
+    [Obsolete]
     public class BorderlessEditorRenderer : EditorRenderer
     {
         public static void Init() { }

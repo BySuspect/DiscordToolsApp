@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,6 +28,14 @@ namespace DiscordToolsApp.Pages
             InitializeComponent();
             BindingContext = this;
             startTimeUpdate();
+        }
+        private void btnCopyTimestamp_Clicked(object sender, EventArgs e)
+        {
+            Clipboard.SetTextAsync(TimestampText);
+        }
+        private void pickerFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            format = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "").ToLower();
         }
 
         string _timestampText = $"<t:{AddTimeToTimestamp(0, 0, 0, 0)}:R>";
@@ -82,7 +91,7 @@ namespace DiscordToolsApp.Pages
                             OnPropertyChanged(nameof(TimestampText));
                         }
                         break;
-                    case "dateweektime":
+                    case "dateweekday":
                         if (_timestampText != $"<t:{value}:F>")
                         {
                             _timestampText = $"<t:{value}:F>";
@@ -107,7 +116,7 @@ namespace DiscordToolsApp.Pages
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Hata: {ex.Message}");
+                    Console.WriteLine($"Error: {ex.Message}");
                 }
             });
         }
@@ -191,17 +200,33 @@ namespace DiscordToolsApp.Pages
         {
             Weeks++;
         }
+        private void extractWeeksTapped(object sender, EventArgs e)
+        {
+            Weeks--;
+        }
         private void addDaysTapped(object sender, EventArgs e)
         {
             Days++;
+        }
+        private void extractDaysTapped(object sender, EventArgs e)
+        {
+            Days--;
         }
         private void addHoursTapped(object sender, EventArgs e)
         {
             Hours++;
         }
+        private void extractHoursTapped(object sender, EventArgs e)
+        {
+            Hours--;
+        }
         private void addMinutesTapped(object sender, EventArgs e)
         {
             Minutes++;
+        }
+        private void extractMinutesTapped(object sender, EventArgs e)
+        {
+            Minutes--;
         }
         public static long AddTimeToTimestamp(int weeks, int days, int hours, int minutes)
         {
@@ -217,5 +242,6 @@ namespace DiscordToolsApp.Pages
             // The new date and time value is returned in Unix epoch timestamp format, calculating the time to Unix epoch time
             return (long)(newDateTime.ToUniversalTime() - unixEpoch).TotalSeconds;
         }
+
     }
 }

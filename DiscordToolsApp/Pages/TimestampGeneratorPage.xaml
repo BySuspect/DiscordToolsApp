@@ -36,7 +36,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -45,6 +45,9 @@
                                         TextColor="{x:Static helpers:ThemeColors.TextColor}"
                                         VerticalTextAlignment="Center" />
                                 </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="extractWeeksTapped" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                             <Label
                                 xct:TouchEffect.NativeAnimation="true"
@@ -79,7 +82,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -113,7 +116,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -122,6 +125,9 @@
                                         TextColor="{x:Static helpers:ThemeColors.TextColor}"
                                         VerticalTextAlignment="Center" />
                                 </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="extractDaysTapped" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                             <Label
                                 xct:TouchEffect.NativeAnimation="true"
@@ -156,7 +162,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -190,7 +196,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -199,6 +205,9 @@
                                         TextColor="{x:Static helpers:ThemeColors.TextColor}"
                                         VerticalTextAlignment="Center" />
                                 </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="extractHoursTapped" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                             <Label
                                 xct:TouchEffect.NativeAnimation="true"
@@ -233,7 +242,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -267,7 +276,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="15,0,15,0" />
+                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -276,6 +285,9 @@
                                         TextColor="{x:Static helpers:ThemeColors.TextColor}"
                                         VerticalTextAlignment="Center" />
                                 </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="extractMinutesTapped" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                             <Label
                                 xct:TouchEffect.NativeAnimation="true"
@@ -310,7 +322,7 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView BackgroundColor="{x:Static helpers:ThemeColors.BackColor}" CornerRadius="0,15,0,15" />
+                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -326,24 +338,59 @@
                         </StackLayout>
                     </Frame>
                 </Grid>
-                <Label
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    TextColor="{x:Static helpers:ThemeColors.TextColor}">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{Binding TimestampText}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Button
-                    BackgroundColor="Transparent"
-                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                    BorderWidth="1"
-                    CornerRadius="15                     "
-                    HorizontalOptions="Center"
-                    Text="Copy"
-                    TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                <StackLayout Orientation="Horizontal">
+                    <Picker
+                        x:Name="pickerFormat"
+                        Title="Format"
+                        SelectedIndexChanged="pickerFormat_SelectedIndexChanged"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                        TitleColor="{x:Static helpers:ThemeColors.TextColor}">
+                        <Picker.Items>
+                            <x:String>Relative</x:String>
+                            <x:String>Time</x:String>
+                            <x:String>Long Time</x:String>
+                            <x:String>Date</x:String>
+                            <x:String>Long Date</x:String>
+                            <x:String>Date Time</x:String>
+                            <x:String>Date Weekday</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15"
+                        HorizontalOptions="Center">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding TimestampText}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame>
+                    <Button
+                        x:Name="btnCopyTimestamp"
+                        xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        BorderWidth="1"
+                        Clicked="btnCopyTimestamp_Clicked"
+                        CornerRadius="15                     "
+                        HorizontalOptions="Center"
+                        Text="Copy"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                </StackLayout>
             </StackLayout>
             <Button
                 x:Name="btnTest"
