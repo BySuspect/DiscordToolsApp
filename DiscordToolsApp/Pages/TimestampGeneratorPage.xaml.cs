@@ -21,12 +21,14 @@ namespace DiscordToolsApp.Pages
          *<t:---:f>  - Date Time
          *<t:---:F>  - Date Weekday
          */
-        string format = "relative";
+        string format = "relative", timeframe = "timer";
 
         public TimestampGeneratorPage()
         {
             InitializeComponent();
             BindingContext = this;
+            pickerFormat.SelectedIndex = 0;
+            pickerTimeFrame.SelectedIndex = 0;
             startTimeUpdate();
         }
         private void btnCopyTimestamp_Clicked(object sender, EventArgs e)
@@ -36,6 +38,31 @@ namespace DiscordToolsApp.Pages
         private void pickerFormat_SelectedIndexChanged(object sender, EventArgs e)
         {
             format = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "").ToLower();
+            if (timeframe != "timer") timeFrameDateTimePicker_PropertyChanged(null, null);
+        }
+        private void pickerTimeFrame_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (pickerTimeFrame.SelectedItem)
+            {
+                case "Timer":
+                    timerPickerLayout.IsVisible = true;
+                    timeFrameDateTimePicker.IsVisible = false;
+                    Weeks = 0;
+                    Days = 0;
+                    Hours = 0;
+                    Minutes = 0;
+                    break;
+                case "Date":
+                    TimestampText = AddTimeToTimestamp(0, 0, 0, 0).ToString();
+                    timerPickerLayout.IsVisible = false;
+                    timeFrameDateTimePicker.IsVisible = true;
+                    Weeks = 0;
+                    Days = 0;
+                    Hours = 0;
+                    Minutes = 0;
+                    break;
+            }
+            timeframe = pickerTimeFrame.SelectedItem.ToString().ToLower();
         }
 
         string _timestampText = $"<t:{AddTimeToTimestamp(0, 0, 0, 0)}:R>";
@@ -101,7 +128,6 @@ namespace DiscordToolsApp.Pages
                 }
             }
         }
-
         void startTimeUpdate()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -110,7 +136,7 @@ namespace DiscordToolsApp.Pages
                 {
                     while (true)
                     {
-                        TimestampText = AddTimeToTimestamp(Weeks, Days, Hours, Minutes).ToString();
+                        if (timeframe == "timer") TimestampText = AddTimeToTimestamp(Weeks, Days, Hours, Minutes).ToString();
                         await Task.Delay(50);
                     }
                 }
@@ -120,6 +146,8 @@ namespace DiscordToolsApp.Pages
                 }
             });
         }
+
+        #region Timer
         int _weeks = 0;
         public int Weeks
         {
@@ -188,46 +216,14 @@ namespace DiscordToolsApp.Pages
             }
         }
 
-        private void btnTest_Clicked(object sender, EventArgs e)
-        {
-            Weeks = 0;
-            Days = 0;
-            Hours = 0;
-            Minutes = 0;
-        }
-
-        private void addWeeksTapped(object sender, EventArgs e)
-        {
-            Weeks++;
-        }
-        private void extractWeeksTapped(object sender, EventArgs e)
-        {
-            Weeks--;
-        }
-        private void addDaysTapped(object sender, EventArgs e)
-        {
-            Days++;
-        }
-        private void extractDaysTapped(object sender, EventArgs e)
-        {
-            Days--;
-        }
-        private void addHoursTapped(object sender, EventArgs e)
-        {
-            Hours++;
-        }
-        private void extractHoursTapped(object sender, EventArgs e)
-        {
-            Hours--;
-        }
-        private void addMinutesTapped(object sender, EventArgs e)
-        {
-            Minutes++;
-        }
-        private void extractMinutesTapped(object sender, EventArgs e)
-        {
-            Minutes--;
-        }
+        private void addWeeksTapped(object sender, EventArgs e) => Weeks++;
+        private void extractWeeksTapped(object sender, EventArgs e) => Weeks--;
+        private void addDaysTapped(object sender, EventArgs e) => Days++;
+        private void extractDaysTapped(object sender, EventArgs e) => Days--;
+        private void addHoursTapped(object sender, EventArgs e) => Hours++;
+        private void extractHoursTapped(object sender, EventArgs e) => Hours--;
+        private void addMinutesTapped(object sender, EventArgs e) => Minutes++;
+        private void extractMinutesTapped(object sender, EventArgs e) => Minutes--;
         public static long AddTimeToTimestamp(int weeks, int days, int hours, int minutes)
         {
             // Unix epoch date 1970-01-01 00:00:00 UTC
@@ -242,6 +238,29 @@ namespace DiscordToolsApp.Pages
             // The new date and time value is returned in Unix epoch timestamp format, calculating the time to Unix epoch time
             return (long)(newDateTime.ToUniversalTime() - unixEpoch).TotalSeconds;
         }
-
+        #endregion
+        private void btnTest_Clicked(object sender, EventArgs e)
+        {
+            Weeks = 0;
+            Days = 0;
+            Hours = 0;
+            Minutes = 0;
+        }
+        private void timeFrameDateTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            var obj = timeFrameDateTimePicker;
+            TimestampText = DateToTimestamp(new DateTime(Int16.Parse(obj.SelectedYear),
+                                                         Int16.Parse(obj.SelectedMonth),
+                                                         Int16.Parse(obj.SelectedDay),
+                                                         Int16.Parse(obj.SelectedHour),
+                                                         Int16.Parse(obj.SelectedMinute),
+                                                         0, DateTimeKind.Utc)).ToString();
+        }
+        public static long DateToTimestamp(DateTime dateTime)
+        {
+            DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            TimeSpan timeSpan = dateTime.ToUniversalTime() - unixEpoch;
+            return (long)Math.Floor(timeSpan.TotalSeconds);
+        }
     }
 }

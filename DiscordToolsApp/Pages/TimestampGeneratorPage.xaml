@@ -3,16 +3,69 @@
     x:Class="DiscordToolsApp.Pages.TimestampGeneratorPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
     <ContentPage.Content>
         <Grid>
-            <StackLayout>
+            <StackLayout Margin="10">
+
+                <!--#region Format And Timeframe-->
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Frame
+                        Padding="0,5"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessPicker
+                            x:Name="pickerFormat"
+                            Title="Format"
+                            HorizontalTextAlignment="Center"
+                            SelectedIndexChanged="pickerFormat_SelectedIndexChanged"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                            TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                            WidthRequest="150">
+                            <Picker.Items>
+                                <x:String>Relative</x:String>
+                                <x:String>Time</x:String>
+                                <x:String>Long Time</x:String>
+                                <x:String>Date</x:String>
+                                <x:String>Long Date</x:String>
+                                <x:String>Date Time</x:String>
+                                <x:String>Date Weekday</x:String>
+                            </Picker.Items>
+                        </custom:BorderlessPicker>
+                    </Frame>
+                    <Frame
+                        Padding="0,5"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessPicker
+                            x:Name="pickerTimeFrame"
+                            Title="TimeFrame"
+                            HorizontalTextAlignment="Center"
+                            SelectedIndexChanged="pickerTimeFrame_SelectedIndexChanged"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                            TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                            WidthRequest="150">
+                            <Picker.Items>
+                                <x:String>Timer</x:String>
+                                <x:String>Date</x:String>
+                            </Picker.Items>
+                        </custom:BorderlessPicker>
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Timer Picker-->
                 <Grid
+                    x:Name="timerPickerLayout"
                     Margin="0,20,0,5"
                     HorizontalOptions="Center"
+                    IsVisible="true"
                     WidthRequest="350">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -338,24 +391,120 @@
                         </StackLayout>
                     </Frame>
                 </Grid>
-                <StackLayout Orientation="Horizontal">
-                    <Picker
-                        x:Name="pickerFormat"
-                        Title="Format"
-                        SelectedIndexChanged="pickerFormat_SelectedIndexChanged"
-                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                        TitleColor="{x:Static helpers:ThemeColors.TextColor}">
-                        <Picker.Items>
-                            <x:String>Relative</x:String>
-                            <x:String>Time</x:String>
-                            <x:String>Long Time</x:String>
-                            <x:String>Date</x:String>
-                            <x:String>Long Date</x:String>
-                            <x:String>Date Time</x:String>
-                            <x:String>Date Weekday</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region DateTime Picker-->
+                <custom:CustomDateTimePickerFrame
+                    x:Name="timeFrameDateTimePicker"
+                    Padding="1,1"
+                    BackgroundColor="Transparent"
+                    CornerRadius="15"
+                    IsVisible="False"
+                    PropertyChanged="timeFrameDateTimePicker_PropertyChanged">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Frame
+                                Margin="0,5"
+                                Padding="0,5"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="Center">
+                                <custom:BorderlessPicker
+                                    Title="Year"
+                                    HorizontalTextAlignment="Center"
+                                    ItemsSource="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=YearList}"
+                                    SelectedItem="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=SelectedYear}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    WidthRequest="100" />
+                            </Frame>
+                            <Frame
+                                Margin="0,5"
+                                Padding="0,5"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="Center">
+                                <custom:BorderlessPicker
+                                    Title="Month"
+                                    HorizontalTextAlignment="Center"
+                                    ItemsSource="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=MonthList}"
+                                    SelectedItem="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=SelectedMonth}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    WidthRequest="100" />
+                            </Frame>
+                            <Frame
+                                Margin="0,5"
+                                Padding="0,5"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="Center">
+                                <custom:BorderlessPicker
+                                    Title="Day"
+                                    HorizontalTextAlignment="Center"
+                                    ItemsSource="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=DayList}"
+                                    SelectedItem="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=SelectedDay}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    WidthRequest="100" />
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Frame
+                                Margin="0,5"
+                                Padding="0,5"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="Center">
+                                <Grid>
+                                    <custom:BorderlessPicker
+                                        Title="Hour"
+                                        HorizontalTextAlignment="Center"
+                                        ItemsSource="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=HourList}"
+                                        SelectedItem="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=SelectedHour}"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                                        WidthRequest="100" />
+                                    <Label
+                                        Margin="0,0,15,0"
+                                        HorizontalOptions="End"
+                                        Text="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=LocalTimeZone}"
+                                        VerticalOptions="End" />
+
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Margin="0,5"
+                                Padding="0,5"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="15"
+                                HorizontalOptions="Center">
+                                <custom:BorderlessPicker
+                                    Title="Minute"
+                                    HorizontalTextAlignment="Center"
+                                    ItemsSource="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=MinuteList}"
+                                    SelectedItem="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=SelectedMinute}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    TitleColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    WidthRequest="100" />
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </custom:CustomDateTimePickerFrame>
+                <!--#endregion-->
+
+                <BoxView
+                    Margin="0,15"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    Color="{x:Static helpers:ThemeColors.BorderColor}" />
+
+                <!--#region Export-->
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                     <Frame
                         Padding="10"
@@ -391,6 +540,7 @@
                         Text="Copy"
                         TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                 </StackLayout>
+                <!--#endregion-->
             </StackLayout>
             <Button
                 x:Name="btnTest"
