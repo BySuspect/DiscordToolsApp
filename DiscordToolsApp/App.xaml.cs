@@ -32,8 +32,8 @@ namespace DiscordToolsApp
 
 
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new TimestampGeneratorPage());
-            //MainPage = new NavigationPage(new getUserDetailsPage());
+            //MainPage = new NavigationPage(new TimestampGeneratorPage());
+            MainPage = new NavigationPage(new getUserDetailsPage());
         }
 
         protected override void OnStart()

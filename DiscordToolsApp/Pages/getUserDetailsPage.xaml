@@ -10,10 +10,17 @@
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
     <ContentPage.Content>
         <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
+            <Frame
+                Padding="0,5"
+                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                CornerRadius="15">
+                <custom:BorderlessEntry x:Name="entryUserID" />
+            </Frame>
+            <Button
+                Clicked="Button_Clicked"
+                HorizontalOptions="Center"
+                Text="get" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

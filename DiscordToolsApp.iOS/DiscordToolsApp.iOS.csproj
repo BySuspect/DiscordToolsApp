@@ -139,4 +139,49 @@
       <Name>DiscordToolsApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HypeSquadBrilliance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HypeSquadEvents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Partner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\System.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VerifiedBot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ActiveDeveloper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BugHunterLevel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BugHunterLevel2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DiscordCertifiedModerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EarlySupporter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EarlyVerifiedBotDeveloper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HypeSquadBalance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HypeSquadBravery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wallpaperfordeniz.jpg" />
+  </ItemGroup>
 </Project>
