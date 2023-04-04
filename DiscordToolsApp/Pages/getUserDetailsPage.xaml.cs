@@ -28,8 +28,9 @@ namespace DiscordToolsApp.Pages
             startBot();
 #if DEBUG
             //Clipboard.SetTextAsync("272665050672660501");
-            Clipboard.SetTextAsync("190916650143318016");
+            //Clipboard.SetTextAsync("190916650143318016");
             //Clipboard.SetTextAsync("282859044593598464");
+            Clipboard.SetTextAsync("901826325940154388");
 #endif
         }
         async void startBot()
@@ -86,12 +87,13 @@ namespace DiscordToolsApp.Pages
 
                 var badges = await getUserBadges(user.PublicFlags.ToString().Split(new char[] { '|', ',' }).ToList());
 
-
-                EmbedBuilder _embed = new EmbedBuilder();
-                _embed.ThumbnailUrl = user.GetAvatarUrl();
-                _embed.ImageUrl = $"https://cdn.discordapp.com/banners/{uID}/{banner}.gif";
-                _embed.Title = $"{username}#{discriminator}";
-                _embed.Description = $"Creation Date: {user.CreatedAt}";
+                imgAvatar.Source = user.GetAvatarUrl().Split('?')[0] + "?size=4096";
+                imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}.gif?size=4096";
+                lblUserName.Text = $"{username}#{discriminator}";
+                lblCreationDate.Text = user.CreatedAt.ToString().Split('+')[0] + " UTC";
+                lblUserID.Text = user.Id.ToString();
+                lblBannerColor.Text = banner_color;
+                lblBannerColor.BackgroundColor = Xamarin.Forms.Color.FromHex(banner_color);
             }
             catch (Exception ex)
             {

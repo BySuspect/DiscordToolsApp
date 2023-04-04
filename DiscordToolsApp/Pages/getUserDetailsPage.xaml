@@ -11,16 +11,83 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame
-                Padding="0,5"
+                Margin="20,100,20,5"
+                Padding="0"
                 BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                 BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                CornerRadius="15">
+                CornerRadius="15"
+                HorizontalOptions="Center"
+                WidthRequest="250">
                 <custom:BorderlessEntry x:Name="entryUserID" />
             </Frame>
             <Button
                 Clicked="Button_Clicked"
                 HorizontalOptions="Center"
                 Text="get" />
+            <StackLayout
+                Margin="10,5,10,5"
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Frame
+                    Padding="0"
+                    xct:CornerRadiusEffect.CornerRadius="90"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start"
+                    Scale="0.75">
+                    <Image
+                        x:Name="imgAvatar"
+                        IsAnimationPlaying="True"
+                        Source="" />
+                </Frame>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    CornerRadius="15"
+                    HorizontalOptions="Center">
+                    <Image
+                        x:Name="imgBanner"
+                        IsAnimationPlaying="True"
+                        Source="" />
+                </Frame>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="User ID: " />
+                            <Span x:Name="lblUserID" Text="" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Username: " />
+                            <Span x:Name="lblUserName" Text="" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Badges: " />
+
+                </StackLayout>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Created: " />
+                            <Span x:Name="lblCreationDate" Text="" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Banner Color: " />
+                            <Span x:Name="lblBannerColor" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
