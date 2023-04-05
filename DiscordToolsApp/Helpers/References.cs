@@ -18,8 +18,8 @@ namespace DiscordToolsApp.Helpers
             ThemeColors.TransparentTextColor = Color.FromHex("#BA000000");
             ThemeColors.BorderColor = Color.Black;
             ThemeColors.BorderBackColor = Color.Transparent;
-            ThemeColors.BackColor = Color.White;
-            ThemeColors.StatusBarColor = Color.White;
+            ThemeColors.BackColor = Color.FromHex("#DBDBDB");
+            ThemeColors.StatusBarColor = Color.FromHex("#FFFFFF");
             ThemeColors.StatusBarStyle = StatusBarStyle.DarkContent;
             ThemeColors.backgroundImg = null;
         }
@@ -29,8 +29,8 @@ namespace DiscordToolsApp.Helpers
             ThemeColors.TransparentTextColor = Color.FromHex("#BAFFFFFF");
             ThemeColors.BorderColor = Color.White;
             ThemeColors.BorderBackColor = Color.Transparent;
-            ThemeColors.BackColor = Color.Black;
-            ThemeColors.StatusBarColor = Color.Black;
+            ThemeColors.BackColor = Color.FromHex("#FF202020");
+            ThemeColors.StatusBarColor = Color.FromHex("#00000000");
             ThemeColors.StatusBarStyle = StatusBarStyle.LightContent;
             ThemeColors.backgroundImg = null;
         }
@@ -63,7 +63,6 @@ namespace DiscordToolsApp.Helpers
         {
             NewTheme = newTheme;
         }
-
         public string NewTheme { get; private set; }
     }
 

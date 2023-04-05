@@ -6,6 +6,9 @@
     xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Timestamp Generator"
+    xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
+    xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
     BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
     <ContentPage.Content>
@@ -73,9 +76,10 @@
                     <Frame
                         Grid.Row="0"
                         Padding="1,1"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
+                        HeightRequest="35"
                         VerticalOptions="CenterAndExpand">
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Frame
@@ -89,7 +93,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -135,7 +138,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -153,7 +155,7 @@
                     <Frame
                         Grid.Row="1"
                         Padding="1,1"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
@@ -169,7 +171,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -215,7 +216,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -233,7 +233,7 @@
                     <Frame
                         Grid.Row="2"
                         Padding="1,1"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
@@ -249,7 +249,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -295,7 +294,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -313,7 +311,7 @@
                     <Frame
                         Grid.Row="3"
                         Padding="1,1"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         CornerRadius="15"
                         VerticalOptions="CenterAndExpand">
@@ -329,7 +327,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="15,0,15,0" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -375,7 +372,6 @@
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand">
                                 <Grid>
-                                    <BoxView CornerRadius="0,15,0,15" Color="{x:Static helpers:ThemeColors.BackColor}" />
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
@@ -473,6 +469,7 @@
                                         Margin="0,0,15,0"
                                         HorizontalOptions="End"
                                         Text="{Binding Source={x:Reference timeFrameDateTimePicker}, Path=LocalTimeZone}"
+                                        TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
                                         VerticalOptions="End" />
 
                                 </Grid>
@@ -499,7 +496,7 @@
                 <!--#endregion-->
 
                 <BoxView
-                    Margin="0,15"
+                    Margin="-20,15"
                     HeightRequest="1"
                     HorizontalOptions="FillAndExpand"
                     Color="{x:Static helpers:ThemeColors.BorderColor}" />
@@ -531,11 +528,11 @@
                         xct:TouchEffect.PressedAnimationDuration="500"
                         xct:TouchEffect.PressedOpacity="0.6"
                         xct:TouchEffect.PressedScale="0.98"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                         BorderWidth="1"
                         Clicked="btnCopyTimestamp_Clicked"
-                        CornerRadius="15                     "
+                        CornerRadius="15"
                         HorizontalOptions="Center"
                         Text="Copy"
                         TextColor="{x:Static helpers:ThemeColors.TextColor}" />
@@ -546,6 +543,7 @@
                 x:Name="btnTest"
                 Clicked="btnTest_Clicked"
                 HorizontalOptions="Center"
+                IsVisible="false"
                 Text="test"
                 VerticalOptions="End" />
         </Grid>

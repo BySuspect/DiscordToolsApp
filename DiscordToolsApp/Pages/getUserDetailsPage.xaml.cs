@@ -14,6 +14,7 @@ using Xamarin.Essentials;
 using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.ObjectModel;
+using DiscordToolsApp.Helpers;
 
 namespace DiscordToolsApp.Pages
 {
@@ -58,6 +59,41 @@ namespace DiscordToolsApp.Pages
 
         private async void getUserButton_Clicked(object sender, EventArgs e)
         {
+            #region easterEgg
+            if (entryUserID.Text == "{zenandshriokossecret}")
+            {
+                if (!Preferences.Get("{zenandshriokossecret}", false))
+                {
+                    Preferences.Set("{zenandshriokossecret}", true);
+                    ChangeAppTheme.ForDenizTheme();
+                }
+                else
+                {
+                    Preferences.Set("{zenandshriokossecret}", false);
+                    switch (AppInfo.RequestedTheme)
+                    {
+                        case AppTheme.Unspecified:
+                            ChangeAppTheme.DarkTheme();
+                            break;
+                        case AppTheme.Light:
+                            ChangeAppTheme.LightTheme();
+                            break;
+                        case AppTheme.Dark:
+                            ChangeAppTheme.DarkTheme();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                App.Current.MainPage = new NavigationPage(new getUserDetailsPage())
+                {
+                    BarBackgroundColor = ThemeColors.BackColor,
+                    BarTextColor = ThemeColors.TextColor,
+                };
+                return;
+            }
+            #endregion
+
             badgeList.Clear();
             userDetailsView.IsVisible = false;
             try
@@ -111,15 +147,25 @@ namespace DiscordToolsApp.Pages
                 imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{uID}/{avatar}?size=256";
                 imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}?size=512";
 
-
                 lblUserName.Text = $"{username}#{discriminator}";
                 imgIsBot.IsVisible = user.IsBot || user.IsWebhook;
-                lblCreationDate.Text = user.CreatedAt.ToString().Split('+')[0] + " UTC";
                 lblUserID.Text = user.Id.ToString();
                 lblBannerColor.Text = banner_color;
                 lblBannerColor.BackgroundColor = Xamarin.Forms.Color.FromHex(banner_color);
-                Loodinglayout.IsVisible = false;
+                lblCreationDate.Text = user.CreatedAt.ToString().Split('+')[0] + " UTC";
+
                 userDetailsView.IsVisible = true;
+
+                while (true)
+                {
+                    Debug.WriteLine($"Loading images: {imgAvatar.IsLoading} {imgBanner.IsLoading}");
+                    if (!(imgAvatar.IsLoading || imgBanner.IsLoading))
+                    {
+                        Loodinglayout.IsVisible = false;
+                        break;
+                    }
+                    else await Task.Delay(300);
+                }
             }
             catch (Exception ex)
             {
@@ -128,6 +174,12 @@ namespace DiscordToolsApp.Pages
                 _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
             }
         }
+
+        private void testTapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
         //Discord.UserProperties.ActiveDeveloper
         //Discord.UserProperties.BotHTTPInteractionsDiscord.UserProperties.BugHunterLevel1
         //Discord.UserProperties.Bug HunterLevel2

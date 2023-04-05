@@ -30,11 +30,24 @@ namespace DiscordToolsApp
             if (Preferences.Get("{zenandshriokossecret}", false))
                 ChangeAppTheme.ForDenizTheme();
 
+            //ChangeAppTheme.ForDenizTheme();
 
             //MainPage = new MainPage();
-            //MainPage = new NavigationPage(new TimestampGeneratorPage());
-            //MainPage = new NavigationPage(new getUserDetailsPage());
-            MainPage = new MainPage();
+
+            //MainPage = new NavigationPage(new TimestampGeneratorPage())
+            //{
+            //    BarBackgroundColor = ThemeColors.StatusBarColor,
+            //    BarTextColor = ThemeColors.TextColor,
+            //};
+
+            MainPage = new NavigationPage(new getUserDetailsPage())
+            {
+                BarBackgroundColor = ThemeColors.StatusBarColor,
+                BarTextColor = ThemeColors.TextColor,
+            };
+
+
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()
