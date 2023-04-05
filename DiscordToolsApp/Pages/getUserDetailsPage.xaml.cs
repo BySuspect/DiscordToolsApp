@@ -12,29 +12,38 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Xamarin.Essentials;
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
+using System.Collections.ObjectModel;
 
 namespace DiscordToolsApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class getUserDetailsPage : ContentPage
     {
+        private ObservableCollection<badgeItems> badgeList = new ObservableCollection<badgeItems>();
         private const string token = "MTA0NDU3ODAxMDcxMzU2NzI3Mg.GKEDx5.P3JrU74HlfRcBvSzxzszl5eWBrE8meBd3G4nRU";
         private HttpClient httpClient = new HttpClient();
         private DiscordSocketClient _client;
         public getUserDetailsPage()
         {
             InitializeComponent();
+            BindingContext = this;
             _client = new DiscordSocketClient();
             startBot();
+            BindableLayout.SetItemsSource(badgesView, badgeList);
+
+
 #if DEBUG
-            //Clipboard.SetTextAsync("272665050672660501");
+            Clipboard.SetTextAsync("272665050672660501");
             //Clipboard.SetTextAsync("190916650143318016");
             //Clipboard.SetTextAsync("282859044593598464");
-            Clipboard.SetTextAsync("901826325940154388");
+            //Clipboard.SetTextAsync("901826325940154388");
 #endif
+
         }
         async void startBot()
         {
+            Loodinglayout.IsVisible = true;
             try
             {
                 await _client.LoginAsync(TokenType.Bot, token);
@@ -44,12 +53,16 @@ namespace DiscordToolsApp.Pages
             {
                 _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
             }
+            Loodinglayout.IsVisible = false;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void getUserButton_Clicked(object sender, EventArgs e)
         {
+            badgeList.Clear();
+            userDetailsView.IsVisible = false;
             try
             {
+                Loodinglayout.IsVisible = true;
                 ulong uID;
                 try
                 {
@@ -58,11 +71,13 @@ namespace DiscordToolsApp.Pages
                 catch
                 {
                     _ = DisplayAlert("Warning!", "unknown id.", "Ok");
+                    Loodinglayout.IsVisible = false;
+                    entryUserID.Text = "";
                     return;
                 }
 
+                entryUserID.Text = "";
 
-                // HTTP isteği oluşturun ve Discord API'den verileri çekin
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Authorization", $"Bot {token}");
 
@@ -85,29 +100,33 @@ namespace DiscordToolsApp.Pages
                 var banner_color = userjson["banner_color"].ToString();
                 var accent_color = userjson["accent_color"];
 
-                var badges = await getUserBadges(user.PublicFlags.ToString().Split(new char[] { '|', ',' }).ToList());
+                foreach (var item in user.PublicFlags.ToString().Split(new char[] { '|', ',' }).ToList())
+                {
+                    badgeList.Add(new badgeItems { imgSource = item.Trim() });
+                }
 
-                imgAvatar.Source = user.GetAvatarUrl().Split('?')[0] + "?size=4096";
-                imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}.gif?size=4096";
+                //imgAvatar.Source = user.GetAvatarUrl().Split('?')[0] + "?size=256";
+
+
+                imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{uID}/{avatar}?size=256";
+                imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}?size=512";
+
+
                 lblUserName.Text = $"{username}#{discriminator}";
+                imgIsBot.IsVisible = user.IsBot || user.IsWebhook;
                 lblCreationDate.Text = user.CreatedAt.ToString().Split('+')[0] + " UTC";
                 lblUserID.Text = user.Id.ToString();
                 lblBannerColor.Text = banner_color;
                 lblBannerColor.BackgroundColor = Xamarin.Forms.Color.FromHex(banner_color);
+                Loodinglayout.IsVisible = false;
+                userDetailsView.IsVisible = true;
             }
             catch (Exception ex)
             {
+                userDetailsView.IsVisible = false;
+                Loodinglayout.IsVisible = false;
                 _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
             }
-        }
-        async Task<List<string>> getUserBadges(List<string> flags)
-        {
-            foreach (var item in flags)
-            {
-
-            }
-
-            return null;
         }
         //Discord.UserProperties.ActiveDeveloper
         //Discord.UserProperties.BotHTTPInteractionsDiscord.UserProperties.BugHunterLevel1
@@ -125,5 +144,9 @@ namespace DiscordToolsApp.Pages
         //Discord.UserProperties.System
         //Discord.UserProperties.TeamUser
         //Discord.UserProperties.VerifiedBot
+    }
+    public class badgeItems
+    {
+        public string imgSource { get; set; }
     }
 }

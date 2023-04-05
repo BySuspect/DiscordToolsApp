@@ -96,9 +96,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\EarlySupporter.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DiscordToolsApp\DiscordToolsApp.csproj">
       <Project>{2AA42606-1DAC-40CF-84BB-6ADE3085F6F8}</Project>
       <Name>DiscordToolsApp</Name>
@@ -106,6 +103,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\wallpaperfordeniz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BugHunterLevel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BugHunterLevel2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\DiscordCertifiedModerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\EarlySupporter.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\EarlyVerifiedBotDeveloper.png" />
@@ -138,13 +147,7 @@
     <AndroidResource Include="Resources\drawable\ActiveDeveloper.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BugHunterLevel1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BugHunterLevel2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\DiscordCertifiedModerator.png" />
+    <AndroidResource Include="Resources\drawable\Bot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -184,4 +184,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\wallpaperfordeniz.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bot.png" />
+  </ItemGroup>
 </Project>
