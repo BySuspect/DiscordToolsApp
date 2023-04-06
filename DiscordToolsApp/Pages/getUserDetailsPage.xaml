@@ -11,7 +11,11 @@
     xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
     xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
     BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
-    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
+    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
+    NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
             <Grid.GestureRecognizers>

@@ -187,4 +187,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\Bot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LongTime.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Relative.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Time.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Date.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DateTime.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DateWeekday.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LongDate.jpg" />
+  </ItemGroup>
 </Project>

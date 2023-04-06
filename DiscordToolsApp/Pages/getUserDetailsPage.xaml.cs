@@ -179,6 +179,10 @@ namespace DiscordToolsApp.Pages
         {
 
         }
+        private async void DiscordButton_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://discord.gg/aX4unxzZek");
+        }
 
         //Discord.UserProperties.ActiveDeveloper
         //Discord.UserProperties.BotHTTPInteractionsDiscord.UserProperties.BugHunterLevel1

@@ -10,7 +10,11 @@
     xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
     xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
     BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
-    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}">
+    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
+    NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
             <StackLayout Margin="10">
@@ -501,6 +505,18 @@
                     HorizontalOptions="FillAndExpand"
                     Color="{x:Static helpers:ThemeColors.BorderColor}" />
 
+                <!--#region preview Image-->
+                <StackLayout Margin="5,10">
+                    <Frame
+                        Padding="0"
+                        BackgroundColor="Transparent"
+                        CornerRadius="15"
+                        HorizontalOptions="Center">
+                        <Image x:Name="imageFormat" Source="Relative" />
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
+
                 <!--#region Export-->
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                     <Frame
@@ -538,6 +554,7 @@
                         TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                 </StackLayout>
                 <!--#endregion-->
+
             </StackLayout>
             <Button
                 x:Name="btnTest"

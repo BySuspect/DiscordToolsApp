@@ -32,7 +32,11 @@ namespace DiscordToolsApp
 
             //ChangeAppTheme.ForDenizTheme();
 
-            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = ThemeColors.StatusBarColor,
+                BarTextColor = ThemeColors.TextColor,
+            };
 
             //MainPage = new NavigationPage(new TimestampGeneratorPage())
             //{
@@ -40,14 +44,12 @@ namespace DiscordToolsApp
             //    BarTextColor = ThemeColors.TextColor,
             //};
 
-            MainPage = new NavigationPage(new getUserDetailsPage())
-            {
-                BarBackgroundColor = ThemeColors.StatusBarColor,
-                BarTextColor = ThemeColors.TextColor,
-            };
+            //MainPage = new NavigationPage(new getUserDetailsPage())
+            //{
+            //    BarBackgroundColor = ThemeColors.StatusBarColor,
+            //    BarTextColor = ThemeColors.TextColor,
+            //};
 
-
-            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

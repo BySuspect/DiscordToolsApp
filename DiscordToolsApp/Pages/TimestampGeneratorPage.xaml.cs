@@ -38,6 +38,7 @@ namespace DiscordToolsApp.Pages
         private void pickerFormat_SelectedIndexChanged(object sender, EventArgs e)
         {
             format = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "").ToLower();
+            imageFormat.Source = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "");
             if (timeframe != "timer") timeFrameDateTimePicker_PropertyChanged(null, null);
         }
         private void pickerTimeFrame_SelectedIndexChanged(object sender, EventArgs e)
@@ -261,6 +262,10 @@ namespace DiscordToolsApp.Pages
             DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             TimeSpan timeSpan = dateTime.ToUniversalTime() - unixEpoch;
             return (long)Math.Floor(timeSpan.TotalSeconds);
+        }
+        private async void DiscordButton_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://discord.gg/aX4unxzZek");
         }
     }
 }
