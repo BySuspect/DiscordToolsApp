@@ -145,6 +145,7 @@ namespace DiscordToolsApp.Pages
 
 
                 imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{uID}/{avatar}?size=256";
+                imgAvatarDecor.Source = $"https://cdn.discordapp.com/avatar-decoration-presets/{avatar_decoration}";
                 imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}?size=512";
 
                 lblUserName.Text = $"{username}#{discriminator}";

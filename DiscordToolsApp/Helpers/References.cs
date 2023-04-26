@@ -29,8 +29,8 @@ namespace DiscordToolsApp.Helpers
             ThemeColors.TransparentTextColor = Color.FromHex("#BAFFFFFF");
             ThemeColors.BorderColor = Color.White;
             ThemeColors.BorderBackColor = Color.Transparent;
-            ThemeColors.BackColor = Color.FromHex("#FF202020");
-            ThemeColors.StatusBarColor = Color.FromHex("#00000000");
+            ThemeColors.BackColor = Color.FromHex("#101010");
+            ThemeColors.StatusBarColor = Color.FromHex("#000000");
             ThemeColors.StatusBarStyle = StatusBarStyle.LightContent;
             ThemeColors.backgroundImg = null;
         }

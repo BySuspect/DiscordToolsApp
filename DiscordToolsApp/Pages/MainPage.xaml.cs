@@ -28,7 +28,7 @@ namespace DiscordToolsApp.Pages
         }
         private void btnGetUserDetailsWithId_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TimestampGeneratorPage(), false);
+            Navigation.PushAsync(new getUserDetailsPage(), false);
         }
         protected override bool OnBackButtonPressed()
         {
