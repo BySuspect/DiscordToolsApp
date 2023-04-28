@@ -16,23 +16,36 @@ namespace DiscordToolsApp.Pages
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = this;
+            popupInfoBack.IsVisible = References.supportPopup;
         }
-        private async void DiscordButton_Clicked(object sender, EventArgs e)
+        private void DiscordButton_Clicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync("https://discord.gg/aX4unxzZek");
+            Browser.OpenAsync("https://discord.gg/aX4unxzZek", BrowserLaunchMode.SystemPreferred);
         }
 
-        private void btnTimestampGenerator_Clicked(object sender, EventArgs e)
+        private async void btnTimestampGenerator_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TimestampGeneratorPage(), false);
+            await Navigation.PushAsync(new TimestampGeneratorPage(), false);
         }
-        private void btnGetUserDetailsWithId_Clicked(object sender, EventArgs e)
+        private async void btnGetUserDetailsWithId_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new getUserDetailsPage(), false);
+            await Navigation.PushAsync(new getUserDetailsPage(), false);
         }
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+        private void btnSupportCancel_Clicked(object sender, EventArgs e)
+        {
+            popupInfoBack.IsVisible = false;
+            References.supportPopup = false;
+        }
+        private async void btnSupport_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync(new Uri("https://bit.ly/discordtoolspatreon"), BrowserLaunchMode.External);
+            popupInfoBack.IsVisible = false;
+            References.supportPopup = false;
         }
     }
 }

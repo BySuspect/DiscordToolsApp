@@ -3,6 +3,7 @@
     x:Class="DiscordToolsApp.Pages.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:adscontrol="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
     xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:local="clr-namespace:DiscordToolsApp.Pages"
@@ -16,58 +17,131 @@
         <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <StackLayout>
-                <Label
-                    Margin="0,25,0,0"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="All Tools"
-                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                    VerticalTextAlignment="Center" />
+        <StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label
+                        Margin="0,25,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="All Tools"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                        VerticalTextAlignment="Center" />
 
-                <StackLayout Margin="20,10">
-                    <Button
-                        Margin="5"
-                        xct:TouchEffect.NativeAnimation="true"
-                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                        xct:TouchEffect.PressedAnimationDuration="500"
-                        xct:TouchEffect.PressedOpacity="0.6"
-                        xct:TouchEffect.PressedScale="0.98"
-                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
-                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                        BorderWidth="1"
-                        Clicked="btnTimestampGenerator_Clicked"
-                        CornerRadius="15"
-                        HorizontalOptions="Fill"
-                        Text="Timestamp Generator"
-                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                    <Button
-                        Margin="5"
-                        xct:TouchEffect.NativeAnimation="true"
-                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                        xct:TouchEffect.PressedAnimationDuration="500"
-                        xct:TouchEffect.PressedOpacity="0.6"
-                        xct:TouchEffect.PressedScale="0.98"
-                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
-                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                        BorderWidth="1"
-                        Clicked="btnGetUserDetailsWithId_Clicked"
-                        CornerRadius="15"
-                        HorizontalOptions="Fill"
-                        Text="Look any User Details"
-                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    <StackLayout Margin="20,10">
+                        <Button
+                            Margin="5"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnTimestampGenerator_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Fill"
+                            Text="Timestamp Generator"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                        <Button
+                            Margin="5"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnGetUserDetailsWithId_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Fill"
+                            Text="Look any User Details"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    </StackLayout>
+                    <Label
+                        Margin="0,25,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="More is coming soon..."
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                        VerticalTextAlignment="Center" />
                 </StackLayout>
-                <Label
-                    Margin="0,25,0,0"
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    HorizontalOptions="Center"
-                    Text="More is coming soon..."
-                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
-                    VerticalTextAlignment="Center" />
-            </StackLayout>
-        </Grid>
+                <Grid
+                    x:Name="popupInfoBack"
+                    BackgroundColor="#BA121212"
+                    VerticalOptions="FillAndExpand">
+                    <Frame
+                        Margin="30,0"
+                        Padding="15,15,15,5"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15"
+                        VerticalOptions="Center">
+                        <StackLayout>
+                            <Label
+                                x:Name="lblPopupTitle"
+                                FontSize="Medium"
+                                HorizontalOptions="Start"
+                                Text="Thanks for downloading."
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalOptions="Start" />
+                            <Label
+                                x:Name="lblPopupContent"
+                                Margin="5"
+                                FontSize="Body"
+                                Text="If you find my apps useful, you can give me a little support on patreon."
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                            <StackLayout
+                                Margin="0,5,0,0"
+                                HorizontalOptions="Center"
+                                Orientation="Horizontal">
+                                <Button
+                                    x:Name="btnOnayla"
+                                    xct:TouchEffect.NativeAnimation="true"
+                                    xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                    xct:TouchEffect.PressedAnimationDuration="500"
+                                    xct:TouchEffect.PressedOpacity="0.6"
+                                    xct:TouchEffect.PressedScale="0.98"
+                                    BackgroundColor="Transparent"
+                                    Clicked="btnSupport_Clicked"
+                                    CornerRadius="15"
+                                    FontSize="Caption"
+                                    HorizontalOptions="Center"
+                                    Text="Support"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    VerticalOptions="Center" />
+                                <Button
+                                    x:Name="btnIptal"
+                                    xct:TouchEffect.NativeAnimation="true"
+                                    xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                                    xct:TouchEffect.PressedAnimationDuration="500"
+                                    xct:TouchEffect.PressedOpacity="0.6"
+                                    xct:TouchEffect.PressedScale="0.98"
+                                    BackgroundColor="Transparent"
+                                    Clicked="btnSupportCancel_Clicked"
+                                    CornerRadius="15"
+                                    FontSize="Caption"
+                                    HorizontalOptions="Center"
+                                    Text="Cancel"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+            <adscontrol:MTAdView
+                x:Name="adsBottom"
+                AdsId="ca-app-pub-3940256099942544/6300978111"
+                AutomationId="adsBottom"
+                HeightRequest="{OnIdiom Phone=50,
+                                        Tablet=90}"
+                IsVisible="true"
+                VerticalOptions="End" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

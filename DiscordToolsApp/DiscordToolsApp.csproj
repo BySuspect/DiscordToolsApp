@@ -11,10 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net.WebSocket" Version="3.10.0" />
+    <PackageReference Include="Discord.Net" Version="3.10.0" />
+    <PackageReference Include="Discord.Net.Providers.WS4Net" Version="2.4.0" />
+    <PackageReference Include="MarcTron.Admob" Version="1.9.0.3" />
+    <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
   </ItemGroup>
 
   <ItemGroup>

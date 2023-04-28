@@ -15,6 +15,7 @@ using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.ObjectModel;
 using DiscordToolsApp.Helpers;
+using System.Threading;
 
 namespace DiscordToolsApp.Pages
 {
@@ -22,39 +23,28 @@ namespace DiscordToolsApp.Pages
     public partial class getUserDetailsPage : ContentPage
     {
         private ObservableCollection<badgeItems> badgeList = new ObservableCollection<badgeItems>();
-        private const string token = "MTA0NDU3ODAxMDcxMzU2NzI3Mg.GKEDx5.P3JrU74HlfRcBvSzxzszl5eWBrE8meBd3G4nRU";
-        private HttpClient httpClient = new HttpClient();
+        private const string token = "MTA0NDU3ODAxMDcxMzU2NzI3Mg.G98N5e.Wz5mtT6sf4g5-noSeda0Cv2HxSpWIw5zaBXRVQ";
         private DiscordSocketClient _client;
         public getUserDetailsPage()
         {
             InitializeComponent();
             BindingContext = this;
-            _client = new DiscordSocketClient();
-            startBot();
             BindableLayout.SetItemsSource(badgesView, badgeList);
-
-
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
 #if DEBUG
-            Clipboard.SetTextAsync("272665050672660501");
+            await Clipboard.SetTextAsync("272665050672660501");
             //Clipboard.SetTextAsync("190916650143318016");
             //Clipboard.SetTextAsync("282859044593598464");
             //Clipboard.SetTextAsync("901826325940154388");
 #endif
-
         }
-        async void startBot()
+        protected override void OnDisappearing()
         {
-            Loodinglayout.IsVisible = true;
-            try
-            {
-                await _client.LoginAsync(TokenType.Bot, token);
-                await _client.StartAsync();
-            }
-            catch (Exception ex)
-            {
-                _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
-            }
-            Loodinglayout.IsVisible = false;
+            base.OnDisappearing();
+            Debug.WriteLine("disposed");
         }
 
         private async void getUserButton_Clicked(object sender, EventArgs e)
@@ -111,15 +101,32 @@ namespace DiscordToolsApp.Pages
                     entryUserID.Text = "";
                     return;
                 }
-
                 entryUserID.Text = "";
+
+                _client = new DiscordSocketClient();
+                await _client.LoginAsync(TokenType.Bot, token);
+                await _client.StartAsync();
+                IUser user;
+                while (true)
+                {
+                    if (_client.ConnectionState == ConnectionState.Connected)
+                    {
+                        user = await _client.GetUserAsync(uID, RequestOptions.Default);
+                        Debug.WriteLine("Connected!");
+                        break;
+                    }
+                    await Task.Delay(100);
+
+                    Debug.WriteLine("Not Connected! " + _client.ConnectionState + _client.LoginState);
+                }
+                await _client.LogoutAsync();
+                _client.Dispose();
 
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Authorization", $"Bot {token}");
 
-                var user = await _client.GetUserAsync(uID);
                 var response = await client.GetAsync($"https://discord.com/api/users/{uID}");
-                response.EnsureSuccessStatusCode();
+                var rescode = response.EnsureSuccessStatusCode();
 
                 var result = await response.Content.ReadAsStringAsync();
                 var userjson = JsonConvert.DeserializeObject<JObject>(result);
@@ -142,8 +149,6 @@ namespace DiscordToolsApp.Pages
                 }
 
                 //imgAvatar.Source = user.GetAvatarUrl().Split('?')[0] + "?size=256";
-
-
                 imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{uID}/{avatar}?size=256";
                 imgAvatarDecor.Source = $"https://cdn.discordapp.com/avatar-decoration-presets/{avatar_decoration}";
                 imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}?size=512";
@@ -160,7 +165,7 @@ namespace DiscordToolsApp.Pages
                 while (true)
                 {
                     Debug.WriteLine($"Loading images: {imgAvatar.IsLoading} {imgBanner.IsLoading}");
-                    if (!(imgAvatar.IsLoading || imgBanner.IsLoading))
+                    if (!(imgAvatar.IsLoading || imgBanner.IsLoading || imgAvatarDecor.IsLoading))
                     {
                         Loodinglayout.IsVisible = false;
                         break;
@@ -185,22 +190,15 @@ namespace DiscordToolsApp.Pages
             await Browser.OpenAsync("https://discord.gg/aX4unxzZek");
         }
 
-        //Discord.UserProperties.ActiveDeveloper
-        //Discord.UserProperties.BotHTTPInteractionsDiscord.UserProperties.BugHunterLevel1
-        //Discord.UserProperties.Bug HunterLevel2
-        //Discord.UserProperties.DiscordCertifiedModerator
-        //Discord.UserProperties.EarlySupporter
-        //Discord.UserProperties.EarlyVerifiedBotDeveloper
-        //Discord.UserProperties.HypeSquadBalance
-        //Discord.UserProperties.HypeSquadBravery
-        //Discord.UserProperties.HypeSquadBrilliance
-        //Discord.UserProperties.HypeSquadEvents
-        //Discord.UserProperties.None
-        //Discord.UserProperties.Partner
-        //Discord.UserProperties.Staff
-        //Discord.UserProperties.System
-        //Discord.UserProperties.TeamUser
-        //Discord.UserProperties.VerifiedBot
+        private async void Banner_Tapped(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(imgBanner.Source.ToString());
+        }
+
+        private async void Avatar_Tapped(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(imgAvatar.Source.ToString());
+        }
     }
     public class badgeItems
     {

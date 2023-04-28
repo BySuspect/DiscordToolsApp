@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using GameKit;
+using Google.MobileAds;
 using UIKit;
 
 namespace DiscordToolsApp.iOS
@@ -22,6 +24,7 @@ namespace DiscordToolsApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            //MobileAds.SharedInstance.Start(CompletionHandler);
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

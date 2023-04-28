@@ -3,6 +3,7 @@
     x:Class="DiscordToolsApp.Pages.getUserDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:adscontrol="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
     xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:local="clr-namespace:DiscordToolsApp.Pages"
@@ -17,169 +18,184 @@
         <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Tapped="testTapGestureRecognizer_Tapped" />
-            </Grid.GestureRecognizers>
-            <StackLayout>
-                <Frame
-                    Margin="20,100,20,5"
-                    Padding="10,0"
-                    BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
-                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                    CornerRadius="25"
-                    HorizontalOptions="Center"
-                    WidthRequest="250">
-                    <custom:BorderlessEntry
-                        x:Name="entryUserID"
-                        Placeholder="User ID"
-                        PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+        <StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Frame
+                        Margin="20,100,20,5"
+                        Padding="10,0"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="25"
+                        HorizontalOptions="Center"
+                        WidthRequest="250">
+                        <custom:BorderlessEntry
+                            x:Name="entryUserID"
+                            Placeholder="User ID"
+                            PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    </Frame>
+                    <Button
+                        x:Name="btnCopyTimestamp"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        BorderWidth="1"
+                        Clicked="getUserButton_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="Center"
+                        Text="Get"
                         TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                </Frame>
-                <Button
-                    x:Name="btnCopyTimestamp"
-                    xct:TouchEffect.NativeAnimation="true"
-                    xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                    xct:TouchEffect.PressedAnimationDuration="500"
-                    xct:TouchEffect.PressedOpacity="0.6"
-                    xct:TouchEffect.PressedScale="0.98"
-                    BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
-                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                    BorderWidth="1"
-                    Clicked="getUserButton_Clicked"
-                    CornerRadius="15"
-                    HorizontalOptions="Center"
-                    Text="Get"
-                    TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                <Frame
-                    x:Name="userDetailsView"
-                    Margin="20,20,20,5"
-                    BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
-                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                    CornerRadius="25"
-                    HorizontalOptions="CenterAndExpand"
-                    IsVisible="false">
-                    <StackLayout>
-                        <StackLayout
-                            Margin="10,5,10,5"
-                            HorizontalOptions="Center"
-                            Orientation="Horizontal">
-                            <Grid>
+                    <Frame
+                        x:Name="userDetailsView"
+                        Margin="20,20,20,5"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="25"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="false">
+                        <StackLayout>
+                            <StackLayout
+                                Margin="10,5,10,5"
+                                HorizontalOptions="Center"
+                                Orientation="Horizontal">
+                                <Grid>
+                                    <Frame
+                                        Padding="0"
+                                        xct:CornerRadiusEffect.CornerRadius="360"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Start">
+                                        <Image
+                                            x:Name="imgAvatar"
+                                            HeightRequest="65"
+                                            IsAnimationPlaying="True"
+                                            Source="">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Avatar_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Frame>
+                                    <Frame
+                                        Padding="0"
+                                        xct:CornerRadiusEffect.CornerRadius="360"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="Start">
+                                        <Image
+                                            x:Name="imgAvatarDecor"
+                                            HeightRequest="65"
+                                            IsAnimationPlaying="True"
+                                            Source="" />
+                                    </Frame>
+                                </Grid>
                                 <Frame
                                     Padding="0"
-                                    xct:CornerRadiusEffect.CornerRadius="360"
                                     BackgroundColor="Transparent"
-                                    HorizontalOptions="Start">
+                                    CornerRadius="15"
+                                    HorizontalOptions="Center">
                                     <Image
-                                        x:Name="imgAvatar"
+                                        x:Name="imgBanner"
                                         HeightRequest="65"
                                         IsAnimationPlaying="True"
-                                        Source="" />
+                                        Source="">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Banner_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </Frame>
-                                <Frame
-                                    Padding="0"
-                                    xct:CornerRadiusEffect.CornerRadius="360"
-                                    BackgroundColor="Transparent"
-                                    HorizontalOptions="Start">
-                                    <Image
-                                        x:Name="imgAvatarDecor"
-                                        HeightRequest="65"
-                                        IsAnimationPlaying="True"
-                                        Source="" />
-                                </Frame>
-                            </Grid>
-                            <Frame
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                CornerRadius="15"
-                                HorizontalOptions="Center">
-                                <Image
-                                    x:Name="imgBanner"
-                                    HeightRequest="65"
-                                    IsAnimationPlaying="True"
-                                    Source="" />
-                            </Frame>
-                        </StackLayout>
-                        <StackLayout HorizontalOptions="Center">
-                            <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="User ID: " />
-                                        <Span x:Name="lblUserID" Text="" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <StackLayout Orientation="Horizontal">
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Center">
                                 <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Username: " />
-                                            <Span x:Name="lblUserName" Text="" />
+                                            <Span Text="User ID: " />
+                                            <Span x:Name="lblUserID" Text="" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Image
-                                    x:Name="imgIsBot"
-                                    HeightRequest="20"
-                                    IsVisible="false"
-                                    Source="bot.png" />
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                <StackLayout x:Name="badgesView" Orientation="Horizontal">
-                                    <!--<BindableLayout.ItemsSource>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Username: " />
+                                                <Span x:Name="lblUserName" Text="" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Image
+                                        x:Name="imgIsBot"
+                                        HeightRequest="20"
+                                        IsVisible="false"
+                                        Source="bot.png" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                    <StackLayout x:Name="badgesView" Orientation="Horizontal">
+                                        <!--<BindableLayout.ItemsSource>
                                     <x:Array Type="{x:Type local:badgeItems}">
                                         <local:badgeItems imgSource="ActiveDeveloper.png" />
                                         <local:badgeItems imgSource="BugHunterLevel1.png" />
                                     </x:Array>
                                 </BindableLayout.ItemsSource>-->
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Image HeightRequest="20" Source="{Binding imgSource}" />
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Image HeightRequest="20" Source="{Binding imgSource}" />
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
                                 </StackLayout>
+                                <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Created: " />
+                                            <Span x:Name="lblCreationDate" Text="" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Banner Color: " />
+                                            <Span x:Name="lblBannerColor" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </StackLayout>
-                            <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Created: " />
-                                        <Span x:Name="lblCreationDate" Text="" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Banner Color: " />
-                                        <Span x:Name="lblBannerColor" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
                         </StackLayout>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-            <Grid
-                x:Name="Loodinglayout"
-                BackgroundColor="Transparent"
-                IsVisible="false">
-                <Frame
+                    </Frame>
+                </StackLayout>
+                <Grid
+                    x:Name="Loodinglayout"
                     BackgroundColor="Transparent"
-                    CornerRadius="15"
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand">
-                    <StackLayout
-                        Padding="50"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                        <ActivityIndicator
+                    IsVisible="false">
+                    <Frame
+                        BackgroundColor="Transparent"
+                        CornerRadius="15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout
+                            Padding="50"
                             HorizontalOptions="Center"
-                            IsRunning="{Binding Source={x:Reference Loodinglayout}, Path=IsVisible}"
-                            VerticalOptions="Center" />
-                    </StackLayout>
-                </Frame>
+                            VerticalOptions="Center">
+                            <ActivityIndicator
+                                HorizontalOptions="Center"
+                                IsRunning="{Binding Source={x:Reference Loodinglayout}, Path=IsVisible}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
             </Grid>
-        </Grid>
+            <adscontrol:MTAdView
+                x:Name="adsBottom"
+                AdsId="ca-app-pub-3940256099942544/6300978111"
+                AutomationId="adsBottom"
+                HeightRequest="{OnIdiom Phone=50,
+                                        Tablet=90}"
+                IsVisible="true"
+                VerticalOptions="End" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

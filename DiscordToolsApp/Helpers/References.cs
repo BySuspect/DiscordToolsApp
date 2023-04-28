@@ -8,7 +8,7 @@ namespace DiscordToolsApp.Helpers
 {
     public class References
     {
-
+        public static bool supportPopup = true;
     }
     public static class ChangeAppTheme
     {
