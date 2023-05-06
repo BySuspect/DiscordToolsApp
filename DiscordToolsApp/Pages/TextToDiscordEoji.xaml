@@ -15,36 +15,93 @@
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
     NavigationPage.HasBackButton="True">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
+        <ToolbarItem Clicked="FeedbackButton_Clicked" IconImageSource="feedback32px.png" />
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="discordlogo.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Grid VerticalOptions="FillAndExpand">
-                <StackLayout Margin="10">
-                    <Frame
-                        Padding="10"
+            <Grid Margin="10" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Padding="10"
+                    BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                    CornerRadius="15">
+                    <custom:BorderlessEditor
+                        x:Name="Input"
+                        HeightRequest="200"
+                        Placeholder="Input"
+                        TextChanged="Input_TextChanged"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                </Frame>
+                <StackLayout
+                    Grid.Row="1"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="btnCopyOutput"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
                         BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                        CornerRadius="15">
-                        <custom:BorderlessEditor
-                            x:Name="Input"
-                            HeightRequest="200"
-                            Placeholder="Input"
-                            TextChanged="Input_TextChanged"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                    </Frame>
-                    <Frame
-                        Padding="10"
+                        BorderWidth="1"
+                        Clicked="btnCopyOutput_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="Center"
+                        Text="Copy"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    <Button
+                        x:Name="btnPasteInput"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
                         BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                         BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                        CornerRadius="15">
-                        <custom:BorderlessEditor
-                            x:Name="Output"
-                            HeightRequest="200"
-                            Placeholder="Output"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                    </Frame>
+                        BorderWidth="1"
+                        Clicked="btnPasteInput_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="Center"
+                        Text="Paste"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    <Button
+                        x:Name="btnClear"
+                        xct:TouchEffect.NativeAnimation="true"
+                        xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                        xct:TouchEffect.PressedAnimationDuration="500"
+                        xct:TouchEffect.PressedOpacity="0.6"
+                        xct:TouchEffect.PressedScale="0.98"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        BorderWidth="1"
+                        Clicked="btnClear_Clicked"
+                        CornerRadius="15"
+                        HorizontalOptions="Center"
+                        Text="Clear"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                 </StackLayout>
+                <Frame
+                    Grid.Row="2"
+                    Padding="10"
+                    BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                    BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                    CornerRadius="15">
+                    <custom:BorderlessEditor
+                        x:Name="Output"
+                        HeightRequest="200"
+                        MaxLength="4000"
+                        Placeholder="Output"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                </Frame>
                 <Grid
                     x:Name="Loodinglayout"
                     BackgroundColor="Transparent"
@@ -66,13 +123,12 @@
                     </Frame>
                 </Grid>
             </Grid>
-            <adscontrol:MTAdView
+            <custom:CustomAdsView
                 x:Name="adsBottom"
                 AdsId="ca-app-pub-3940256099942544/6300978111"
                 AutomationId="adsBottom"
                 HeightRequest="{OnIdiom Phone=50,
                                         Tablet=90}"
-                IsVisible="true"
                 VerticalOptions="End" />
         </StackLayout>
     </ContentPage.Content>

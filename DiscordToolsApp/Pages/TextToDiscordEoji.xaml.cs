@@ -1,8 +1,11 @@
-﻿using System;
+﻿using DiscordToolsApp.Pages.Popups;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,46 +15,34 @@ namespace DiscordToolsApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TextToDiscordEoji : ContentPage
     {
-        string input = "";
-        List<string> outputList = new List<string>();
+        string input = ""; char[] allowedChars = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '#', '*', '?', ':', ' ' };
+
         public TextToDiscordEoji()
         {
             InitializeComponent();
         }
-        private async void DiscordButton_Clicked(object sender, EventArgs e)
-        {
-            await Browser.OpenAsync("https://bit.ly/3NmBFDO");
-        }
-
         private void Input_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
                 input = e.NewTextValue ?? "";
+                string cleanres = new string(input.Where(c => allowedChars.Contains(c)).ToArray());
+                if (input != cleanres)
+                {
+                    input = cleanres;
+                    Input.Text = cleanres;
+                }
                 if (input != null)
                 {
-                    if (e.NewTextValue.Length > ((string.IsNullOrEmpty(e.OldTextValue)) ? 0 : e.OldTextValue.Length))
-                    {
-                        var outres = ConvertTextToEmoji(input.Substring(input.Length - 1)[0]);
-                        if (!string.IsNullOrEmpty(outres))
-                            outputList.Add(outres);
-                        else
-                            Input.Text = Input.Text.Remove(Input.Text.Length - 1, 1);
-                    }
-                    else if (e.NewTextValue.Length < e.OldTextValue.Length)
-                    {
-                        if (e.NewTextValue.Length != outputList.Count)
-                            outputList.RemoveAt(outputList.Count - 1);
-                    }
-                    Output.Text = string.Join("", outputList);
+                    Output.Text = ConvertTextToEmoji(input);
+                    //Output.Text = string.Join("", outputList);
                 }
                 else Output.Text = "";
             }
             catch { }
         }
-        private string ConvertTextToEmoji(char input)
+        private string ConvertTextToEmoji(string input)
         {
-            outputList = new List<string>();
             var emojiMap = new Dictionary<char, string>
             {
                 {'a', ":regional_indicator_a:"},
@@ -96,24 +87,34 @@ namespace DiscordToolsApp.Pages
                 {'?', ":question:"},
                 {':', ":colon:"},
             };
+
             var sb = new StringBuilder();
-
-            char c = char.Parse(input.ToString().ToLower());
-
-            if (emojiMap.TryGetValue(c, out string emoji))
+            foreach (var c in input.ToLower())
             {
-                sb.Append(emoji + " ");
+                if (emojiMap.TryGetValue(c, out string emoji))
+                {
+                    sb.Append(emoji + " ");
+                }
+                else if (c == ' ')
+                {
+                    sb.Append(" ");
+                }
             }
-            else if (c == ' ')
-            {
-                sb.Append(":blue_square:");
-            }
-            else
-                sb.Append("");
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
-
+        private void btnCopyOutput_Clicked(object sender, EventArgs e)
+        {
+            Clipboard.SetTextAsync(Output.Text);
+        }
+        private async void btnPasteInput_Clicked(object sender, EventArgs e)
+        {
+            Input.Text = await Clipboard.GetTextAsync();
+        }
+        private void btnClear_Clicked(object sender, EventArgs e)
+        {
+            Input.Text = string.Empty;
+        }
         public static string ConvertEmojiToString(string input)
         {
             var emojiMap = new Dictionary<string, string>
@@ -169,5 +170,29 @@ namespace DiscordToolsApp.Pages
             return input;
         }
 
+        private async void DiscordButton_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://bit.ly/3NmBFDO");
+        }
+        private async void FeedbackButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Popup popup = new FeedbackPopupPage();
+                var res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+                if (res.ToString() == "counterror")
+                {
+                    await DisplayAlert("Warning!", "You reached daily feedback limit.", "Ok");
+                }
+                else if (res.ToString() == "catcherror")
+                {
+                    await DisplayAlert("Error!", "Something went wrong try again later.", "Ok");
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

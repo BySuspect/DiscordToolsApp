@@ -16,6 +16,9 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Collections.ObjectModel;
 using DiscordToolsApp.Helpers;
 using System.Threading;
+using DiscordToolsApp.Pages.Popups;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views;
 
 namespace DiscordToolsApp.Pages
 {
@@ -180,16 +183,10 @@ namespace DiscordToolsApp.Pages
                 _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
             }
         }
-
         private void testTapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
 
         }
-        private async void DiscordButton_Clicked(object sender, EventArgs e)
-        {
-            await Browser.OpenAsync("https://bit.ly/3NmBFDO");
-        }
-
         private async void Banner_Tapped(object sender, EventArgs e)
         {
             await Clipboard.SetTextAsync(imgBanner.Source.ToString());
@@ -198,6 +195,31 @@ namespace DiscordToolsApp.Pages
         private async void Avatar_Tapped(object sender, EventArgs e)
         {
             await Clipboard.SetTextAsync(imgAvatar.Source.ToString());
+        }
+
+        private async void DiscordButton_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://bit.ly/3NmBFDO");
+        }
+        private async void FeedbackButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Popup popup = new FeedbackPopupPage();
+                var res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+                if (res.ToString() == "counterror")
+                {
+                    await DisplayAlert("Warning!", "You reached daily feedback limit.", "Ok");
+                }
+                else if (res.ToString() == "catcherror")
+                {
+                    await DisplayAlert("Error!", "Something went wrong try again later.", "Ok");
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
     public class badgeItems

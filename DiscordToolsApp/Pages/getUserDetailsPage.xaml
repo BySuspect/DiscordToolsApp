@@ -15,7 +15,8 @@
     BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
     NavigationPage.HasBackButton="True">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
+        <ToolbarItem Clicked="FeedbackButton_Clicked" IconImageSource="feedback32px.png" />
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="discordlogo.png" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -188,7 +189,7 @@
                     </Frame>
                 </Grid>
             </Grid>
-            <adscontrol:MTAdView
+            <custom:CustomAdsView
                 x:Name="adsBottom"
                 AdsId="ca-app-pub-3940256099942544/6300978111"
                 AutomationId="adsBottom"

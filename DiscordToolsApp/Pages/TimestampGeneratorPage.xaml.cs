@@ -1,8 +1,11 @@
-﻿using System;
+﻿using DiscordToolsApp.Pages.Popups;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -266,6 +269,26 @@ namespace DiscordToolsApp.Pages
         private async void DiscordButton_Clicked(object sender, EventArgs e)
         {
             await Browser.OpenAsync("https://bit.ly/3NmBFDO");
+        }
+        private async void FeedbackButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Popup popup = new FeedbackPopupPage();
+                var res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+                if (res.ToString() == "counterror")
+                {
+                    await DisplayAlert("Warning!", "You reached daily feedback limit.", "Ok");
+                }
+                else if (res.ToString() == "catcherror")
+                {
+                    await DisplayAlert("Error!", "Something went wrong try again later.", "Ok");
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
