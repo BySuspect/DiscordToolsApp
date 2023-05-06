@@ -58,6 +58,7 @@
                             Clicked="btnGetUserDetailsWithId_Clicked"
                             CornerRadius="15"
                             HorizontalOptions="Fill"
+                            IsVisible="false"
                             Text="Look any User Details"
                             TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                     </StackLayout>

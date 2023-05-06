@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DiscordToolsApp.Pages.TextToDiscordEoji"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:adscontrol="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+    xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    xmlns:local="clr-namespace:DiscordToolsApp.Pages"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Text To Emoji"
+    xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
+    xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
+    BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
+    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
+    NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="https://cdn.discordapp.com/attachments/750464609303134339/1078184119453884427/discord-mascot.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <StackLayout Margin="10">
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessEditor
+                            x:Name="Input"
+                            HeightRequest="200"
+                            Placeholder="Input"
+                            TextChanged="Input_TextChanged"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    </Frame>
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                        BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                        CornerRadius="15">
+                        <custom:BorderlessEditor
+                            x:Name="Output"
+                            HeightRequest="200"
+                            Placeholder="Output"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    </Frame>
+                </StackLayout>
+                <Grid
+                    x:Name="Loodinglayout"
+                    BackgroundColor="Transparent"
+                    IsVisible="false">
+                    <Frame
+                        BackgroundColor="Transparent"
+                        CornerRadius="15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout
+                            Padding="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <ActivityIndicator
+                                HorizontalOptions="Center"
+                                IsRunning="{Binding Source={x:Reference Loodinglayout}, Path=IsVisible}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+            <adscontrol:MTAdView
+                x:Name="adsBottom"
+                AdsId="ca-app-pub-3940256099942544/6300978111"
+                AutomationId="adsBottom"
+                HeightRequest="{OnIdiom Phone=50,
+                                        Tablet=90}"
+                IsVisible="true"
+                VerticalOptions="End" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

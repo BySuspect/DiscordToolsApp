@@ -21,7 +21,7 @@ namespace DiscordToolsApp.Pages
         }
         private void DiscordButton_Clicked(object sender, EventArgs e)
         {
-            Browser.OpenAsync("https://discord.gg/aX4unxzZek", BrowserLaunchMode.SystemPreferred);
+            Browser.OpenAsync("https://bit.ly/3NmBFDO", BrowserLaunchMode.SystemPreferred);
         }
 
         private async void btnTimestampGenerator_Clicked(object sender, EventArgs e)

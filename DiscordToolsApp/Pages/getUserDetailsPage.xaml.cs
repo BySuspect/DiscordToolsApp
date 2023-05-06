@@ -187,7 +187,7 @@ namespace DiscordToolsApp.Pages
         }
         private async void DiscordButton_Clicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync("https://discord.gg/aX4unxzZek");
+            await Browser.OpenAsync("https://bit.ly/3NmBFDO");
         }
 
         private async void Banner_Tapped(object sender, EventArgs e)
