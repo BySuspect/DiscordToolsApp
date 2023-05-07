@@ -77,6 +77,21 @@
                             HorizontalOptions="Fill"
                             Text="Text To Emoji"
                             TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                        <Button
+                            Margin="5"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnInviteLookUp_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Fill"
+                            Text="Invite Lookup"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                     </StackLayout>
                     <Label
                         Margin="0,25,0,0"

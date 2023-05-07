@@ -34,11 +34,16 @@ namespace DiscordToolsApp.Pages
         {
             await Navigation.PushAsync(new TextToDiscordEoji(), false);
         }
+        private async void btnInviteLookUp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DiscordInviteLookup(), false);
+        }
+
+
         protected override bool OnBackButtonPressed()
         {
             return true;
         }
-
 
         private void btnSupportCancel_Clicked(object sender, EventArgs e)
         {

@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 
 namespace DiscordToolsApp
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         public App()
         {
@@ -32,31 +32,17 @@ namespace DiscordToolsApp
 
             //ChangeAppTheme.ForDenizTheme();
 
-            MainPage = new NavigationPage(new MainPage())
+            //MainPage = new NavigationPage(new MainPage())
+            //{
+            //    BarBackgroundColor = ThemeColors.StatusBarColor,
+            //    BarTextColor = ThemeColors.TextColor,
+            //};
+
+            MainPage = new NavigationPage(new DiscordInviteLookup())
             {
                 BarBackgroundColor = ThemeColors.StatusBarColor,
                 BarTextColor = ThemeColors.TextColor,
             };
-
-            //MainPage = new NavigationPage(new TimestampGeneratorPage())
-            //{
-            //    BarBackgroundColor = ThemeColors.StatusBarColor,
-            //    BarTextColor = ThemeColors.TextColor,
-            //};
-
-            //MainPage = new NavigationPage(new getUserDetailsPage())
-            //{
-            //    BarBackgroundColor = ThemeColors.StatusBarColor,
-            //    BarTextColor = ThemeColors.TextColor,
-            //};
-
-
-            //MainPage = new NavigationPage(new TextToDiscordEoji())
-            //{
-            //    BarBackgroundColor = ThemeColors.StatusBarColor,
-            //    BarTextColor = ThemeColors.TextColor,
-            //};
-
         }
 
         protected override void OnStart()
