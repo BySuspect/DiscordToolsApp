@@ -1,4 +1,5 @@
-﻿using DiscordToolsApp.Pages.Popups;
+﻿using DiscordToolsApp.Helpers;
+using DiscordToolsApp.Pages.Popups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,9 +104,10 @@ namespace DiscordToolsApp.Pages
 
             return sb.ToString().TrimEnd();
         }
-        private void btnCopyOutput_Clicked(object sender, EventArgs e)
+        private async void btnCopyOutput_Clicked(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(Output.Text);
+            await Clipboard.SetTextAsync(Output.Text);
+            ToastController.ShowShortToast("Copied!");
         }
         private async void btnPasteInput_Clicked(object sender, EventArgs e)
         {
@@ -114,6 +116,7 @@ namespace DiscordToolsApp.Pages
         private void btnClear_Clicked(object sender, EventArgs e)
         {
             Input.Text = string.Empty;
+            ToastController.ShowShortToast("Cleared!");
         }
         public static string ConvertEmojiToString(string input)
         {

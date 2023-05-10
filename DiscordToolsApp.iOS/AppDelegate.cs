@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
-using GameKit;
-using Google.MobileAds;
+﻿using Foundation;
 using UIKit;
 
 namespace DiscordToolsApp.iOS

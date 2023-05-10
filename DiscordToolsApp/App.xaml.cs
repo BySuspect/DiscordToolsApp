@@ -32,17 +32,17 @@ namespace DiscordToolsApp
 
             //ChangeAppTheme.ForDenizTheme();
 
-            //MainPage = new NavigationPage(new MainPage())
-            //{
-            //    BarBackgroundColor = ThemeColors.StatusBarColor,
-            //    BarTextColor = ThemeColors.TextColor,
-            //};
-
-            MainPage = new NavigationPage(new DiscordInviteLookup())
+            MainPage = new NavigationPage(new MainPage())
             {
                 BarBackgroundColor = ThemeColors.StatusBarColor,
                 BarTextColor = ThemeColors.TextColor,
             };
+
+            //MainPage = new NavigationPage(new DiscordInviteLookup())
+            //{
+            //    BarBackgroundColor = ThemeColors.StatusBarColor,
+            //    BarTextColor = ThemeColors.TextColor,
+            //};
         }
 
         protected override void OnStart()

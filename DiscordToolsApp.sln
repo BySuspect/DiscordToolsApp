@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordToolsApp.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordToolsApp.iOS", "DiscordToolsApp.iOS\DiscordToolsApp.iOS.csproj", "{337A256F-C591-4663-9423-99A9F921C490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordToolsApp", "DiscordToolsApp\DiscordToolsApp.csproj", "{3418A1C2-5FD6-439C-AC1E-A4D0D3E0D3C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordToolsApp", "DiscordToolsApp\DiscordToolsApp.csproj", "{3418A1C2-5FD6-439C-AC1E-A4D0D3E0D3C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BC245C7-278F-457A-8891-5D0161D0458E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

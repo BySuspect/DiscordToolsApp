@@ -1,4 +1,5 @@
-﻿using DiscordToolsApp.Pages.Popups;
+﻿using DiscordToolsApp.Helpers;
+using DiscordToolsApp.Pages.Popups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +35,10 @@ namespace DiscordToolsApp.Pages
             pickerTimeFrame.SelectedIndex = 0;
             startTimeUpdate();
         }
-        private void btnCopyTimestamp_Clicked(object sender, EventArgs e)
+        private async void btnCopyTimestamp_Clicked(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(TimestampText);
+            await Clipboard.SetTextAsync(TimestampText);
+            ToastController.ShowShortToast("Copied!");
         }
         private void pickerFormat_SelectedIndexChanged(object sender, EventArgs e)
         {

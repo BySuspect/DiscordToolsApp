@@ -43,6 +43,7 @@
                             BorderWidth="1"
                             Clicked="btnTimestampGenerator_Clicked"
                             CornerRadius="15"
+                            FontSize="Small"
                             HorizontalOptions="Fill"
                             Text="Timestamp Generator"
                             TextColor="{x:Static helpers:ThemeColors.TextColor}" />
@@ -56,24 +57,9 @@
                             BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                             BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                             BorderWidth="1"
-                            Clicked="btnGetUserDetailsWithId_Clicked"
-                            CornerRadius="15"
-                            HorizontalOptions="Fill"
-                            IsVisible="false"
-                            Text="Look any User Details"
-                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                        <Button
-                            Margin="5"
-                            xct:TouchEffect.NativeAnimation="true"
-                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
-                            xct:TouchEffect.PressedAnimationDuration="500"
-                            xct:TouchEffect.PressedOpacity="0.6"
-                            xct:TouchEffect.PressedScale="0.98"
-                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
-                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
-                            BorderWidth="1"
                             Clicked="btnTextToEmoji_Clicked"
                             CornerRadius="15"
+                            FontSize="Small"
                             HorizontalOptions="Fill"
                             Text="Text To Emoji"
                             TextColor="{x:Static helpers:ThemeColors.TextColor}" />
@@ -87,10 +73,28 @@
                             BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                             BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                             BorderWidth="1"
+                            Clicked="btnGetUserDetailsWithId_Clicked"
+                            CornerRadius="15"
+                            FontSize="Small"
+                            HorizontalOptions="Fill"
+                            IsVisible="true"
+                            Text="Discord User Lookup"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                        <Button
+                            Margin="5"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            BorderWidth="1"
                             Clicked="btnInviteLookUp_Clicked"
                             CornerRadius="15"
+                            FontSize="Small"
                             HorizontalOptions="Fill"
-                            Text="Invite Lookup"
+                            Text="Discord Invite Lookup"
                             TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                     </StackLayout>
                     <Label

@@ -8,7 +8,7 @@
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:local="clr-namespace:DiscordToolsApp.Pages"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    Title="Look Discord User Details"
+    Title="Discord User Lookup"
     xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
     xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
     BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
@@ -84,7 +84,8 @@
                                         Padding="0"
                                         xct:CornerRadiusEffect.CornerRadius="360"
                                         BackgroundColor="Transparent"
-                                        HorizontalOptions="Start">
+                                        HorizontalOptions="Start"
+                                        IsVisible="false">
                                         <Image
                                             x:Name="imgAvatarDecor"
                                             HeightRequest="65"
@@ -132,7 +133,7 @@
                                         IsVisible="false"
                                         Source="bot.png" />
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout IsVisible="false" Orientation="Horizontal">
                                     <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                     <StackLayout x:Name="badgesView" Orientation="Horizontal">
                                         <!--<BindableLayout.ItemsSource>
@@ -148,7 +149,7 @@
                                         </BindableLayout.ItemTemplate>
                                     </StackLayout>
                                 </StackLayout>
-                                <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                <Label IsVisible="false" TextColor="{x:Static helpers:ThemeColors.TextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Created: " />

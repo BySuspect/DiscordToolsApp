@@ -1,12 +1,148 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DiscordToolsApp.Pages.DiscordInviteLookup">
+<ContentPage
+    x:Class="DiscordToolsApp.Pages.DiscordInviteLookup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:adscontrol="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+    xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    xmlns:local="clr-namespace:DiscordToolsApp.Pages"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Discord Invite Lookup"
+    xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
+    xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
+    BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
+    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
+    NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="FeedbackButton_Clicked" IconImageSource="feedback32px.png" />
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="discordlogo.png" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid VerticalOptions="FillAndExpand">
+                <ScrollView>
+
+                    <StackLayout>
+                        <Frame
+                            Margin="20,100,20,5"
+                            Padding="10,0"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            WidthRequest="250">
+                            <custom:BorderlessEntry
+                                x:Name="entryInviteLink"
+                                Placeholder="Invite Link"
+                                PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                        </Frame>
+                        <Button
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnLookup_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Center"
+                            Text="Lookup"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                        <Frame
+                            x:Name="InviterDetailsView"
+                            Margin="20,20,20,5"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            CornerRadius="25"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="true"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout>
+                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Invite: " />
+                                            <Span x:Name="lblInviteLink" TextColor="#4F99EF ">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="lblInviteLink_Tapped" />
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Time Remaining: " />
+                                            <Span x:Name="lbl" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Test: " />
+                                            <Span x:Name="lbl1" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Test: " />
+                                            <Span x:Name="lbl2" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+                <Grid x:Name="testbg" IsVisible="false">
+                    <ScrollView>
+                        <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand">
+                            <Label
+                                x:Name="testlbl"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                TextColor="White"
+                                VerticalOptions="Start" />
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+                <Grid
+                    x:Name="Loodinglayout"
+                    BackgroundColor="Transparent"
+                    IsVisible="false">
+                    <Frame
+                        BackgroundColor="Transparent"
+                        CornerRadius="15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout
+                            Padding="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <ActivityIndicator
+                                HorizontalOptions="Center"
+                                IsRunning="{Binding Source={x:Reference Loodinglayout}, Path=IsVisible}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+            <custom:CustomAdsView
+                x:Name="adsBottom"
+                AdsId="ca-app-pub-3940256099942544/6300978111"
+                AutomationId="adsBottom"
+                HeightRequest="{OnIdiom Phone=50,
+                                        Tablet=90}"
+                IsVisible="true"
+                VerticalOptions="End" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
