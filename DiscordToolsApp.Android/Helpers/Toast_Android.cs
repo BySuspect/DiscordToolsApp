@@ -1,4 +1,5 @@
-﻿using Android.Widget;
+﻿using Android.Content;
+using Android.Widget;
 using DiscordToolsApp.Droid.Helpers;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Toast_Android))]

@@ -112,6 +112,7 @@ namespace DiscordToolsApp.Pages
         private async void btnPasteInput_Clicked(object sender, EventArgs e)
         {
             Input.Text = await Clipboard.GetTextAsync();
+            ToastController.ShowShortToast("Pasted!");
         }
         private void btnClear_Clicked(object sender, EventArgs e)
         {

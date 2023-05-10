@@ -192,7 +192,7 @@
             </Grid>
             <custom:CustomAdsView
                 x:Name="adsBottom"
-                AdsId="ca-app-pub-3940256099942544/6300978111"
+                AdsId="ca-app-pub-3881259676793306/4300337854"
                 AutomationId="adsBottom"
                 HeightRequest="{OnIdiom Phone=50,
                                         Tablet=90}"
