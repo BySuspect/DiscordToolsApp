@@ -109,6 +109,7 @@
                 <Grid
                     x:Name="popupInfoBack"
                     BackgroundColor="#BA121212"
+                    IsVisible="false"
                     VerticalOptions="FillAndExpand">
                     <Frame
                         Margin="30,0"
@@ -120,7 +121,8 @@
                         <StackLayout>
                             <Label
                                 x:Name="lblPopupTitle"
-                                FontSize="Medium"
+                                Margin="5,0,0,0"
+                                FontSize="Small"
                                 HorizontalOptions="Start"
                                 Text="Thanks for downloading."
                                 TextColor="{x:Static helpers:ThemeColors.TextColor}"
@@ -128,8 +130,8 @@
                             <Label
                                 x:Name="lblPopupContent"
                                 Margin="5"
-                                FontSize="Body"
-                                Text="If you find my apps useful, you can give me a little support on patreon."
+                                FontSize="Caption"
+                                Text="We have a website project but we need some support for hosting. If you find the application useful, you can give a little support for the web version. ❤️"
                                 TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                             <StackLayout
                                 Margin="0,5,0,0"

@@ -99,6 +99,7 @@ namespace DiscordToolsApp.Pages
                         lblInviteLink.Text = $"https://discord.com/invite/{code}";
                         lblExpress.Text = (expiresAt != null) ? ((int)CalculateRemainingTime(expiresAt).TotalDays).ToString() + " Days" : "Unlimited";
                         lblGuildId.Text = guildId;
+                        lblGuildCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(guildId)).ToString() + " UTC";
                         lblGuildName.Text = guildName;
                         lblGuildDesc.Text = guildDesc;
                         lblGuildFeatures.Text = string.Join(", ", guildFeatures);
@@ -116,6 +117,7 @@ namespace DiscordToolsApp.Pages
                             imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{inviterId}/{inviterAvatar}?size=256";
                             lblUserID.Text = inviterId.ToString();
                             lblUserName.Text = $"{inviterName}#{inviterDiscriminator}";
+                            lblCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(inviterId)).ToString() + " UTC";
 
                             inviterView.IsVisible = true;
                             testcounter++;//9
@@ -148,6 +150,27 @@ namespace DiscordToolsApp.Pages
                 InviterDetailsView.IsVisible = false;
             }
             Loodinglayout.IsVisible = false;
+        }
+        public static DateTime GetTimestampFromSnowflake(ulong snowflake)
+        {
+            const long DiscordEpoch = 1420070400000L;
+            const ulong TimestampMask = 0xFFFFFFFFFFC00000UL;
+            const ulong WorkerIdMask = 0x3E0000UL;
+            const ulong ProcessIdMask = 0x1F000UL;
+            const ulong IncrementMask = 0xFFFUL;
+
+            long timestamp = (long)((snowflake & TimestampMask) >> 22) + DiscordEpoch;
+            int workerId = (int)((snowflake & WorkerIdMask) >> 17);
+            int processId = (int)((snowflake & ProcessIdMask) >> 12);
+            int increment = (int)(snowflake & IncrementMask);
+
+            DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(timestamp).DateTime;
+            Console.WriteLine($"Timestamp: {dateTime}");
+            Console.WriteLine($"Worker ID: {workerId}");
+            Console.WriteLine($"Process ID: {processId}");
+            Console.WriteLine($"Increment: {increment}");
+
+            return dateTime;
         }
         private async void lblInviteLink_Tapped(object sender, EventArgs e)
         {

@@ -26,7 +26,7 @@ namespace DiscordToolsApp.Pages
         {
             try
             {
-                input = e.NewTextValue ?? "";
+                input = e.NewTextValue.ToLower() ?? "";
                 string cleanres = new string(input.Where(c => allowedChars.Contains(c)).ToArray());
                 if (input != cleanres)
                 {

@@ -32,11 +32,16 @@ namespace DiscordToolsApp
 
             //ChangeAppTheme.ForDenizTheme();
 
-            MainPage = new NavigationPage(new MainPage())
-            {
-                BarBackgroundColor = ThemeColors.StatusBarColor,
-                BarTextColor = ThemeColors.TextColor,
-            };
+            if (Preferences.Get("privacy_policy_accepted10May2023", false))
+                MainPage = new NavigationPage(new MainPage())
+                {
+                    BarBackgroundColor = ThemeColors.StatusBarColor,
+                    BarTextColor = ThemeColors.TextColor,
+                };
+            else
+                MainPage = new PrivacyPolicyPage();
+
+            //MainPage = new PrivacyPolicyPage();
 
             //MainPage = new NavigationPage(new DiscordInviteLookup())
             //{

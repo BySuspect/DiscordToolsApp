@@ -104,6 +104,14 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <Label IsVisible="true" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Guild Created: " />
+                                            <Span x:Name="lblGuildCreationDate" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -206,24 +214,39 @@
                                             </Image>
                                         </Frame>
                                         <StackLayout HorizontalOptions="Center">
-                                            <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                            <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="User ID: " />
-                                                        <Span x:Name="lblUserID" Text="" />
+                                                        <Span
+                                                            x:Name="lblUserID"
+                                                            Text=""
+                                                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="Username: " />
-                                                            <Span x:Name="lblUserName" Text="" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                            </StackLayout>
+                                            <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Username: " />
+                                                        <Span
+                                                            x:Name="lblUserName"
+                                                            Text=""
+                                                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label IsVisible="true" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Created: " />
+                                                        <Span
+                                                            x:Name="lblCreationDate"
+                                                            Text=""
+                                                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

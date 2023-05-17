@@ -20,7 +20,9 @@ namespace DiscordToolsApp.Pages
         {
             InitializeComponent();
             BindingContext = this;
-            popupInfoBack.IsVisible = References.supportPopup;
+            var savedDate = Preferences.Get("SupportPopupDate", DateTime.MinValue);
+            if (savedDate.Date != DateTime.Now.Date)
+                popupInfoBack.IsVisible = true;
         }
         private async void btnTimestampGenerator_Clicked(object sender, EventArgs e)
         {
@@ -48,13 +50,13 @@ namespace DiscordToolsApp.Pages
         private void btnSupportCancel_Clicked(object sender, EventArgs e)
         {
             popupInfoBack.IsVisible = false;
-            References.supportPopup = false;
+            Preferences.Set("SupportPopupDate", DateTime.Now);
         }
         private async void btnSupport_Clicked(object sender, EventArgs e)
         {
             await Browser.OpenAsync(new Uri("https://bit.ly/discordtoolspatreon"), BrowserLaunchMode.External);
             popupInfoBack.IsVisible = false;
-            References.supportPopup = false;
+            Preferences.Set("SupportPopupDate", DateTime.Now);
         }
         private void DiscordButton_Clicked(object sender, EventArgs e)
         {

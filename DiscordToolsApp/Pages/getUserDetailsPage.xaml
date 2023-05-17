@@ -109,21 +109,21 @@
                                     </Image>
                                 </Frame>
                             </StackLayout>
-                            <StackLayout HorizontalOptions="Center">
-                                <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                            <StackLayout HorizontalOptions="Start">
+                                <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="User ID: " />
-                                            <Span x:Name="lblUserID" Text="" />
+                                            <Span x:Name="lblUserID" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                    <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="Username: " />
-                                                <Span x:Name="lblUserName" Text="" />
+                                                <Span x:Name="lblUserName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -133,8 +133,8 @@
                                         IsVisible="false"
                                         Source="bot.png" />
                                 </StackLayout>
-                                <StackLayout IsVisible="false" Orientation="Horizontal">
-                                    <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                <StackLayout IsVisible="true" Orientation="Horizontal">
+                                    <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}" />
                                     <StackLayout x:Name="badgesView" Orientation="Horizontal">
                                         <!--<BindableLayout.ItemsSource>
                                     <x:Array Type="{x:Type local:badgeItems}">
@@ -149,19 +149,22 @@
                                         </BindableLayout.ItemTemplate>
                                     </StackLayout>
                                 </StackLayout>
-                                <Label IsVisible="false" TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                <Label IsVisible="true" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Created: " />
-                                            <Span x:Name="lblCreationDate" Text="" />
+                                            <Span
+                                                x:Name="lblCreationDate"
+                                                Text=""
+                                                TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                                <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Banner Color: " />
-                                            <Span x:Name="lblBannerColor" />
+                                            <Span x:Name="lblBannerColor" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

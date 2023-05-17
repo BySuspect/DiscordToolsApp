@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DiscordToolsApp.Pages.PrivacyPolicyPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
+    xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
+    BackgroundColor="{x:Static helpers:ThemeColors.BackColor}">
+    <ContentPage.Content>
+        <!--#region privacy policy-->
+        <StackLayout Margin="25" VerticalOptions="Center">
+            <ScrollView>
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Label
+                        x:Name="lblPolicy"
+                        FontSize="Small"
+                        TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="lblUp" />
+                                <Span
+                                    Text="Privacy Policy"
+                                    TextColor="LightBlue"
+                                    TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span x:Name="lblDown" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+
+            <Button
+                x:Name="btnaccept"
+                Padding="0"
+                xct:TouchEffect.NativeAnimation="true"
+                xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                xct:TouchEffect.PressedAnimationDuration="500"
+                xct:TouchEffect.PressedOpacity="0.6"
+                xct:TouchEffect.PressedScale="0.98"
+                BackgroundColor="Transparent"
+                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                BorderWidth="1"
+                Clicked="btnPrivacyPolicyAccept"
+                CornerRadius="15"
+                FontSize="Caption"
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                Text="Accept"
+                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

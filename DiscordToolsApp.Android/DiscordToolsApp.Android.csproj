@@ -145,46 +145,46 @@
     <AndroidResource Include="Resources\drawable\wallpaperfordeniz.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BugHunterLevel1.png" />
+    <AndroidResource Include="Resources\drawable\BUG_HUNTER_LEVEL_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BugHunterLevel2.png" />
+    <AndroidResource Include="Resources\drawable\BUG_HUNTER_LEVEL_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\DiscordCertifiedModerator.png" />
+    <AndroidResource Include="Resources\drawable\CERTIFIED_MODERATOR.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\EarlySupporter.png" />
+    <AndroidResource Include="Resources\drawable\PREMIUM_EARLY_SUPPORTER.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\EarlyVerifiedBotDeveloper.png" />
+    <AndroidResource Include="Resources\drawable\VERIFIED_DEVELOPER.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\HypeSquadBalance.png" />
+    <AndroidResource Include="Resources\drawable\HYPESQUAD_ONLINE_HOUSE_3.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\HypeSquadBravery.png" />
+    <AndroidResource Include="Resources\drawable\HYPESQUAD_ONLINE_HOUSE_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\HypeSquadBrilliance.png" />
+    <AndroidResource Include="Resources\drawable\HYPESQUAD_ONLINE_HOUSE_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\HypeSquadEvents.png" />
+    <AndroidResource Include="Resources\drawable\HYPESQUAD.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Partner.png" />
+    <AndroidResource Include="Resources\drawable\PARTNER.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Staff.png" />
+    <AndroidResource Include="Resources\drawable\STAFF.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\System.png" />
+    <AndroidResource Include="Resources\drawable\BOT_HTTP_INTERACTIONS.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\VerifiedBot.png" />
+    <AndroidResource Include="Resources\drawable\VERIFIED_BOT.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ActiveDeveloper.png" />
+    <AndroidResource Include="Resources\drawable\ACTIVE_DEVELOPER.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Bot.png" />

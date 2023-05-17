@@ -128,38 +128,40 @@ namespace DiscordToolsApp.Pages
                 client.DefaultRequestHeaders.Add("Authorization", $"Bot {token}");
 
                 var response = await client.GetAsync($"https://discord.com/api/users/{uID}");
-                var rescode = response.EnsureSuccessStatusCode();
 
                 var result = await response.Content.ReadAsStringAsync();
                 var userjson = JsonConvert.DeserializeObject<JObject>(result);
 
-                var id = userjson["id"].ToString();
-                var username = userjson["username"].ToString();
-                var global_name = userjson["global_name"];
-                var display_name = userjson["display_name"];
-                var avatar = userjson["avatar"].ToString();
-                var avatar_decoration = userjson["avatar_decoration"];
-                var discriminator = userjson["discriminator"].ToString();
-                var public_flags = userjson["public_flags"];
-                var banner = userjson["banner"].ToString();
-                var banner_color = userjson["banner_color"].ToString();
-                var accent_color = userjson["accent_color"];
+                ulong id = (ulong)userjson["id"];
+                string? username = (string)userjson["username"];
+                string? global_name = (string)userjson["global_name"];
+                string? display_name = (string)userjson["display_name"];
+                string? avatar = (string)userjson["avatar"];
+                string? avatar_decoration = (string)userjson["avatar_decoration"];
+                string? discriminator = (string)userjson["discriminator"];
+                int? public_flags = (int?)userjson["public_flags"];
+                var isBot = userjson["bot"];
+                int? flags = (int)userjson["flags"];
+                string? banner = (string)userjson["banner"];
+                string? banner_color = (string)userjson["banner_color"];
+                string? accent_color = (string)userjson["accent_color"];
 
-                //foreach (var item in user.PublicFlags.ToString().Split(new char[] { '|', ',' }).ToList())
-                //{
-                //    badgeList.Add(new badgeItems { imgSource = item.Trim() });
-                //}
+
+                foreach (var item in ConvertFlagsToList((int)public_flags))
+                {
+                    badgeList.Add(new badgeItems { imgSource = item.Trim() });
+                }
 
                 //imgAvatar.Source = user.GetAvatarUrl().Split('?')[0] + "?size=256";
                 imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{uID}/{avatar}?size=256";
                 //imgAvatarDecor.Source = $"https://cdn.discordapp.com/avatar-decoration-presets/{avatar_decoration}";
                 imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}?size=512";
                 lblUserName.Text = $"{username}#{discriminator}";
-                //imgIsBot.IsVisible = user.IsBot || user.IsWebhook;
-                lblUserID.Text = id;
+                imgIsBot.IsVisible = (bool)((isBot) ?? false);
+                lblUserID.Text = id.ToString();
                 lblBannerColor.Text = banner_color;
-                lblBannerColor.BackgroundColor = Xamarin.Forms.Color.FromHex(banner_color);
-                //lblCreationDate.Text = user.CreatedAt.ToString().Split('+')[0] + " UTC";
+                lblBannerColor.BackgroundColor = Xamarin.Forms.Color.FromHex(banner_color ?? "#00FFFFFF");
+                lblCreationDate.Text = GetTimestampFromSnowflake(id).ToString();
 
                 userDetailsView.IsVisible = true;
 
@@ -181,6 +183,64 @@ namespace DiscordToolsApp.Pages
                 _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
             }
         }
+        public static List<string> ConvertFlagsToList(int flags)
+        {
+            List<string> flagList = new List<string>();
+
+            if ((flags & (1 << 0)) != 0)
+                flagList.Add("STAFF");
+            if ((flags & (1 << 1)) != 0)
+                flagList.Add("PARTNER");
+            if ((flags & (1 << 2)) != 0)
+                flagList.Add("HYPESQUAD");
+            if ((flags & (1 << 3)) != 0)
+                flagList.Add("BUG_HUNTER_LEVEL_1");
+            if ((flags & (1 << 6)) != 0)
+                flagList.Add("HYPESQUAD_ONLINE_HOUSE_1");
+            if ((flags & (1 << 7)) != 0)
+                flagList.Add("HYPESQUAD_ONLINE_HOUSE_2");
+            if ((flags & (1 << 8)) != 0)
+                flagList.Add("HYPESQUAD_ONLINE_HOUSE_3");
+            if ((flags & (1 << 9)) != 0)
+                flagList.Add("PREMIUM_EARLY_SUPPORTER");
+            if ((flags & (1 << 10)) != 0)
+                flagList.Add("TEAM_PSEUDO_USER");
+            if ((flags & (1 << 14)) != 0)
+                flagList.Add("BUG_HUNTER_LEVEL_2");
+            if ((flags & (1 << 16)) != 0)
+                flagList.Add("VERIFIED_BOT");
+            if ((flags & (1 << 17)) != 0)
+                flagList.Add("VERIFIED_DEVELOPER");
+            if ((flags & (1 << 18)) != 0)
+                flagList.Add("CERTIFIED_MODERATOR");
+            if ((flags & (1 << 19)) != 0)
+                flagList.Add("BOT_HTTP_INTERACTIONS");
+            if ((flags & (1 << 22)) != 0)
+                flagList.Add("ACTIVE_DEVELOPER");
+
+            return flagList;
+        }
+        public static DateTime GetTimestampFromSnowflake(ulong snowflake)
+        {
+            const long DiscordEpoch = 1420070400000L;
+            const ulong TimestampMask = 0xFFFFFFFFFFC00000UL;
+            const ulong WorkerIdMask = 0x3E0000UL;
+            const ulong ProcessIdMask = 0x1F000UL;
+            const ulong IncrementMask = 0xFFFUL;
+
+            long timestamp = (long)((snowflake & TimestampMask) >> 22) + DiscordEpoch;
+            int workerId = (int)((snowflake & WorkerIdMask) >> 17);
+            int processId = (int)((snowflake & ProcessIdMask) >> 12);
+            int increment = (int)(snowflake & IncrementMask);
+
+            DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(timestamp).DateTime;
+            Console.WriteLine($"Timestamp: {dateTime}");
+            Console.WriteLine($"Worker ID: {workerId}");
+            Console.WriteLine($"Process ID: {processId}");
+            Console.WriteLine($"Increment: {increment}");
+
+            return dateTime;
+        }
         private void testTapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
 
@@ -194,7 +254,6 @@ namespace DiscordToolsApp.Pages
                 ToastController.ShowShortToast("Banner Link Copied!");
             }
         }
-
         private async void Avatar_Tapped(object sender, EventArgs e)
         {
             var uriImageSource = imgAvatar.Source as UriImageSource;
