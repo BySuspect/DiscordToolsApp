@@ -24,6 +24,12 @@ namespace DiscordToolsApp.Pages
             if (savedDate.Date != DateTime.Now.Date)
                 popupInfoBack.IsVisible = true;
         }
+        protected override void OnAppearing()
+        {
+            _ = References.CheckAppVersion();
+            base.OnAppearing();
+        }
+
         private async void btnTimestampGenerator_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TimestampGeneratorPage(), false);
@@ -46,7 +52,6 @@ namespace DiscordToolsApp.Pages
         {
             return true;
         }
-
         private void btnSupportCancel_Clicked(object sender, EventArgs e)
         {
             popupInfoBack.IsVisible = false;
@@ -54,7 +59,7 @@ namespace DiscordToolsApp.Pages
         }
         private async void btnSupport_Clicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync(new Uri("https://bit.ly/discordtoolspatreon"), BrowserLaunchMode.External);
+            await Browser.OpenAsync(new Uri("https://bit.ly/3pR7H0W"), BrowserLaunchMode.External);
             popupInfoBack.IsVisible = false;
             Preferences.Set("SupportPopupDate", DateTime.Now);
         }

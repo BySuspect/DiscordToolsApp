@@ -44,7 +44,10 @@ namespace DiscordToolsApp.Pages
         {
             format = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "").ToLower();
             imageFormat.Source = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "");
-            if (timeframe != "timer") timeFrameDateTimePicker_PropertyChanged(null, null);
+            //if (timeframe != "timer") 
+
+            //old
+            //timeFrameDateTimePicker_PropertyChanged(null, null);
         }
         private void pickerTimeFrame_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -252,16 +255,16 @@ namespace DiscordToolsApp.Pages
             Hours = 0;
             Minutes = 0;
         }
-        private void timeFrameDateTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            var obj = timeFrameDateTimePicker;
-            TimestampText = DateToTimestamp(new DateTime(Int16.Parse(obj.SelectedYear),
-                                                         Int16.Parse(obj.SelectedMonth),
-                                                         Int16.Parse(obj.SelectedDay),
-                                                         Int16.Parse(obj.SelectedHour),
-                                                         Int16.Parse(obj.SelectedMinute),
-                                                         0, DateTimeKind.Utc)).ToString();
-        }
+        //private void timeFrameDateTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        //{
+        //    var obj = timeFrameDateTimePicker;
+        //    TimestampText = DateToTimestamp(new DateTime(Int16.Parse(obj.SelectedYear),
+        //                                                 Int16.Parse(obj.SelectedMonth),
+        //                                                 Int16.Parse(obj.SelectedDay),
+        //                                                 Int16.Parse(obj.SelectedHour),
+        //                                                 Int16.Parse(obj.SelectedMinute),
+        //                                                 0, DateTimeKind.Utc)).ToString();
+        //}
         public static long DateToTimestamp(DateTime dateTime)
         {
             DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

@@ -78,7 +78,7 @@
                         x:Name="timerPickerLayout"
                         Margin="0,20,0,5"
                         HorizontalOptions="Center"
-                        IsVisible="true"
+                        IsVisible="false"
                         WidthRequest="350">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -400,12 +400,53 @@
                     <!--#endregion-->
 
                     <!--#region DateTime Picker-->
-                    <custom:CustomDateTimePickerFrame
+                    <xct:UniformGrid x:Name="timeFrameDateTimePicker">
+                        <Frame
+                            Margin="10"
+                            Padding="10"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            CornerRadius="15"
+                            HorizontalOptions="Center">
+                            <Label
+                                FontSize="Small"
+                                HorizontalOptions="Center"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="08.06.2023" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Frame>
+                        <Frame
+                            Margin="10"
+                            Padding="10"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            CornerRadius="15"
+                            HorizontalOptions="Center">
+                            <Label
+                                FontSize="Small"
+                                HorizontalOptions="Center"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="12.25.00 AM" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Frame>
+                    </xct:UniformGrid>
+                    <!--#region Old-->
+                    <!--<custom:CustomDateTimePickerFrame
                         x:Name="timeFrameDateTimePicker"
                         Padding="1,1"
                         BackgroundColor="Transparent"
                         CornerRadius="15"
-                        IsVisible="False"
+                        IsVisible="true"
                         PropertyChanged="timeFrameDateTimePicker_PropertyChanged">
                         <StackLayout>
                             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
@@ -514,7 +555,8 @@
                                 </Frame>
                             </StackLayout>
                         </StackLayout>
-                    </custom:CustomDateTimePickerFrame>
+                    </custom:CustomDateTimePickerFrame>-->
+                    <!--#endregion-->
                     <!--#endregion-->
 
                     <BoxView

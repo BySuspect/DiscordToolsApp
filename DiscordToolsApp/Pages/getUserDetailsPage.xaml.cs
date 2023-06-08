@@ -156,7 +156,12 @@ namespace DiscordToolsApp.Pages
                 imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{uID}/{avatar}?size=256";
                 //imgAvatarDecor.Source = $"https://cdn.discordapp.com/avatar-decoration-presets/{avatar_decoration}";
                 imgBanner.Source = $"https://cdn.discordapp.com/banners/{uID}/{banner}?size=512";
-                lblUserName.Text = $"{username}#{discriminator}";
+                if (discriminator == "0" || string.IsNullOrEmpty(discriminator))
+                    lblUserName.Text = $"{username}";
+                else
+                    lblUserName.Text = $"{username}#{discriminator}";
+                lblGlobalName.Text = $"{global_name}";
+                lblDisplayName.Text = $"{display_name}";
                 imgIsBot.IsVisible = (bool)((isBot) ?? false);
                 lblUserID.Text = id.ToString();
                 lblBannerColor.Text = banner_color;

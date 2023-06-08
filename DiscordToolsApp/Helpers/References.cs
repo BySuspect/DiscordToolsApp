@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Effects;
 using Xamarin.Forms;
 
@@ -9,6 +11,51 @@ namespace DiscordToolsApp.Helpers
     public class References
     {
         public static bool supportPopup = true;
+        public static string Version = "1.0.1";
+        public static async Task<bool> CheckConnection()
+        {
+            var client = new HttpClient();
+            try
+            {
+                await client.GetAsync("https://www.google.com");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static string CurrentVersion { get; private set; }
+        public static string ServerVersion { get; private set; }
+        public static async Task CheckAppVersion()
+        {
+            // Mevcut sürüm numarasını al
+            CurrentVersion = Version; // Kendi mevcut sürüm numaranızı buraya yazın
+
+            // Sunucudan sürüm numarasını al
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = await client.GetAsync("https://awgstudiosapps.web.app/discordtools/version.txt"); // Sürüm numarasını döndüren sunucu URL'sini buraya yazın
+                    response.EnsureSuccessStatusCode();
+                    ServerVersion = await response.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda nasıl bir işlem yapmak istediğinizi burada belirtebilirsiniz
+                Console.WriteLine("Sürüm numarası alınamadı: " + ex.Message);
+                return;
+            }
+
+            // Sürüm numaralarını karşılaştır
+            if (ServerVersion != CurrentVersion)
+            {
+                // Popup göster
+                await App.Current.MainPage.DisplayAlert("Update Available", "A new version is available. Please update the app.", "Ok");
+            }
+        }
     }
     public static class ChangeAppTheme
     {

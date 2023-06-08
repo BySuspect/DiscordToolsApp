@@ -89,6 +89,8 @@ namespace DiscordToolsApp.Pages
                         testcounter++;//7
                         string inviterId = (string)invitedata["inviter"]["id"];
                         string inviterName = (string)invitedata["inviter"]["username"];
+                        string? inviterglobal_name = (string)invitedata["inviter"]["global_name"];
+                        string? inviterdisplay_name = (string)invitedata["inviter"]["display_name"];
                         string inviterAvatar = (string)invitedata["inviter"]["avatar"];
                         string inviterDiscriminator = (string)invitedata["inviter"]["discriminator"];
 
@@ -115,8 +117,12 @@ namespace DiscordToolsApp.Pages
                         if (!string.IsNullOrEmpty(inviterId))
                         {
                             imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{inviterId}/{inviterAvatar}?size=256";
-                            lblUserID.Text = inviterId.ToString();
-                            lblUserName.Text = $"{inviterName}#{inviterDiscriminator}";
+                            lblUserID.Text = inviterId.ToString(); if (inviterDiscriminator == "0" || string.IsNullOrEmpty(inviterDiscriminator))
+                                lblUserName.Text = $"{inviterName}";
+                            else
+                                lblUserName.Text = $"{inviterName}#{inviterDiscriminator}";
+                            lblGlobalName.Text = $"{inviterglobal_name}";
+                            lblDisplayName.Text = $"{inviterdisplay_name}";
                             lblCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(inviterId)).ToString() + " UTC";
 
                             inviterView.IsVisible = true;

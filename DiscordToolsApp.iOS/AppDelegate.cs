@@ -19,6 +19,7 @@ namespace DiscordToolsApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             //MobileAds.SharedInstance.Start(CompletionHandler);
+            Xamarin.DateTimePopups.Platform.Init(() => Xamarin.Essentials.Platform.GetCurrentUIViewController()?.View);
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

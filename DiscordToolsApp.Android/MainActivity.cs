@@ -13,6 +13,8 @@ namespace DiscordToolsApp.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            Xamarin.DateTimePopups.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
