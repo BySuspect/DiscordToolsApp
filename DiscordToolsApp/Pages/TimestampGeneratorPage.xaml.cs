@@ -46,6 +46,7 @@ namespace DiscordToolsApp.Pages
         {
             format = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "").ToLower();
             imageFormat.Source = pickerFormat.SelectedItem.ToString().Trim().Replace(" ", "");
+            TimestampText = DateToTimestamp(CombineDateAndTime(selectedDate, selectedTime)).ToString();
             //if (timeframe != "timer") 
 
             //old

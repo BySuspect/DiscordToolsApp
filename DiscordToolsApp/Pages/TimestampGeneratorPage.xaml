@@ -36,7 +36,7 @@
                                 TabIndicatorColor="{x:Static helpers:ThemeColors.BorderColor}"
                                 TabStripBackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                                 VerticalOptions="FillAndExpand">
-                                <xctv:TabViewItem Text="Timer">
+                                <xctv:TabViewItem FontSize="14" Text="Timer">
                                     <StackLayout>
 
                                         <!--#region Timer Picker-->
@@ -501,14 +501,15 @@
                     <!--#region Export-->
                     <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                         <Frame
+                            Padding="20,13"
                             BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
                             BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
                             CornerRadius="15">
                             <custom:BorderlessPicker
                                 x:Name="pickerFormat"
                                 Title="Format"
-                                Margin="-5,-15,-5,-15"
-                                FontSize="Small"
+                                Margin="-5,-5,-5,-5"
+                                FontSize="Caption"
                                 HorizontalTextAlignment="Center"
                                 SelectedIndexChanged="pickerFormat_SelectedIndexChanged"
                                 TextColor="{x:Static helpers:ThemeColors.TextColor}"
@@ -526,8 +527,7 @@
                             </custom:BorderlessPicker>
                         </Frame>
                         <Frame
-                            Padding="10"
-                            xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                            Padding="20,13"
                             xct:TouchEffect.NativeAnimation="true"
                             xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
                             xct:TouchEffect.PressedAnimationDuration="500"
@@ -538,7 +538,7 @@
                             CornerRadius="15"
                             HorizontalOptions="Center">
                             <Label
-                                FontSize="Small"
+                                FontSize="Caption"
                                 HorizontalOptions="Center"
                                 TextColor="{x:Static helpers:ThemeColors.TextColor}"
                                 VerticalTextAlignment="Center">
@@ -554,7 +554,7 @@
                         </Frame>
                         <Frame
                             x:Name="btnCopyTimestamp"
-                            xct:CornerRadiusEffect.CornerRadius="15,0,15,0"
+                            Padding="20,13"
                             xct:TouchEffect.NativeAnimation="true"
                             xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
                             xct:TouchEffect.PressedAnimationDuration="500"
@@ -565,10 +565,11 @@
                             CornerRadius="15"
                             HorizontalOptions="Center">
                             <Label
-                                FontSize="Small"
+                                FontSize="Caption"
                                 HorizontalOptions="Center"
                                 Text="Copy"
-                                TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalOptions="Center" />
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="btnCopyTimestamp_Clicked" />
                             </Frame.GestureRecognizers>

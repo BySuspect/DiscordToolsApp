@@ -61,129 +61,131 @@
                             IsVisible="false"
                             VerticalOptions="FillAndExpand">
                             <StackLayout>
-                                <Frame
-                                    Padding="0"
-                                    xct:CornerRadiusEffect.CornerRadius="360"
-                                    BackgroundColor="Transparent"
-                                    HorizontalOptions="CenterAndExpand">
-                                    <Image
-                                        x:Name="imgGuildIcon"
-                                        HeightRequest="80"
-                                        IsAnimationPlaying="True"
-                                        Source="">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="GuildIcon_Tapped" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </Frame>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Invite: " />
-                                            <Span x:Name="lblInviteLink" TextColor="#4F99EF ">
-                                                <Span.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="lblInviteLink_Tapped" />
-                                                </Span.GestureRecognizers>
-                                            </Span>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Time Remaining: " />
-                                            <Span x:Name="lblExpress" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild ID: " />
-                                            <Span x:Name="lblGuildId" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label IsVisible="true" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Created: " />
-                                            <Span x:Name="lblGuildCreationDate" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Name: " />
-                                            <Span x:Name="lblGuildName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Description: " />
-                                            <Span x:Name="lblGuildDesc" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Features: " />
-                                            <Span x:Name="lblGuildFeatures" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Verification Level: " />
-                                            <Span x:Name="lblGuildVerfLevel" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Member Count: " />
-                                            <Span x:Name="lblGuildMemberCount" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Online Member Count: " />
-                                            <Span x:Name="lblGuildOnlineMemberCount" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild Nitro Count: " />
-                                            <Span x:Name="lblGuildNitroCount" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild NSFW: " />
-                                            <Span x:Name="lblGuildNSFW" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="Guild NSFW Level: " />
-                                            <Span x:Name="lblGuildNSFWLevel" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                <StackLayout>
+                                    <Frame
+                                        Padding="0"
+                                        xct:CornerRadiusEffect.CornerRadius="360"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="CenterAndExpand">
+                                        <Image
+                                            x:Name="imgGuildIcon"
+                                            HeightRequest="80"
+                                            IsAnimationPlaying="True"
+                                            Source="">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="GuildIcon_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Frame>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Invite: " />
+                                                <Span x:Name="lblInviteLink" TextColor="#4F99EF ">
+                                                    <Span.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="lblInviteLink_Tapped" />
+                                                    </Span.GestureRecognizers>
+                                                </Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Time Remaining: " />
+                                                <Span x:Name="lblExpress" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild ID: " />
+                                                <Span x:Name="lblGuildId" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label IsVisible="true" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Created: " />
+                                                <Span x:Name="lblGuildCreationDate" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Name: " />
+                                                <Span x:Name="lblGuildName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Description: " />
+                                                <Span x:Name="lblGuildDesc" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Features: " />
+                                                <Span x:Name="lblGuildFeatures" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Verification Level: " />
+                                                <Span x:Name="lblGuildVerfLevel" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Member Count: " />
+                                                <Span x:Name="lblGuildMemberCount" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Online Member Count: " />
+                                                <Span x:Name="lblGuildOnlineMemberCount" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild Nitro Count: " />
+                                                <Span x:Name="lblGuildNitroCount" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild NSFW: " />
+                                                <Span x:Name="lblGuildNSFW" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="Small" TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Guild NSFW Level: " />
+                                                <Span x:Name="lblGuildNSFWLevel" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
                                 <StackLayout
                                     x:Name="inviterView"
                                     Margin="0,10,0,0"
@@ -192,20 +194,20 @@
                                         Margin="10,0,0,0"
                                         FontSize="Body"
                                         HorizontalOptions="Start"
-                                        Text="Inviter"
-                                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                        Text="Inviter:"
+                                        TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}" />
                                     <StackLayout
                                         Margin="10,5,10,5"
-                                        HorizontalOptions="Start"
-                                        Orientation="Horizontal">
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Vertical">
                                         <Frame
                                             Padding="0"
                                             xct:CornerRadiusEffect.CornerRadius="360"
                                             BackgroundColor="Transparent"
-                                            HorizontalOptions="Start">
+                                            HorizontalOptions="CenterAndExpand">
                                             <Image
                                                 x:Name="imgAvatar"
-                                                HeightRequest="65"
+                                                HeightRequest="80"
                                                 IsAnimationPlaying="True"
                                                 Source="">
                                                 <Image.GestureRecognizers>
@@ -213,7 +215,7 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </Frame>
-                                        <StackLayout HorizontalOptions="Center">
+                                        <StackLayout HorizontalOptions="Start">
                                             <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
