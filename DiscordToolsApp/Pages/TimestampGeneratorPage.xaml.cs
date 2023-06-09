@@ -2,11 +2,13 @@
 using DiscordToolsApp.Pages.Popups;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
+using Xamarin.DateTimePopups;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,13 +28,13 @@ namespace DiscordToolsApp.Pages
          *<t:---:F>  - Date Weekday
          */
         string format = "relative", timeframe = "timer";
-
+        DateTime? selectedDate;
+        TimeSpan? selectedTime;
         public TimestampGeneratorPage()
         {
             InitializeComponent();
             BindingContext = this;
             pickerFormat.SelectedIndex = 0;
-            pickerTimeFrame.SelectedIndex = 0;
             startTimeUpdate();
         }
         private async void btnCopyTimestamp_Clicked(object sender, EventArgs e)
@@ -49,30 +51,31 @@ namespace DiscordToolsApp.Pages
             //old
             //timeFrameDateTimePicker_PropertyChanged(null, null);
         }
-        private void pickerTimeFrame_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (pickerTimeFrame.SelectedItem)
-            {
-                case "Timer":
-                    timerPickerLayout.IsVisible = true;
-                    timeFrameDateTimePicker.IsVisible = false;
-                    Weeks = 0;
-                    Days = 0;
-                    Hours = 0;
-                    Minutes = 0;
-                    break;
-                case "Date":
-                    TimestampText = AddTimeToTimestamp(0, 0, 0, 0).ToString();
-                    timerPickerLayout.IsVisible = false;
-                    timeFrameDateTimePicker.IsVisible = true;
-                    Weeks = 0;
-                    Days = 0;
-                    Hours = 0;
-                    Minutes = 0;
-                    break;
-            }
-            timeframe = pickerTimeFrame.SelectedItem.ToString().ToLower();
-        }
+
+        //void pickerTimeFrame_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    switch (pickerTimeFrame.SelectedItem)
+        //    {
+        //        case "Timer":
+        //            timerPickerLayout.IsVisible = true;
+        //            timeFrameDateTimePicker.IsVisible = false;
+        //            Weeks = 0;
+        //            Days = 0;
+        //            Hours = 0;
+        //            Minutes = 0;
+        //            break;
+        //        case "Date":
+        //            TimestampText = AddTimeToTimestamp(0, 0, 0, 0).ToString();
+        //            timerPickerLayout.IsVisible = false;
+        //            timeFrameDateTimePicker.IsVisible = true;
+        //            Weeks = 0;
+        //            Days = 0;
+        //            Hours = 0;
+        //            Minutes = 0;
+        //            break;
+        //    }
+        //    timeframe = pickerTimeFrame.SelectedItem.ToString().ToLower();
+        //}
 
         string _timestampText = $"<t:{AddTimeToTimestamp(0, 0, 0, 0)}:R>";
         public string TimestampText
@@ -145,13 +148,16 @@ namespace DiscordToolsApp.Pages
                 {
                     while (true)
                     {
-                        if (timeframe == "timer") TimestampText = AddTimeToTimestamp(Weeks, Days, Hours, Minutes).ToString();
-                        await Task.Delay(50);
+                        if (timeframe == "timer")
+                            TimestampText = AddTimeToTimestamp(Weeks, Days, Hours, Minutes).ToString();
+                        //else
+                        //    TimestampText = DateToTimestamp(CombineDateAndTime(selectedDate, selectedTime)).ToString();
+                        await Task.Delay(100);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Debug.WriteLine($"Error: {ex.Message}");
                 }
             });
         }
@@ -248,6 +254,44 @@ namespace DiscordToolsApp.Pages
             return (long)(newDateTime.ToUniversalTime() - unixEpoch).TotalSeconds;
         }
         #endregion
+
+        #region Date
+        private async void DateButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                selectedDate = await DateTimePopups.PickDateAsync();
+                DateTime combinedDate = CombineDateAndTime(selectedDate, selectedTime);
+                TimestampText = DateToTimestamp(combinedDate).ToString();
+                lblSelectedDate.Text = selectedDate.Value.ToString("dd.MM.yyyy");
+            }
+            catch { }
+        }
+
+        private async void TimeButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                selectedTime = await DateTimePopups.PickTimeAsync();
+                TimestampText = DateToTimestamp(CombineDateAndTime(selectedDate, selectedTime)).ToString();
+                lblSelectedTime.Text = new DateTime(selectedTime.Value.Ticks, DateTimeKind.Local).ToString("hh:mm tt");
+            }
+            catch { }
+        }
+        #endregion
+
+        private void mainTabView_SelectionChanged(object sender, TabSelectionChangedEventArgs e)
+        {
+            if (e.NewPosition == 0)
+                timeframe = "timer";
+            else if (e.NewPosition == 1)
+            {
+                timeframe = "Date";
+                lblSelectedDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                lblSelectedTime.Text = DateTime.Now.ToString("hh:mm tt");
+                TimestampText = DateToTimestamp(CombineDateAndTime(selectedDate, selectedTime)).ToString();
+            }
+        }
         private void btnTest_Clicked(object sender, EventArgs e)
         {
             Weeks = 0;
@@ -255,6 +299,8 @@ namespace DiscordToolsApp.Pages
             Hours = 0;
             Minutes = 0;
         }
+
+        // old
         //private void timeFrameDateTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         //{
         //    var obj = timeFrameDateTimePicker;
@@ -265,11 +311,34 @@ namespace DiscordToolsApp.Pages
         //                                                 Int16.Parse(obj.SelectedMinute),
         //                                                 0, DateTimeKind.Utc)).ToString();
         //}
+
+        #region Genel Props
         public static long DateToTimestamp(DateTime dateTime)
         {
             DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             TimeSpan timeSpan = dateTime.ToUniversalTime() - unixEpoch;
             return (long)Math.Floor(timeSpan.TotalSeconds);
+        }
+        public static DateTime CombineDateAndTime(DateTime? date, TimeSpan? time)
+        {
+            if (date == null)
+                date = DateTime.UtcNow.Date;
+            if (time == null)
+            {
+                time = DateTime.UtcNow.TimeOfDay;
+                return new DateTime(date.Value.Year, date.Value.Month, date.Value.Day, time.Value.Hours, time.Value.Minutes, 0, DateTimeKind.Utc);
+            }
+            else
+            {
+                return new DateTime(date.Value.Year, date.Value.Month, date.Value.Day, time.Value.Hours - getTimeOfset(), time.Value.Minutes, 0, DateTimeKind.Utc);
+            }
+        }
+        public static int getTimeOfset()
+        {
+            DateTime localTime = DateTime.Now;
+            TimeZoneInfo localTimeZone = TimeZoneInfo.Local;
+            TimeSpan utcOffset = localTimeZone.GetUtcOffset(localTime);
+            return utcOffset.Hours;
         }
         private async void DiscordButton_Clicked(object sender, EventArgs e)
         {
@@ -295,5 +364,6 @@ namespace DiscordToolsApp.Pages
 
             }
         }
+        #endregion
     }
 }

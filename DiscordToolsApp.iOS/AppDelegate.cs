@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using CarouselView.FormsPlugin.iOS;
+using Foundation;
 using UIKit;
 
 namespace DiscordToolsApp.iOS
