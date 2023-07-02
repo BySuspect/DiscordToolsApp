@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DiscordToolsApp.Pages.Popups.WebhookRemoteAppAdsPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customItems="clr-namespace:DiscordToolsApp.CustomItems"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    xmlns:popups="clr-namespace:DiscordToolsApp.Pages.Popups"
+    xmlns:views="clr-namespace:DiscordToolsApp.Pages.Views"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:xctp="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xct:CornerRadiusEffect.CornerRadius="15">
+    <!--
+        Size="{x:Static helpers:PopupSize.Medium}"
+        Color="Transparent"
+    -->
+    <ContentPage.Content>
+        <StackLayout>
+            <views:GooglePlayAppView />
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

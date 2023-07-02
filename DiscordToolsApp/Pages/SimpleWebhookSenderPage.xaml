@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DiscordToolsApp.Pages.SimpleWebhookSenderPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:adscontrol="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+    xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    xmlns:local="clr-namespace:DiscordToolsApp.Pages"
+    xmlns:views="clr-namespace:DiscordToolsApp.Pages.Views"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Webhook Mesage Sender"
+    xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
+    xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
+    BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
+    BackgroundImageSource="{x:Static helpers:ThemeColors.backgroundImg}"
+    NavigationPage.HasBackButton="True">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="FeedbackButton_Clicked" IconImageSource="feedback32px.png" />
+        <ToolbarItem Clicked="DiscordButton_Clicked" IconImageSource="discordlogo.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                    <StackLayout Margin="10,25">
+                        <StackLayout Margin="0,5">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="Webhook URL:"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalTextAlignment="Center" />
+                            <Frame
+                                Padding="10,0"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="25">
+                                <custom:BorderlessEntry
+                                    x:Name="entryWebhookUrl"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Url"
+                                    PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Margin="0,5">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="Webhok Avatar URL:"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalTextAlignment="Center" />
+                            <Frame
+                                Padding="10,0"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="25">
+                                <custom:BorderlessEntry
+                                    x:Name="entryWebhookAvatarUrl"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Url"
+                                    PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Margin="0,5">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="Webhok Name:"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalTextAlignment="Center" />
+                            <Frame
+                                Padding="10,0"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="25">
+                                <custom:BorderlessEntry
+                                    x:Name="entryWebhookName"
+                                    HorizontalOptions="FillAndExpand"
+                                    MaxLength="24"
+                                    Placeholder="Name"
+                                    PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+                                    TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Margin="0,5">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontSize="Small"
+                                HorizontalOptions="Start"
+                                HorizontalTextAlignment="Start"
+                                Text="Content:"
+                                TextColor="{x:Static helpers:ThemeColors.TextColor}"
+                                VerticalTextAlignment="Center" />
+                            <Frame
+                                Padding="15,10"
+                                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                                CornerRadius="25">
+                                <Grid>
+                                    <custom:CustomEditor
+                                        x:Name="entryWebhookContent"
+                                        HeightRequest="200"
+                                        HorizontalOptions="FillAndExpand"
+                                        MaxLength="2000"
+                                        Placeholder="Message"
+                                        PlaceholderColor="{x:Static helpers:ThemeColors.TransparentTextColor}"
+                                        TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                    <Label
+                                        Margin="5"
+                                        Padding="0,0,10,0"
+                                        FontSize="Caption"
+                                        HorizontalOptions="EndAndExpand"
+                                        TextColor="{Binding Source={x:Reference entryWebhookContent}, Path=SizeLabelTextColor}"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Source={x:Reference entryWebhookContent}, Path=TextLenght}" />
+                                                <Span Text="/" />
+                                                <Span Text="{Binding Source={x:Reference entryWebhookContent}, Path=MaxLength}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                        <Label
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="If you want send detailed webhook mesage click " />
+                                    <Span
+                                        FontSize="Body"
+                                        Text="Here"
+                                        TextColor="LightBlue" >
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="WebhookRemoteAppLink_Tapped"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button
+                            Margin="0,5"
+                            xct:TouchEffect.NativeAnimation="true"
+                            xct:TouchEffect.NativeAnimationColor="#2EFFCCA3"
+                            xct:TouchEffect.PressedAnimationDuration="500"
+                            xct:TouchEffect.PressedOpacity="0.6"
+                            xct:TouchEffect.PressedScale="0.98"
+                            BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                            BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                            BorderWidth="1"
+                            Clicked="btnSendButton_Clicked"
+                            CornerRadius="15"
+                            HorizontalOptions="Center"
+                            Text="Send"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    </StackLayout>
+                </ScrollView>
+                <Grid
+                    x:Name="Loodinglayout"
+                    BackgroundColor="Transparent"
+                    IsVisible="false">
+                    <Frame
+                        BackgroundColor="Transparent"
+                        CornerRadius="15"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout
+                            Padding="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <ActivityIndicator
+                                HorizontalOptions="Center"
+                                IsRunning="{Binding Source={x:Reference Loodinglayout}, Path=IsVisible}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+            <custom:CustomAdsView
+                x:Name="adsBottom"
+                AdsId="ca-app-pub-3881259676793306/4300337854"
+                AutomationId="adsBottom"
+                HeightRequest="{OnIdiom Phone=50,
+                                        Tablet=90}"
+                VerticalOptions="End" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

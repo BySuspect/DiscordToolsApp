@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DiscordToolsApp.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,8 +87,12 @@ namespace DiscordToolsApp.Pages.Popups
                         Preferences.Set("user_feedback_ID", uid);
                     }
                     var res = await httpClient.PostAsync("https://awgstudiosapps-default-rtdb.europe-west1.firebasedatabase.app/DiscordToolsFeedback/" + uid + "/.json?auth=VjX98JeBVbUmZviKQOrW7yv8NPT69VRzG3m7sXNl", content);
-                    if (res.IsSuccessStatusCode) counter++;
-                    Preferences.Set("user_feedback_count", counter);
+                    if (res.IsSuccessStatusCode)
+                    {
+                        counter++;
+                        Preferences.Set("user_feedback_count", counter);
+                        ToastController.ShowShortToast("Send successfully.");
+                    }
                 }
                 else
                 {
@@ -118,7 +123,6 @@ namespace DiscordToolsApp.Pages.Popups
             public string Platform { get; set; }
             public string DeviceType { get; set; }
             public long Timestramp { get; set; }
-            public string Ip { get; set; }
         }
 
         private void btnSend_Clicked(object sender, EventArgs e)

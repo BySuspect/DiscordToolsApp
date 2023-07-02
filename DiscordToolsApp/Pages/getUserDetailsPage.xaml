@@ -122,7 +122,7 @@
                                     <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="Username: " />
+                                                <Span Text="User Name: " />
                                                 <Span x:Name="lblUserName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -141,14 +141,14 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                <!--<Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Global Name: " />
                                             <Span x:Name="lblGlobalName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>
+                                </Label>-->
                                 <StackLayout IsVisible="true" Orientation="Horizontal">
                                     <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}" />
                                     <StackLayout x:Name="badgesView" Orientation="Horizontal">

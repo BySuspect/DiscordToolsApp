@@ -34,10 +34,6 @@ namespace DiscordToolsApp.Pages
         {
             await Navigation.PushAsync(new TimestampGeneratorPage(), false);
         }
-        private async void btnGetUserDetailsWithId_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new getUserDetailsPage(), false);
-        }
         private async void btnTextToEmoji_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TextToDiscordEoji(), false);
@@ -45,6 +41,14 @@ namespace DiscordToolsApp.Pages
         private async void btnInviteLookUp_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DiscordInviteLookup(), false);
+        }
+        private async void btnGetUserDetailsWithId_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new getUserDetailsPage(), false);
+        }
+        private async void btnSimpleWebhookMessage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SimpleWebhookSenderPage(), false);
         }
 
 
@@ -65,27 +69,11 @@ namespace DiscordToolsApp.Pages
         }
         private void DiscordButton_Clicked(object sender, EventArgs e)
         {
-            Browser.OpenAsync("https://bit.ly/3NmBFDO", BrowserLaunchMode.SystemPreferred);
+            References.discordClicked();
         }
-        private async void FeedbackButton_Clicked(object sender, EventArgs e)
+        private void FeedbackButton_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                Popup popup = new FeedbackPopupPage();
-                var res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
-                if (res.ToString() == "counterror")
-                {
-                    await DisplayAlert("Warning!", "You reached daily feedback limit.", "Ok");
-                }
-                else if (res.ToString() == "catcherror")
-                {
-                    await DisplayAlert("Error!", "Something went wrong try again later.", "Ok");
-                }
-            }
-            catch
-            {
-
-            }
+            References.FeedbackClicked();
         }
     }
 }

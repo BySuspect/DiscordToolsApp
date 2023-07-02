@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DiscordToolsApp.Pages.Views.GooglePlayAppView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customItems="clr-namespace:DiscordToolsApp.CustomItems"
+    xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentView.Content>
+        <StackLayout>
+            <Frame
+                Padding="10"
+                BackgroundColor="{x:Static helpers:ThemeColors.BorderBackColor}"
+                BorderColor="{x:Static helpers:ThemeColors.BorderColor}"
+                CornerRadius="15"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Image
+                        xct:CornerRadiusEffect.CornerRadius="15"
+                        HeightRequest="60"
+                        HorizontalOptions="Start"
+                        Source="https://play-lh.googleusercontent.com/tCKz3VPjc2FHQgQ3fz4zPW0D2gvHO4egFT2JF9V4f8dCb8uQFkpQNTin_vIgghudgI0=w240-h480-rw"
+                        WidthRequest="60" />
+                    <StackLayout Margin="10">
+                        <Label
+                            FontSize="Caption"
+                            HorizontalOptions="Start"
+                            Text="Discord Webhook Remote App"
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Start"
+                            Text="Detailed Webhook Mesage sender appliation."
+                            TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                    </StackLayout>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Open_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

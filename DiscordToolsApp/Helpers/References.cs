@@ -1,9 +1,14 @@
-﻿using System;
+﻿using DiscordToolsApp.Pages;
+using DiscordToolsApp.Pages.Popups;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Effects;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.UI.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DiscordToolsApp.Helpers
@@ -11,7 +16,7 @@ namespace DiscordToolsApp.Helpers
     public class References
     {
         public static bool supportPopup = true;
-        public static string Version = "1.0.1";
+        public static string Version = "1.0.2";
         public static async Task<bool> CheckConnection()
         {
             var client = new HttpClient();
@@ -52,11 +57,77 @@ namespace DiscordToolsApp.Helpers
             // Sürüm numaralarını karşılaştır
             if (ServerVersion != CurrentVersion)
             {
+#if !DEBUG
                 // Popup göster
                 await App.Current.MainPage.DisplayAlert("Update Available", "A new version is available. Please update the app.", "Ok");
+#endif
             }
         }
+
+
+        #region Discord Invite Section
+        public static string discorInviteShorten = "https://bit.ly/3NmBFDO";
+        public static string discorInvite = "https://discord.gg/aX4unxzZek";
+        public static async void discordClicked()
+        {
+            var res = await App.Current.MainPage.DisplayActionSheet("Discord Invite", "", "Cancel", "Open Link", "Copy Link");
+            if (res == "Open Link")
+            {
+                await Launcher.OpenAsync(discorInviteShorten);
+            }
+            else if (res == "Copy Link")
+            {
+                await Clipboard.SetTextAsync(discorInvite);
+                ToastController.ShowShortToast("Discord Link Copied!");
+            }
+        }
+        #endregion
+
+        #region Feedback Section
+        public static async void FeedbackClicked()
+        {
+            try
+            {
+                int counter = 1;
+                if (Preferences.Get("user_feedback_date", DateTime.Now.DayOfYear) == DateTime.Now.DayOfYear)
+                {
+                    counter = Preferences.Get("user_feedback_count", 1);
+                }
+                else
+                {
+                    Preferences.Set("user_feedback_date", DateTime.Now.DayOfYear);
+                    Preferences.Set("user_feedback_count", 1);
+                    counter = 1;
+                }
+
+                if (counter <= 5)
+                {
+                    Popup popup = new FeedbackPopupPage();
+                    var res = await App.Current.MainPage.Navigation.ShowPopupAsync(popup);
+                    if (res.ToString() == "counterror")
+                    {
+                        ToastController.ShowShortToast("You reached daily feedback limit.");
+                    }
+                    else if (res.ToString() == "catcherror")
+                    {
+                        await App.Current.MainPage.DisplayAlert("Error!", "Something went wrong try again later.", "Ok");
+                    }
+                }
+                else
+                {
+                    ToastController.ShowShortToast("You reached daily feedback limit.");
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
+        #endregion
     }
+
+    #region ThemeCodes
     public static class ChangeAppTheme
     {
         public static void LightTheme()
@@ -74,7 +145,7 @@ namespace DiscordToolsApp.Helpers
         {
             ThemeColors.TextColor = Color.White;
             ThemeColors.TransparentTextColor = Color.FromHex("#BAFFFFFF");
-            ThemeColors.BorderColor = Color.White;
+            ThemeColors.BorderColor = Color.FromHex("#FFFFFF");
             ThemeColors.BorderBackColor = Color.Transparent;
             ThemeColors.BackColor = Color.FromHex("#101010");
             ThemeColors.StatusBarColor = Color.FromHex("#000000");
@@ -123,4 +194,5 @@ namespace DiscordToolsApp.Helpers
             ThemeChanged?.Invoke(null, new ThemeChangedEventArgs(newTheme));
         }
     }
+    #endregion
 }

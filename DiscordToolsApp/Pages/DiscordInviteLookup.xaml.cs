@@ -31,7 +31,7 @@ namespace DiscordToolsApp.Pages
         {
             InitializeComponent();
 #if DEBUG
-            entryInviteLink.Text = "XRPVZEZt";
+            //entryInviteLink.Text = "XRPVZEZt";
 #endif
         }
         private async void btnLookup_Clicked(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace DiscordToolsApp.Pages
                         var invitedata = JsonConvert.DeserializeObject<JObject>(result);
                         testcounter++;//6
 
-                        DateTime expiresAt = (DateTime)invitedata["expires_at"];
+                        var expiresAt = invitedata["expires_at"];
                         string guildId = (string)invitedata["guild"]["id"];
                         string guildName = (string)invitedata["guild"]["name"];
                         string guildDesc = (string)invitedata["guild"]["description"];
@@ -95,11 +95,16 @@ namespace DiscordToolsApp.Pages
                         string inviterDiscriminator = (string)invitedata["inviter"]["discriminator"];
 
 
+                        testcounter++;//8
                         //Server Info
-                        imgGuildIcon.Source = $"https://cdn.discordapp.com/icons/{guildId}/{guildIcon}?size=256";
+                        if (guildIcon == null)
+                            imgGuildIcon.Source = "discordlogo.png";
+                        else
+                            imgGuildIcon.Source = $"https://cdn.discordapp.com/icons/{guildId}/{guildIcon}?size=256";
                         //var guildSplash = $"https://cdn.discordapp.com/splashes/{invitedata.guild.id}/{invitedata.guild.splash}?size=256";
                         lblInviteLink.Text = $"https://discord.com/invite/{code}";
-                        lblExpress.Text = (expiresAt != null) ? ((int)CalculateRemainingTime(expiresAt).TotalDays).ToString() + " Days" : "Unlimited";
+                        try { lblExpress.Text = (expiresAt != null) ? ((int)CalculateRemainingTime((DateTime)expiresAt).TotalDays).ToString() + " Days" : "Unlimited"; }
+                        catch { lblExpress.Text = "Unlimited"; }
                         lblGuildId.Text = guildId;
                         lblGuildCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(guildId)).ToString() + " UTC";
                         lblGuildName.Text = guildName;
@@ -112,7 +117,7 @@ namespace DiscordToolsApp.Pages
                         lblGuildNSFW.Text = guildNSFW.ToString();
                         lblGuildNSFWLevel.Text = guildNSFWLevel.ToString();
 
-                        testcounter++;//8
+                        testcounter++;//9
                         //Inviter Info
                         if (!string.IsNullOrEmpty(inviterId))
                         {
@@ -121,12 +126,12 @@ namespace DiscordToolsApp.Pages
                                 lblUserName.Text = $"{inviterName}";
                             else
                                 lblUserName.Text = $"{inviterName}#{inviterDiscriminator}";
-                            lblGlobalName.Text = $"{inviterglobal_name}";
+                            //lblGlobalName.Text = $"{inviterglobal_name}";
                             lblDisplayName.Text = $"{inviterdisplay_name}";
                             lblCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(inviterId)).ToString() + " UTC";
 
                             inviterView.IsVisible = true;
-                            testcounter++;//9
+                            testcounter++;//10
                         }
 
                         while (true)
@@ -210,9 +215,9 @@ namespace DiscordToolsApp.Pages
         }
 
 
-        private async void DiscordButton_Clicked(object sender, EventArgs e)
+        private void DiscordButton_Clicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync("https://bit.ly/3NmBFDO");
+            References.discordClicked();
         }
         private async void FeedbackButton_Clicked(object sender, EventArgs e)
         {
