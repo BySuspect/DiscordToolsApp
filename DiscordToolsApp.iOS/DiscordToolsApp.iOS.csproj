@@ -129,7 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MarcTron.Admob">
-      <Version>1.9.0.3</Version>
+      <Version>1.9.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.CommunityToolkit">
       <Version>2.0.6</Version>
@@ -138,7 +138,7 @@
       <Version>1.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
     <PackageReference Include="Xamarin.Google.iOS.MobileAds">
       <Version>8.13.0.3</Version>
     </PackageReference>

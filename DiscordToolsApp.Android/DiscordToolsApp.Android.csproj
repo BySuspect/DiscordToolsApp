@@ -76,31 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MarcTron.Admob">
-      <Version>1.9.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Annotation">
-      <Version>1.5.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Collection">
-      <Version>1.2.0.5</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.Common">
-      <Version>2.5.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
-      <Version>2.5.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core">
-      <Version>2.5.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime">
-      <Version>2.5.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Migration">
-      <Version>1.0.10</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Work.Runtime">
-      <Version>2.7.1.5</Version>
+      <Version>1.9.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.CommunityToolkit">
       <Version>2.0.6</Version>
@@ -109,7 +85,7 @@
       <Version>1.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
     <PackageReference Include="Xamarin.GooglePlayServices.Basement">
       <Version>118.1.0.1</Version>
     </PackageReference>

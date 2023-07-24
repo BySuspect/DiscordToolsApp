@@ -34,8 +34,8 @@ namespace DiscordToolsApp.Helpers
             {
                 List<LogEntry> tempLogEntries;
                 List<LogEntry> logEntries;
-                tempLogEntries = JsonConvert.DeserializeObject<List<LogEntry>>(Preferences.Get("DiscordToolsTempLogs", "[]"));
-                logEntries = JsonConvert.DeserializeObject<List<LogEntry>>(Preferences.Get("DiscordToolsLogs", "[]"));
+                tempLogEntries = JsonConvert.DeserializeObject<List<LogEntry>>(Preferences.Get("DiscordToolsTempLogs", "[ ]"));
+                logEntries = JsonConvert.DeserializeObject<List<LogEntry>>(Preferences.Get("DiscordToolsLogs", "[ ]"));
 
                 tempLogEntries.Add(logEntry);
                 logEntries.Add(logEntry);
@@ -49,18 +49,18 @@ namespace DiscordToolsApp.Helpers
 
                 if (tempLogEntries.Where(x => x.Level == LogLevel.Error).ToList().Count() > 5)
                 {
-                    sendLog(tempjsonData).Wait();
+                    sendLog(tempjsonData);
                 }
                 Debug.WriteLine($"TempLog: {tempLogEntries.Count()}, Log: {logEntries.Count()}");
             }
             catch (Exception ex)
             {
                 // Handle any potential errors while writing to the log file
-                LogMessage("An error occurred while writing to the log file: " + ex.Message, LogLevel.Error);
-
+                //LogMessage("An error occurred while writing to the log file: " + ex.Message, LogLevel.Error);
+                Debug.WriteLine("An error occurred while writing to the log file: " + ex.Message);
             }
         }
-        private static async Task sendLog(string content)
+        private static async void sendLog(string content)
         {
             if (!await References.CheckConnection())
                 return;
@@ -79,10 +79,10 @@ namespace DiscordToolsApp.Helpers
 
                 string postUri = "";
 #if DEBUG
-                postUri = "https://awgstudiosapps-default-rtdb.europe-west1.firebasedatabase.app/DT-Test/";
+                postUri = "https://awgstudiosapps-default-rtdb.europe-west1.firebasedatabase.app/Debug/AutoLog/";
 #endif
 #if !DEBUG
-                postUri = "https://awgstudiosapps-default-rtdb.europe-west1.firebasedatabase.app/DiscordToolsFeedback/";
+                postUri = "https://awgstudiosapps-default-rtdb.europe-west1.firebasedatabase.app/DiscordToolsFeedback/AutoLog/";
 #endif
 
                 // Device Model (SMG-950U, iPhone11,6)
@@ -124,7 +124,7 @@ namespace DiscordToolsApp.Helpers
                 var res = await httpClient.PostAsync(postUri + uid + "/.json?auth=VjX98JeBVbUmZviKQOrW7yv8NPT69VRzG3m7sXNl", httpcontent);
                 if (res.IsSuccessStatusCode)
                 {
-                    Preferences.Set("DiscordToolsTempLogs", new List<LogEntry>().ToString());
+                    Preferences.Set("DiscordToolsTempLogs", "[ ]");
                 }
                 else
                 {
@@ -134,7 +134,8 @@ namespace DiscordToolsApp.Helpers
             }
             catch (Exception ex)
             {
-                LogMessage("An error occurred while sending to the log file: " + ex.Message, LogLevel.Error);
+                //LogMessage("An error occurred while sending to the log file: " + ex.Message, LogLevel.Error);
+                Debug.WriteLine("\n\n\n\n\n------------------------\nAn error occurred while sending to the log file " + ex.Message + "\n------------------------\n\n\n\n\n");
             }
         }
 

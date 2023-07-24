@@ -36,7 +36,9 @@ namespace DiscordToolsApp.Pages
         }
         private async void btnLookup_Clicked(object sender, EventArgs e)
         {
+            Debug.WriteLine("clicked\n\n\n\n\n\n--------------------------");
             int testcounter = 0;
+            entryInviteLink.Unfocus();
             string inviteCode = entryInviteLink.Text;
             entryInviteLink.Text = "";
             try
@@ -87,15 +89,8 @@ namespace DiscordToolsApp.Pages
                         int guilOnlineMemberCount = (int)invitedata["approximate_presence_count"];
 
                         testcounter++;//7
-                        string inviterId = (string)invitedata["inviter"]["id"];
-                        string inviterName = (string)invitedata["inviter"]["username"];
-                        string? inviterglobal_name = (string)invitedata["inviter"]["global_name"];
-                        string? inviterdisplay_name = (string)invitedata["inviter"]["display_name"];
-                        string inviterAvatar = (string)invitedata["inviter"]["avatar"];
-                        string inviterDiscriminator = (string)invitedata["inviter"]["discriminator"];
 
 
-                        testcounter++;//8
                         //Server Info
                         if (guildIcon == null)
                             imgGuildIcon.Source = "discordlogo.png";
@@ -117,22 +112,35 @@ namespace DiscordToolsApp.Pages
                         lblGuildNSFW.Text = guildNSFW.ToString();
                         lblGuildNSFWLevel.Text = guildNSFWLevel.ToString();
 
-                        testcounter++;//9
-                        //Inviter Info
-                        if (!string.IsNullOrEmpty(inviterId))
-                        {
-                            imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{inviterId}/{inviterAvatar}?size=256";
-                            lblUserID.Text = inviterId.ToString(); if (inviterDiscriminator == "0" || string.IsNullOrEmpty(inviterDiscriminator))
-                                lblUserName.Text = $"{inviterName}";
-                            else
-                                lblUserName.Text = $"{inviterName}#{inviterDiscriminator}";
-                            //lblGlobalName.Text = $"{inviterglobal_name}";
-                            lblDisplayName.Text = $"{inviterdisplay_name}";
-                            lblCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(inviterId)).ToString() + " UTC";
+                        testcounter++;//8
 
-                            inviterView.IsVisible = true;
-                            testcounter++;//10
+                        try
+                        {
+                            string inviterId = (string)invitedata["inviter"]["id"];
+                            string inviterName = (string)invitedata["inviter"]["username"];
+                            string? inviterglobal_name = (string)invitedata["inviter"]["global_name"];
+                            string? inviterdisplay_name = (string)invitedata["inviter"]["display_name"];
+                            string inviterAvatar = (string)invitedata["inviter"]["avatar"];
+                            string inviterDiscriminator = (string)invitedata["inviter"]["discriminator"];
+
+                            //Inviter Info
+                            if (!string.IsNullOrEmpty(inviterId))
+                            {
+                                imgAvatar.Source = $"https://cdn.discordapp.com/avatars/{inviterId}/{inviterAvatar}?size=256";
+                                lblUserID.Text = inviterId.ToString(); if (inviterDiscriminator == "0" || string.IsNullOrEmpty(inviterDiscriminator))
+                                    lblUserName.Text = $"{inviterName}";
+                                else
+                                    lblUserName.Text = $"{inviterName}#{inviterDiscriminator}";
+                                //lblGlobalName.Text = $"{inviterglobal_name}";
+                                lblDisplayName.Text = $"{inviterdisplay_name}";
+                                lblCreationDate.Text = GetTimestampFromSnowflake(ulong.Parse(inviterId)).ToString() + " UTC";
+
+                                inviterView.IsVisible = true;
+                            }
                         }
+                        catch { }
+
+                        testcounter++;//9
 
                         while (true)
                         {
@@ -158,7 +166,7 @@ namespace DiscordToolsApp.Pages
             catch (Exception ex)
             {
                 Logger.LogMessage($"InviteLookupError - Message: {ex.Message} - input: {inviteCode} - Error Code: {testcounter} - AppVersion: {References.Version}", LogLevel.Error);
-                await DisplayAlert("Something went wrong try again later. Error Code: " + testcounter, ex.Message, "Ok");
+                _ = DisplayAlert("Something went wrong try again later. Error Code: " + testcounter, ex.Message, "Ok");
                 InviterDetailsView.IsVisible = false;
             }
             Loodinglayout.IsVisible = false;
