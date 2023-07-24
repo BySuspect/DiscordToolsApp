@@ -37,10 +37,10 @@ namespace DiscordToolsApp.Pages
         private async void btnLookup_Clicked(object sender, EventArgs e)
         {
             int testcounter = 0;
+            string inviteCode = entryInviteLink.Text;
+            entryInviteLink.Text = "";
             try
             {
-                var inviteCode = entryInviteLink.Text;
-                entryInviteLink.Text = "";
                 if (!string.IsNullOrEmpty(inviteCode))
                 {
                     testcounter++;//1
@@ -157,6 +157,7 @@ namespace DiscordToolsApp.Pages
             }
             catch (Exception ex)
             {
+                Logger.LogMessage($"InviteLookupError - Message: {ex.Message} - input: {inviteCode} - Error Code: {testcounter} - AppVersion: {References.Version}", LogLevel.Error);
                 await DisplayAlert("Something went wrong try again later. Error Code: " + testcounter, ex.Message, "Ok");
                 InviterDetailsView.IsVisible = false;
             }

@@ -3,6 +3,7 @@ using DiscordToolsApp.Pages.Popups;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Effects;
@@ -16,7 +17,7 @@ namespace DiscordToolsApp.Helpers
     public class References
     {
         public static bool supportPopup = true;
-        public static string Version = "1.0.2";
+        public static string Version = "1.0.3";
         public static async Task<bool> CheckConnection()
         {
             var client = new HttpClient();
@@ -51,6 +52,7 @@ namespace DiscordToolsApp.Helpers
             {
                 // Hata durumunda nasıl bir işlem yapmak istediğinizi burada belirtebilirsiniz
                 Console.WriteLine("Sürüm numarası alınamadı: " + ex.Message);
+                Logger.LogMessage($"App Version Error - Message: {ex.Message} - AppVersion: {CurrentVersion}", LogLevel.Error);
                 return;
             }
 

@@ -158,6 +158,7 @@ namespace DiscordToolsApp.Pages
                 }
                 catch (Exception ex)
                 {
+                    Logger.LogMessage($"TimestampError - Message: {ex.Message} - AppVersion: {References.Version}", LogLevel.Error);
                     Debug.WriteLine($"Error: {ex.Message}");
                 }
             });

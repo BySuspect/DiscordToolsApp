@@ -86,12 +86,13 @@ namespace DiscordToolsApp.Pages
             }
             #endregion
 
+            Loodinglayout.IsVisible = true;
+            entryUserID.Unfocus();
             badgeList.Clear();
             userDetailsView.IsVisible = false;
+            ulong uID = 0;
             try
             {
-                Loodinglayout.IsVisible = true;
-                ulong uID;
                 try
                 {
                     uID = ulong.Parse(entryUserID.Text);
@@ -100,6 +101,7 @@ namespace DiscordToolsApp.Pages
                 {
                     _ = DisplayAlert("Warning!", "unknown id.", "Ok");
                     Loodinglayout.IsVisible = false;
+                    Logger.LogMessage($"Unknown Id - id: {entryUserID.Text}", LogLevel.Warning);
                     entryUserID.Text = "";
                     return;
                 }
@@ -185,8 +187,10 @@ namespace DiscordToolsApp.Pages
             {
                 userDetailsView.IsVisible = false;
                 Loodinglayout.IsVisible = false;
+                Logger.LogMessage($"UserDetailError - Message: {ex.Message} - id: {uID} - AppVersion: {References.Version}", LogLevel.Error);
                 _ = DisplayAlert("Error!", $"{ex.Message}", "Ok");
             }
+            Loodinglayout.IsVisible = false;
         }
         public static List<string> ConvertFlagsToList(int flags)
         {
