@@ -139,7 +139,7 @@ namespace DiscordToolsApp.Helpers
             }
         }
 
-        public static long getTimestamp()
+        private static long getTimestamp()
         {
             DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             TimeSpan timeSpan = DateTime.UtcNow.ToUniversalTime() - unixEpoch;

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
@@ -156,46 +157,54 @@ namespace DiscordToolsApp.Pages.Popups
         }
         private async void btnSelectFiles_Clicked(object sender, EventArgs e)
         {
-            FeedbackImages = new List<FileAttachment>();
-            double filesizeCounter = 0;
-            var selectedFiles = await FilePicker.PickMultipleAsync(new PickOptions
+            try
             {
-                FileTypes = FilePickerFileType.Images,
-                PickerTitle = "Select Max 10 Images",
-            });
-
-            if (selectedFiles != null)
-            {
-                if (selectedFiles.Count() > 10)
+                FeedbackImages = new List<FileAttachment>();
+                double filesizeCounter = 0;
+                IEnumerable<FileResult> selectedFiles = null;
+                try
                 {
-                    ToastController.ShowLongToast("Please select max 10 files!");
-                    return;
-                }
-                foreach (var _file in selectedFiles)
-                {
-                    var fileinfo = new FileInfo(_file.FullPath);
-                    filesizeCounter += fileinfo.Length;
-                    if (fileinfo.Length <= 13000000)
-                        FeedbackImages.Add(new FileAttachment(_file.FullPath));
-                    else
+                    selectedFiles = await FilePicker.PickMultipleAsync(new PickOptions
                     {
-                        ToastController.ShowShortToast("File can only be 12mb maximum!");
+                        FileTypes = FilePickerFileType.Images,
+                        PickerTitle = "Select Max 10 Images",
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogMessage($"FeedbackFileSelectError - Message: {ex.Message} - AppVersion: {References.Version}", LogLevel.Error);
+                }
+
+                if (selectedFiles != null)
+                {
+                    if (selectedFiles.Count() > 10)
+                    {
+                        ToastController.ShowLongToast("Please select max 10 files!");
+                        return;
+                    }
+                    foreach (var _file in selectedFiles)
+                    {
+                        var fileinfo = new FileInfo(_file.FullPath);
+                        filesizeCounter += fileinfo.Length;
+                        if (fileinfo.Length <= 13000000)
+                            FeedbackImages.Add(new FileAttachment(_file.FullPath));
+                        else
+                        {
+                            ToastController.ShowShortToast("File can only be 12mb maximum!");
+                            return;
+                        }
+                    }
+                    if (filesizeCounter > 13000000)
+                    {
+                        ToastController.ShowLongToast("Please select total max 12mb files!");
+                        FeedbackImages = new List<FileAttachment>();
+                        if (edtContent.Text != null)
+                            edtContent.Text = edtContent.Text.Replace(imagesText, "");
                         return;
                     }
                 }
-                if (filesizeCounter > 13000000)
-                {
-                    ToastController.ShowLongToast("Please select total max 12mb files!");
+                else
                     FeedbackImages = new List<FileAttachment>();
-                    if (edtContent.Text != null)
-                        edtContent.Text = edtContent.Text.Replace(imagesText, "");
-                    return;
-                }
-            }
-            else
-                FeedbackImages = new List<FileAttachment>();
-            if (selectedFiles.Count() > 0)
-            {
                 try
                 {
                     if (edtContent.Text != null && edtContent.Text.Contains(imagesText) && imagesText != "")
@@ -212,6 +221,10 @@ namespace DiscordToolsApp.Pages.Popups
                 {
 
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMessage($"FeedbackFileError - Message: {ex.Message} - AppVersion: {References.Version}", LogLevel.Error);
             }
         }
         private void btnSend_Clicked(object sender, EventArgs e)
