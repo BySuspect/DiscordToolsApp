@@ -17,7 +17,7 @@ namespace DiscordToolsApp.Helpers
     public class References
     {
         public static bool supportPopup = true;
-        public static string Version = "1.0.3";
+        public static string Version = "1.0.4";
         public static async Task<bool> CheckConnection()
         {
             var client = new HttpClient();

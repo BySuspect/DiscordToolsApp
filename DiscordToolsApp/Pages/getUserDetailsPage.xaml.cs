@@ -162,8 +162,8 @@ namespace DiscordToolsApp.Pages
                     lblUserName.Text = $"{username}";
                 else
                     lblUserName.Text = $"{username}#{discriminator}";
-                //lblGlobalName.Text = $"{global_name}";
-                lblDisplayName.Text = $"{display_name}";
+                lblGlobalName.Text = $"{global_name}";
+                //lblDisplayName.Text = $"{display_name}";
                 imgIsBot.IsVisible = (bool)((isBot) ?? false);
                 lblUserID.Text = id.ToString();
                 lblBannerColor.Text = banner_color;

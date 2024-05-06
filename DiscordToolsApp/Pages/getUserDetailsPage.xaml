@@ -133,22 +133,22 @@
                                         IsVisible="false"
                                         Source="bot.png" />
                                 </StackLayout>
-                                <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                <!--<Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Display Name: " />
                                             <Span x:Name="lblDisplayName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>
-                                <!--<Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
+                                </Label>-->
+                                <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Global Name: " />
                                             <Span x:Name="lblGlobalName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>-->
+                                </Label>
                                 <StackLayout IsVisible="true" Orientation="Horizontal">
                                     <Label Text="Badges: " TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}" />
                                     <StackLayout x:Name="badgesView" Orientation="Horizontal">

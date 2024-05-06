@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="DiscordToolsApp.Pages.DiscordInviteLookup"
+    x:Class="DiscordToolsApp.Pages.PublicServerLookupPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:adscontrol="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
     xmlns:custom="clr-namespace:DiscordToolsApp.CustomItems"
     xmlns:helpers="clr-namespace:DiscordToolsApp.Helpers"
     xmlns:local="clr-namespace:DiscordToolsApp.Pages"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    Title="Discord Invite Lookup"
+    Title="Discord Server Lookup"
     xct:StatusBarEffect.Color="{x:Static helpers:ThemeColors.StatusBarColor}"
     xct:StatusBarEffect.Style="{x:Static helpers:ThemeColors.StatusBarStyle}"
     BackgroundColor="{x:Static helpers:ThemeColors.BackColor}"
@@ -239,13 +238,13 @@
                                                 </Label.FormattedText>
                                             </Label>
                                             <!--<Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Display Name: " />
-                                                        <Span x:Name="lblDisplayName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>-->
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Display Name: " />
+                                                    <Span x:Name="lblDisplayName" TextColor="{x:Static helpers:ThemeColors.TextColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>-->
                                             <Label TextColor="{x:Static helpers:ThemeColors.TransparentTextColor}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -272,18 +271,6 @@
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-                <Grid x:Name="testbg" IsVisible="false">
-                    <ScrollView>
-                        <StackLayout BackgroundColor="Black" VerticalOptions="FillAndExpand">
-                            <Label
-                                x:Name="testlbl"
-                                FontSize="Small"
-                                HorizontalOptions="Start"
-                                TextColor="White"
-                                VerticalOptions="Start" />
-                        </StackLayout>
-                    </ScrollView>
-                </Grid>
                 <Grid
                     x:Name="Loodinglayout"
                     BackgroundColor="Transparent"

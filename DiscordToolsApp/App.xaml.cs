@@ -1,7 +1,7 @@
-﻿using DiscordToolsApp.Helpers;
+﻿using System;
+using DiscordToolsApp.Helpers;
 using DiscordToolsApp.Pages;
 using DiscordToolsApp.Pages.Popups;
-using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -33,42 +33,26 @@ namespace DiscordToolsApp
 
             //ChangeAppTheme.ForDenizTheme();
 #if !DEBUG
-            if (Preferences.Get("privacy_policy_accepted10May2023", false))
-                MainPage = new NavigationPage(new MainPage())
-                {
-                    BarBackgroundColor = ThemeColors.StatusBarColor,
-                    BarTextColor = ThemeColors.TextColor,
-                };
-            else
-                MainPage = new PrivacyPolicyPage();
+            //if (Preferences.Get("privacy_policy_accepted10May2023", false))
+            //    MainPage = new NavigationPage(new MainPage())
+            //    {
+            //        BarBackgroundColor = ThemeColors.StatusBarColor,
+            //        BarTextColor = ThemeColors.TextColor,
+            //    };
+            //else
+            MainPage = new UpdateNoticePage();
 #endif
 #if DEBUG
-            MainPage = new NavigationPage(new MainPage())
-            {
-                BarBackgroundColor = ThemeColors.StatusBarColor,
-                BarTextColor = ThemeColors.TextColor,
-            };
+            MainPage = new UpdateNoticePage();
 #endif
 
-
             //MainPage = new PrivacyPolicyPage();
-
-
         }
 
-        protected override void OnStart()
-        {
+        protected override void OnStart() { }
 
-        }
+        protected override void OnSleep() { }
 
-        protected override void OnSleep()
-        {
-
-        }
-
-        protected override void OnResume()
-        {
-
-        }
+        protected override void OnResume() { }
     }
 }

@@ -1,20 +1,20 @@
-﻿using DiscordToolsApp.Helpers;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DiscordToolsApp.Helpers;
 using DiscordToolsApp.Pages.Popups;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Essentials;
@@ -24,15 +24,13 @@ using Xamarin.Forms.Xaml;
 namespace DiscordToolsApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DiscordInviteLookup : ContentPage
+    public partial class PublicServerLookupPage : ContentPage
     {
         private const string token = "MTA0NDU3ODAxMDcxMzU2NzI3Mg.G98N5e.Wz5mtT6sf4g5-noSeda0Cv2HxSpWIw5zaBXRVQ";
-        public DiscordInviteLookup()
+
+        public PublicServerLookupPage()
         {
             InitializeComponent();
-#if DEBUG
-            //entryInviteLink.Text = "XRPVZEZt";
-#endif
         }
         private async void btnLookup_Clicked(object sender, EventArgs e)
         {
