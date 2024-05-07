@@ -107,6 +107,7 @@
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
+        <MauiImage Include="Resources\Images\icons\*" />
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
@@ -114,11 +115,15 @@
 
     <ItemGroup>
         <None Remove="Resources\AppIcon\icon.png" />
+        <None Remove="Resources\Images\app_logo.png" />
+        <None Remove="Resources\Images\discordlogo.png" />
+        <None Remove="Resources\Images\icons\soonicon.png" />
+        <None Remove="Resources\Images\icons\texticon.png" />
         <None Remove="Resources\Splash\splash_logo.png" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -128,6 +133,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <MauiXaml Update="Components\Pages\TimeStampGeneratorPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Pages\UserLookupPage.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\CommonViews\MainPagCustomButtonView.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomCheckBox.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
@@ -155,10 +169,6 @@
         <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Resources\Images\" />
     </ItemGroup>
 
 </Project>

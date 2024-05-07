@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="DiscordToolsApp.Components.Partials.Views.CommonViews.MainPagCustomButtonView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <ContentView.Content>
+        <VerticalStackLayout>
+            <Frame
+                Padding="10"
+                BackgroundColor="Transparent"
+                BorderColor="White"
+                CornerRadius="15"
+                HeightRequest="130"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="85">
+                <StackLayout Spacing="5">
+                    <CustomItems:CustomImageView
+                        CornerRadius="15"
+                        HeightRequest="40"
+                        HorizontalOptions="Center"
+                        Source="{Binding Image}"
+                        VerticalOptions="Start"
+                        WidthRequest="40" />
+                    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+                        <Label
+                            FontSize="Caption"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Text}"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+                <Frame.Behaviors>
+                    <toolkit:TouchBehavior PressedOpacity="0.8" PressedScale="0.9" />
+                </Frame.Behaviors>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Frame_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </VerticalStackLayout>
+    </ContentView.Content>
+</ContentView>

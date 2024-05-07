@@ -1,4 +1,6 @@
-﻿namespace DiscordToolsApp
+﻿using DiscordToolsApp.Components.Pages;
+
+namespace DiscordToolsApp
 {
     public partial class App : Application
     {
