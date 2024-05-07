@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="DiscordToolsApp.Components.Partials.Views.CustomItemViews.CustomEntryView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    x:DataType="local:CustomEntryView">
+    <ContentView.Content>
+        <Grid>
+            <Frame
+                Padding="5,2"
+                BorderColor="{Binding BorderColor}"
+                CornerRadius="{Binding CornerRadius}"
+                HorizontalOptions="FillAndExpand">
+                <Grid>
+                    <Entry
+                        x:Name="Input"
+                        FontSize="Caption"
+                        HorizontalOptions="Fill"
+                        MaxLength="{Binding MaxLength}"
+                        Placeholder="{Binding Placeholder}"
+                        PlaceholderColor="Transparent"
+                        Text="{Binding Text}"
+                        TextChanged="Input_TextChanged"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}"
+                        VerticalOptions="Center" />
+                    <Label
+                        x:Name="lblInputLenght"
+                        Margin="0,0,5,5"
+                        FontSize="Caption"
+                        HorizontalOptions="End"
+                        IsVisible="{Binding HasCharCounterText}"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}"
+                        VerticalOptions="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="spCharacterCount" Text="0" />
+                                <Span Text="/" TextColor="{x:Static services:AppThemeColors.TextColor}" />
+                                <Span Text="{Binding Source={x:Reference Input}, Path=MaxLength}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </Frame>
+            <Frame
+                x:Name="titleView"
+                Padding="10,2"
+                CornerRadius="15"
+                HorizontalOptions="Start"
+                IsVisible="{Binding HasTitle}"
+                TranslationX="0"
+                TranslationY="0"
+                VerticalOptions="Center">
+                <Label
+                    x:Name="lblTitle"
+                    FontSize="Caption"
+                    HorizontalOptions="Center"
+                    Text="{Binding Placeholder}"
+                    TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                    VerticalOptions="Center" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="titleTapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

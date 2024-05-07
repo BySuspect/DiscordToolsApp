@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="DiscordToolsApp.Components.Popups.Common.LoadingViewPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    Color="Transparent">
+    <VerticalStackLayout>
+        <Frame
+            BackgroundColor="#77767676"
+            CornerRadius="15"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout
+                Padding="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsRunning="True"
+                    VerticalOptions="Center"
+                    Color="{x:Static services:AppThemeColors.TextColor}" />
+            </StackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</toolkit:Popup>

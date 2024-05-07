@@ -130,4 +130,34 @@
         <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="8.13.0.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomCheckBox.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomEditorView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomEntryView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomImageButton.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomLoadingView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Popups\Common\CustomAlertPopup.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Popups\Common\CustomInputPopup.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Popups\Common\LoadingViewPopup.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+    </ItemGroup>
+
 </Project>

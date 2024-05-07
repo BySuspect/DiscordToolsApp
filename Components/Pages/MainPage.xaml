@@ -2,11 +2,20 @@
 <ContentPage
     x:Class="DiscordToolsApp.Components.Pages.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+    BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}"
+    NavigationPage.HasNavigationBar="True">
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
             Text="Welcome to .NET MAUI!"
+            TextColor="{x:Static services:AppThemeColors.TextColor}"
             VerticalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

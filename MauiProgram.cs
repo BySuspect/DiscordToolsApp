@@ -13,6 +13,7 @@ namespace DiscordToolsApp
             builder.UseMauiApp<App>().UseMauiMTAdmob().UseMauiCommunityToolkit();
 
             FormHandler.RemoveBorders();
+            AppThemeService.SetTheme(AppThemeTypes.Discord);
 
 #if DEBUG
             builder.Logging.AddDebug();
