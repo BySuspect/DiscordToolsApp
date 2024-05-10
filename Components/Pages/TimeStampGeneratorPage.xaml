@@ -7,12 +7,15 @@
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
+    xmlns:local="clr-namespace:DiscordToolsApp.Components.Pages"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="aaaaaaaaaaaaaaaaaaaaaa"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage">
+
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <views:TimerView Margin="20" TimestampChanged="TimestampChanged" />
+            <views:DateView />
+        </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>

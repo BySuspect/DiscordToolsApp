@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPage.TimerView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <VerticalStackLayout Spacing="10">
+        <local:TimerUpDownView
+            x:Name="WeeksView"
+            AutomationId="Weeks"
+            Text="Weeks"
+            ValueChanged="ValueChanged" />
+        <local:TimerUpDownView
+            x:Name="DaysView"
+            AutomationId="Days"
+            Text="Days"
+            ValueChanged="ValueChanged" />
+        <local:TimerUpDownView
+            x:Name="HoursView"
+            AutomationId="Hours"
+            Text="Hours"
+            ValueChanged="ValueChanged" />
+        <local:TimerUpDownView
+            x:Name="MinutesView"
+            AutomationId="Minutes"
+            Text="Minutes"
+            ValueChanged="ValueChanged" />
+    </VerticalStackLayout>
+</ContentView>

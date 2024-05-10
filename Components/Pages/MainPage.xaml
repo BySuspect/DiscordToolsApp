@@ -9,10 +9,7 @@
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:models="clr-namespace:DiscordToolsApp.Components.Models"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
-    BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}"
-    NavigationPage.HasNavigationBar="True">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <ContentPage.Content>
         <VerticalStackLayout>
             <StackLayout HorizontalOptions="Center">

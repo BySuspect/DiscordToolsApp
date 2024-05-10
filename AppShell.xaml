@@ -6,6 +6,8 @@
     xmlns:pages="clr-namespace:DiscordToolsApp.Components.Pages"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+    BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}"
     NavigationPage.HasNavigationBar="True"
     Shell.BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
     Shell.FlyoutBehavior="Disabled">
@@ -18,18 +20,18 @@
         <toolkit:StatusBarBehavior StatusBarColor="{x:Static services:AppThemeColors.BackgroundColor}" StatusBarStyle="{x:Static services:AppThemeColors.StatusBarStyle}" />
     </Shell.Behaviors>
 
-    <ShellContent Route="MainPage">
-        <ShellContent.ContentTemplate>
-            <DataTemplate>
-                <pages:MainPage />
-            </DataTemplate>
-        </ShellContent.ContentTemplate>
-    </ShellContent>
-
     <ShellContent Route="TimeStampGeneratorPage">
         <ShellContent.ContentTemplate>
             <DataTemplate>
                 <pages:TimeStampGeneratorPage />
+            </DataTemplate>
+        </ShellContent.ContentTemplate>
+    </ShellContent>
+
+    <ShellContent Route="MainPage">
+        <ShellContent.ContentTemplate>
+            <DataTemplate>
+                <pages:MainPage />
             </DataTemplate>
         </ShellContent.ContentTemplate>
     </ShellContent>
