@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="DiscordToolsApp.Components.Popups.Timestamp.TimestampTypeSelectPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Color="Transparent">
+    <VerticalStackLayout
+        Margin="20"
+        VerticalOptions="Center"
+        WidthRequest="350">
+        <Frame
+            Padding="10"
+            BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+            CornerRadius="15"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
+            <ListView SelectionMode="None">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>timestamps/date.jpg</x:String>
+                        <x:String>timestamps/date_time.jpg</x:String>
+                        <x:String>timestamps/date_weekday.jpg</x:String>
+                        <x:String>timestamps/long_date.jpg</x:String>
+                        <x:String>timestamps/long_time.jpg</x:String>
+                        <x:String>timestamps/relative.jpg</x:String>
+                        <x:String>timestamps/time.jpg</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <CustomItems:CustomImageView
+                                Margin="0,5"
+                                CornerRadius="15"
+                                Source="{Binding .}">
+                                <CustomItems:CustomImageView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="img_Tapped" />
+                                </CustomItems:CustomImageView.GestureRecognizers>
+                            </CustomItems:CustomImageView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </VerticalStackLayout>
+</toolkit:Popup>

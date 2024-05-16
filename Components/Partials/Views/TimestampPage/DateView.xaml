@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPage.DateView">
+<ContentView
+    x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPage.DateView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Frame
+                Padding="0"
+                BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                CornerRadius="15"
+                HorizontalOptions="Center"
+                WidthRequest="100">
+                <DatePicker
+                    Date="{Binding SelectedDate}"
+                    FontSize="Caption"
+                    HorizontalOptions="Center"
+                    PropertyChanged="datepicker_PropertyChanged"
+                    TextColor="{x:Static services:AppThemeColors.TextColor}"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Padding="0"
+                BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                CornerRadius="15"
+                HorizontalOptions="Center"
+                WidthRequest="100">
+                <TimePicker
+                    FontSize="Caption"
+                    HorizontalOptions="Center"
+                    PropertyChanged="timepicker_PropertyChanged"
+                    TextColor="{x:Static services:AppThemeColors.TextColor}"
+                    Time="{Binding SelectedTime}"
+                    VerticalOptions="Center" />
+            </Frame>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentView>

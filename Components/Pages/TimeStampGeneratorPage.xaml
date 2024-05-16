@@ -7,15 +7,70 @@
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
-    xmlns:local="clr-namespace:DiscordToolsApp.Components.Pages"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage">
 
     <ContentPage.Content>
-        <VerticalStackLayout>
-            <views:TimerView Margin="20" TimestampChanged="TimestampChanged" />
-            <views:DateView />
-        </VerticalStackLayout>
+        <StackLayout Margin="20" Spacing="10">
+            <Frame
+                Padding="0"
+                BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                CornerRadius="15">
+                <StackLayout>
+
+                    <tabView:SfTabView TabItemTapped="TabItemTapped">
+                        <tabView:SfTabView.Items>
+                            <tabView:SfTabItem
+                                FontSize="Caption"
+                                Header="Timer"
+                                TextColor="{x:Static services:AppThemeColors.TextColor}">
+                                <tabView:SfTabItem.Content>
+                                    <VerticalStackLayout>
+                                        <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                                        <views:TimerView
+                                            x:Name="timerView"
+                                            Margin="20,10"
+                                            TimestampChanged="TimestampChanged"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </VerticalStackLayout>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                            <tabView:SfTabItem
+                                FontSize="Caption"
+                                Header="Date &amp; Time"
+                                TextColor="{x:Static services:AppThemeColors.TextColor}">
+                                <tabView:SfTabItem.Content>
+                                    <VerticalStackLayout>
+                                        <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                                    </VerticalStackLayout>
+                                </tabView:SfTabItem.Content>
+                            </tabView:SfTabItem>
+                        </tabView:SfTabView.Items>
+                    </tabView:SfTabView>
+
+                    <BoxView
+                        Margin="0,5"
+                        HeightRequest="1"
+                        Color="{x:Static services:AppThemeColors.BorderColor}" />
+
+                    <StackLayout
+                        Margin="15,5"
+                        HorizontalOptions="Fill"
+                        Spacing="5">
+
+                        <views:TimestampOutputView x:Name="tmpDate" />
+                        <views:TimestampOutputView x:Name="tmpDateTime" />
+                        <views:TimestampOutputView x:Name="tmpDateWeekday" />
+                        <views:TimestampOutputView x:Name="tmpLongDate" />
+                        <views:TimestampOutputView x:Name="tmpLongTime" />
+                        <views:TimestampOutputView x:Name="tmpRelative" />
+                        <views:TimestampOutputView x:Name="tmpTime" />
+
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

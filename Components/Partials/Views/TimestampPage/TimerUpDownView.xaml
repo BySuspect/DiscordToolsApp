@@ -40,6 +40,7 @@
                     VerticalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
+                            <Span x:Name="plusTxt" Text="" />
                             <Span Text="{Binding Value}" />
                             <Span Text=" " />
                             <Span Text="{Binding Text}" />

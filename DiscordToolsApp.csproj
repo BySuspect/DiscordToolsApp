@@ -108,33 +108,45 @@
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
         <MauiImage Include="Resources\Images\icons\*" />
+        <MauiImage Include="Resources\Images\timestamps\*" />
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="env-sample.json" />
+        <None Remove="env.json" />
         <None Remove="Resources\AppIcon\icon.png" />
         <None Remove="Resources\Images\app_logo.png" />
         <None Remove="Resources\Images\discordlogo.png" />
+        <None Remove="Resources\Images\icons\copyicon.png" />
         <None Remove="Resources\Images\icons\soonicon.png" />
         <None Remove="Resources\Images\icons\texticon.png" />
         <None Remove="Resources\Splash\splash_logo.png" />
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="env-sample.json" />
+      <EmbeddedResource Include="env.json" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Plugin.MauiMTAdmob" Version="1.4.2" />
+        <PackageReference Include="Syncfusion.Maui.TabView" Version="25.2.4" />
         <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="8.13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
         <MauiXaml Update="Components\Pages\TimeStampGeneratorPage.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Pages\UserLookupPage.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -158,12 +170,15 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\TimestampPage\DateView.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\TimestampPage\TimerUpDownView.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\TimestampPage\TimerView.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\TimestampPage\TimestampOutputView.xaml">
           <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\CustomAlertPopup.xaml">
@@ -177,6 +192,9 @@
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Popups\Timestamp\TimestampTypeSelectPopup.xaml">
+          <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
     </ItemGroup>
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPage.TimestampOutputView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <StackLayout
+        HorizontalOptions="Fill"
+        Orientation="Horizontal"
+        Spacing="10">
+        <Frame
+            Padding="0"
+            BackgroundColor="{x:Static services:AppThemeColors.TextBackColor}"
+            BorderColor="{x:Static services:AppThemeColors.TextBackColor}"
+            CornerRadius="5"
+            HorizontalOptions="Start"
+            VerticalOptions="Center"
+            WidthRequest="125">
+            <Label
+                FontSize="Small"
+                HorizontalOptions="Center"
+                Text="{Binding MainText}"
+                TextColor="{x:Static services:AppThemeColors.TextColor}"
+                VerticalOptions="Center" />
+        </Frame>
+        <Label
+            FontSize="Caption"
+            HorizontalOptions="Start"
+            Text="{Binding PreviewText}"
+            TextColor="{x:Static services:AppThemeColors.TextColor}"
+            VerticalOptions="Center" />
+
+        <ImageButton
+            Clicked="Copy_Clicked"
+            HeightRequest="12"
+            HorizontalOptions="EndAndExpand"
+            Source="copyicon.png"
+            VerticalOptions="Center"
+            WidthRequest="12" />
+    </StackLayout>
+</ContentView>

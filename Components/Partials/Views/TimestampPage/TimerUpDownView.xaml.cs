@@ -15,6 +15,10 @@ public partial class TimerUpDownView : ContentView
         {
             var control = (TimerUpDownView)bindable;
             control.OnColorChanged(new NumberChangedEventArgs((int)oldValue, (int)newValue));
+            if ((int)newValue > 0)
+                control.plusTxt.Text = "+";
+            else
+                control.plusTxt.Text = "";
         }
     );
     public int Value

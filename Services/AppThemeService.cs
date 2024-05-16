@@ -28,6 +28,7 @@ namespace DiscordToolsApp.Services
         private static void LightTheme()
         {
             AppThemeColors.TextColor = Color.Parse("#000000");
+            AppThemeColors.TextBackColor = Color.Parse("#66ADADAD");
             AppThemeColors.BorderColor = Color.Parse("#000000");
             AppThemeColors.BackgroundColor = Color.Parse("#FFFFFF");
             AppThemeColors.StatusBarStyle = StatusBarStyle.DarkContent;
@@ -37,6 +38,7 @@ namespace DiscordToolsApp.Services
         private static void DarkTheme()
         {
             AppThemeColors.TextColor = Color.Parse("#FFFFFF");
+            AppThemeColors.TextBackColor = Color.Parse("#665E5E5E");
             AppThemeColors.BorderColor = Color.Parse("#E6B8B8B8");
             AppThemeColors.BackgroundColor = Color.Parse("#262323");
             AppThemeColors.StatusBarStyle = StatusBarStyle.LightContent;
@@ -46,6 +48,7 @@ namespace DiscordToolsApp.Services
         private static void DiscordTheme()
         {
             AppThemeColors.TextColor = Color.Parse("#ffffff");
+            AppThemeColors.TextBackColor = Color.Parse("#665E5E5E");
             AppThemeColors.PlaceholderTextColor = Color.Parse("#98aab5");
             AppThemeColors.BorderColor = Color.Parse("#98aab5");
             AppThemeColors.BackgroundColor = Color.Parse("#09090E");
@@ -56,6 +59,7 @@ namespace DiscordToolsApp.Services
         private static void TestTheme()
         {
             AppThemeColors.TextColor = Colors.Purple;
+            AppThemeColors.TextBackColor = Colors.Red;
             AppThemeColors.PlaceholderTextColor = Colors.Blue;
             AppThemeColors.BorderColor = Colors.Green;
             AppThemeColors.BackgroundColor = Colors.DarkGray;
@@ -68,6 +72,7 @@ namespace DiscordToolsApp.Services
     public static class AppThemeColors
     {
         public static Color? TextColor { get; set; }
+        public static Color? TextBackColor { get; set; }
         public static Color? PlaceholderTextColor { get; set; }
         public static Color? BorderColor { get; set; }
         public static Color? BackgroundColor { get; set; }
