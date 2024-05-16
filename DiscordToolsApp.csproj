@@ -108,7 +108,6 @@
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
         <MauiImage Include="Resources\Images\icons\*" />
-        <MauiImage Include="Resources\Images\timestamps\*" />
 
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
@@ -192,9 +191,6 @@
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
-        </MauiXaml>
-        <MauiXaml Update="Components\Popups\Timestamp\TimestampTypeSelectPopup.xaml">
-          <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
     </ItemGroup>
 
