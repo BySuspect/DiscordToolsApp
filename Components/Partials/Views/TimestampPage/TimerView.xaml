@@ -12,6 +12,11 @@
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage">
     <VerticalStackLayout Spacing="10">
         <local:TimerUpDownView
+            x:Name="MonthsView"
+            AutomationId="Months"
+            Text="Months"
+            ValueChanged="ValueChanged" />
+        <local:TimerUpDownView
             x:Name="WeeksView"
             AutomationId="Weeks"
             Text="Weeks"

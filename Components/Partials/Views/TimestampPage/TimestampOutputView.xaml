@@ -14,7 +14,7 @@
     <StackLayout
         HorizontalOptions="Fill"
         Orientation="Horizontal"
-        Spacing="10">
+        Spacing="5">
         <Frame
             Padding="0"
             BackgroundColor="{x:Static services:AppThemeColors.TextBackColor}"

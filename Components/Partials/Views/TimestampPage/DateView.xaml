@@ -11,35 +11,13 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage">
     <VerticalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-            <Frame
-                Padding="0"
-                BorderColor="{x:Static services:AppThemeColors.BorderColor}"
-                CornerRadius="15"
-                HorizontalOptions="Center"
-                WidthRequest="100">
-                <DatePicker
-                    Date="{Binding SelectedDate}"
-                    FontSize="Caption"
-                    HorizontalOptions="Center"
-                    PropertyChanged="datepicker_PropertyChanged"
-                    TextColor="{x:Static services:AppThemeColors.TextColor}"
-                    VerticalOptions="Center" />
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            Spacing="10">
+            <Frame Padding="0">
+                <HorizontalStackLayout BackgroundColor="White" />
             </Frame>
-            <Frame
-                Padding="0"
-                BorderColor="{x:Static services:AppThemeColors.BorderColor}"
-                CornerRadius="15"
-                HorizontalOptions="Center"
-                WidthRequest="100">
-                <TimePicker
-                    FontSize="Caption"
-                    HorizontalOptions="Center"
-                    PropertyChanged="timepicker_PropertyChanged"
-                    TextColor="{x:Static services:AppThemeColors.TextColor}"
-                    Time="{Binding SelectedTime}"
-                    VerticalOptions="Center" />
-            </Frame>
-        </HorizontalStackLayout>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentView>

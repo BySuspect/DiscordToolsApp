@@ -38,6 +38,7 @@ public partial class TimeStampGeneratorPage : ContentPage
             {
                 var tmp = GetTimestamp(
                     selectedDateTime,
+                    timestamp.Months,
                     timestamp.Weeks,
                     timestamp.Days,
                     timestamp.Hours,
@@ -75,6 +76,7 @@ public partial class TimeStampGeneratorPage : ContentPage
 
     public long GetTimestamp(
         DateTime? date = null,
+        int months = 0,
         int weeks = 0,
         int days = 0,
         int hours = 0,
@@ -82,19 +84,22 @@ public partial class TimeStampGeneratorPage : ContentPage
     )
     {
         DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-        TimeSpan timeSpan = new TimeSpan((weeks * 7) + days, hours, minutes, 0);
+        TimeSpan timeSpan = new TimeSpan((months * 30) + (weeks * 7) + days, hours, minutes, 0);
         DateTime newDateTime = (date ?? DateTime.Now).Add(timeSpan);
         return (long)(newDateTime.ToUniversalTime() - unixEpoch).TotalSeconds;
     }
 
     public DateTime GetDateTime(
         DateTime? date = null,
+        int months = 0,
         int weeks = 0,
         int days = 0,
         int hours = 0,
         int minutes = 0
     )
     {
+        if (months == 0)
+            months = this.timestamp.Months;
         if (weeks == 0)
             weeks = this.timestamp.Weeks;
         if (days == 0)
@@ -104,7 +109,7 @@ public partial class TimeStampGeneratorPage : ContentPage
         if (minutes == 0)
             minutes = this.timestamp.Minutes;
 
-        TimeSpan timeSpan = new TimeSpan((weeks * 7) + days, hours, minutes, 0);
+        TimeSpan timeSpan = new TimeSpan((months * 30) + (weeks * 7) + days, hours, minutes, 0);
         return (date ?? DateTime.Now).Add(timeSpan);
     }
 
@@ -155,32 +160,32 @@ public partial class TimeStampGeneratorPage : ContentPage
             if (isFuture)
                 return $"in {(int)dateDiff.TotalSeconds + 1} seconds";
             else
-                return $"{(int)dateDiff.TotalSeconds + 1} seconds ago";
+                return $"{(int)dateDiff.TotalSeconds} seconds ago";
         }
         else if (RoundTime((decimal)dateDiff.TotalSeconds) < 60 * 60)
         {
             if (isFuture)
                 return $"in {(int)dateDiff.TotalSeconds / 60 + 1} minutes";
             else
-                return $"{(int)dateDiff.TotalSeconds / 60 + 1} minutes ago";
+                return $"{(int)dateDiff.TotalSeconds / 60} minutes ago";
         }
         else if (RoundTime((decimal)dateDiff.TotalSeconds) < 60 * 60 * 24)
         {
             if (isFuture)
                 return $"in {(int)dateDiff.TotalSeconds / 60 / 60 + 1} hours";
             else
-                return $"{(int)dateDiff.TotalSeconds / 60 / 60 + 1} hours ago";
+                return $"{(int)dateDiff.TotalSeconds / 60 / 60} hours ago";
         }
         else if (RoundTime((decimal)dateDiff.TotalSeconds) < 60 * 60 * 24 * 30)
         {
             if (isFuture)
                 return $"in {(int)dateDiff.TotalSeconds / 60 / 60 / 24 + 1} days";
             else
-                return $"{(int)dateDiff.TotalSeconds / 60 / 60 / 24 + 1} days ago";
+                return $"{(int)dateDiff.TotalSeconds / 60 / 60 / 24} days ago";
         }
         else
         {
-            int months = (int)dateDiff.TotalDays / 30;
+            int months = (int)(RoundTime((decimal)dateDiff.TotalSeconds) / 60 / 60 / 24 / 30);
 
             if (months == 0)
                 months = 1;
@@ -189,9 +194,9 @@ public partial class TimeStampGeneratorPage : ContentPage
             if (years > 0)
             {
                 if (isFuture)
-                    return $"in {months} years";
+                    return $"in {years} years";
                 else
-                    return $"{months} years ago";
+                    return $"{years} years ago";
             }
             else
             {
@@ -209,17 +214,14 @@ public partial class TimeStampGeneratorPage : ContentPage
 
         if (value == 59)
             return 60;
-
-        if (value == (60 * 60) - 1)
+        else if (value == (60 * 60) - 1)
             return 60 * 60;
-
-        if (value == (60 * 60 * 24) - 1)
+        else if (value == (60 * 60 * 24) - 1)
             return 60 * 60 * 24;
-
-        if (value == (60 * 60 * 24 * 30) - 1)
+        else if (value == (60 * 60 * 24 * 30) - 1)
             return 60 * 60 * 24 * 30;
-
-        return value;
+        else
+            return value + 1;
     }
 
     private void TabItemTapped(object sender, Syncfusion.Maui.TabView.TabItemTappedEventArgs e)

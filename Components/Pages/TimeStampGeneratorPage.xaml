@@ -44,6 +44,7 @@
                                 <tabView:SfTabItem.Content>
                                     <VerticalStackLayout>
                                         <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                                        <views:DateView x:Name="dateView" />
                                     </VerticalStackLayout>
                                 </tabView:SfTabItem.Content>
                             </tabView:SfTabItem>

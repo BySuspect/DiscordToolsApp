@@ -8,22 +8,13 @@ namespace DiscordToolsApp.Components.Partials.Events
 {
     public class DateAndTimeChangedEventArgs : EventArgs
     {
-        public DateAndTimeChangedEventArgs(
-            DateTime? oldDate,
-            TimeSpan? oldTime,
-            DateTime? newDate,
-            TimeSpan? newTime
-        )
+        public DateAndTimeChangedEventArgs(DateTime? oldValue, DateTime? newValue)
         {
-            OldDate = oldDate;
-            OldTime = oldTime;
-            NewDate = newDate;
-            NewTime = newTime;
+            OldValue = oldValue;
+            NewValue = newValue;
         }
 
-        public DateTime? OldDate { get; private set; }
-        public TimeSpan? OldTime { get; private set; }
-        public DateTime? NewDate { get; private set; }
-        public TimeSpan? NewTime { get; private set; }
+        public DateTime? OldValue { get; private set; }
+        public DateTime? NewValue { get; private set; }
     }
 }

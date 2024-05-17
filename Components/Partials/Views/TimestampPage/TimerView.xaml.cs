@@ -5,6 +5,7 @@ namespace DiscordToolsApp.Components.Partials.Views.TimestampPage;
 
 public partial class TimerView : ContentView
 {
+    private int months = 0;
     private int weeks = 0;
     private int days = 0;
     private int hours = 0;
@@ -20,6 +21,10 @@ public partial class TimerView : ContentView
         var control = (TimerUpDownView)sender;
         switch (control.AutomationId)
         {
+            case "Months":
+                months = e.NewValue;
+                break;
+
             case "Weeks":
                 weeks = e.NewValue;
                 break;
@@ -36,7 +41,7 @@ public partial class TimerView : ContentView
                 break;
         }
 
-        OnTimestampChanged(new TimestampModel(weeks, days, hours, minutes));
+        OnTimestampChanged(new TimestampModel(months, weeks, days, hours, minutes));
     }
 
     public event EventHandler<TimestampModel> TimestampChanged;
