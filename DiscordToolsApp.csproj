@@ -150,7 +150,7 @@
         <MauiXaml Update="Components\Pages\UserLookupPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\CommonViews\MainPagCustomButtonView.xaml">
+        <MauiXaml Update="Components\Partials\Views\MainPageViews\MainPagCustomButtonView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomCheckBox.xaml">
@@ -192,6 +192,10 @@
         <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Components\Partials\Views\CommonViews\" />
     </ItemGroup>
 
 </Project>

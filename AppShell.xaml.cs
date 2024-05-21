@@ -13,6 +13,7 @@ namespace DiscordToolsApp
         {
             if (Shell.Current.CurrentPage is not MainPage)
             {
+                ApplicationService.ActivePage = "MainPage";
                 Shell.Current.GoToAsync("//MainPage", true);
                 return true;
             }

@@ -20,18 +20,18 @@
         <toolkit:StatusBarBehavior StatusBarColor="{x:Static services:AppThemeColors.BackgroundColor}" StatusBarStyle="{x:Static services:AppThemeColors.StatusBarStyle}" />
     </Shell.Behaviors>
 
-    <ShellContent Route="TimeStampGeneratorPage">
-        <ShellContent.ContentTemplate>
-            <DataTemplate>
-                <pages:TimeStampGeneratorPage />
-            </DataTemplate>
-        </ShellContent.ContentTemplate>
-    </ShellContent>
-
     <ShellContent Route="MainPage">
         <ShellContent.ContentTemplate>
             <DataTemplate>
                 <pages:MainPage />
+            </DataTemplate>
+        </ShellContent.ContentTemplate>
+    </ShellContent>
+
+    <ShellContent Route="TimeStampGeneratorPage">
+        <ShellContent.ContentTemplate>
+            <DataTemplate>
+                <pages:TimeStampGeneratorPage />
             </DataTemplate>
         </ShellContent.ContentTemplate>
     </ShellContent>

@@ -35,6 +35,9 @@ public partial class TimeStampGeneratorPage : ContentPage
         {
             while (true)
             {
+                if (ApplicationService.ActivePage != "TimeStampGeneratorPage")
+                    break;
+
                 long tmp;
                 if (this.mode is "timer")
                 {

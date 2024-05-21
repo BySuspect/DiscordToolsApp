@@ -6,6 +6,7 @@
     xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:Views="clr-namespace:DiscordToolsApp.Components.Partials.Views.MainPageViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:models="clr-namespace:DiscordToolsApp.Components.Models"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
@@ -41,7 +42,7 @@
                         </BindableLayout.ItemsSource>
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <CommonViews:MainPagCustomButtonView
+                                <Views:MainPagCustomButtonView
                                     Margin="5"
                                     Clicked="MainPagCustomButtonView_Clicked"
                                     HorizontalOptions="Center"

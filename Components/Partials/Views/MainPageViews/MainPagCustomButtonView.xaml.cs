@@ -1,6 +1,6 @@
 using DiscordToolsApp.Components.Models;
 
-namespace DiscordToolsApp.Components.Partials.Views.CommonViews;
+namespace DiscordToolsApp.Components.Partials.Views.MainPageViews;
 
 public partial class MainPagCustomButtonView : ContentView
 {

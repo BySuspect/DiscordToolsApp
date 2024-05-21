@@ -1,6 +1,6 @@
 using System.Security.AccessControl;
 using DiscordToolsApp.Components.Models;
-using DiscordToolsApp.Components.Partials.Views.CommonViews;
+using DiscordToolsApp.Components.Partials.Views.MainPageViews;
 
 namespace DiscordToolsApp.Components.Pages;
 
@@ -9,6 +9,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        ApplicationService.ActivePage = "MainPage";
     }
 
     private async void MainPagCustomButtonView_Clicked(object sender, ClickedEventArgs e)
@@ -19,10 +20,12 @@ public partial class MainPage : ContentPage
         switch (clicked.PageType)
         {
             case MainPageButtonsPageTypeModel.TimeStampGeneratorPage:
+                ApplicationService.ActivePage = "TimeStampGeneratorPage";
                 await Shell.Current.GoToAsync("//TimeStampGeneratorPage", true);
                 break;
 
             case MainPageButtonsPageTypeModel.UserLookupPage:
+                ApplicationService.ActivePage = "UserLookupPage";
                 await Shell.Current.GoToAsync("//UserLookupPage", true);
                 break;
 
@@ -30,6 +33,7 @@ public partial class MainPage : ContentPage
                 break;
 
             default:
+                ApplicationService.ActivePage = "MainPage";
                 await Shell.Current.GoToAsync("//MainPage", true);
                 break;
         }

@@ -7,6 +7,8 @@ namespace DiscordToolsApp.Services
 {
     public static class ApplicationService
     {
+        public static string? ActivePage { get; set; }
+
         #region Loading View Section
         private static LoadingViewPopup loadingPopup = new LoadingViewPopup();
         private static bool IsOpen = false;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView
-    x:Class="DiscordToolsApp.Components.Partials.Views.CommonViews.MainPagCustomButtonView"
+    x:Class="DiscordToolsApp.Components.Partials.Views.MainPageViews.MainPagCustomButtonView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:MainPageViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.MainPageViews"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <ContentView.Content>
@@ -20,13 +20,14 @@
                 WidthRequest="85">
                 <StackLayout Spacing="5">
                     <CustomItems:CustomImageView
+                        Margin="0,5,0,0"
                         CornerRadius="15"
                         HeightRequest="40"
                         HorizontalOptions="Center"
                         Source="{Binding Image}"
                         VerticalOptions="Start"
                         WidthRequest="40" />
-                    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+                    <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
                         <Label
                             FontSize="Caption"
                             HorizontalOptions="CenterAndExpand"
