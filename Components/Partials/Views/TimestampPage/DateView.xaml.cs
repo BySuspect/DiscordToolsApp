@@ -4,16 +4,10 @@ namespace DiscordToolsApp.Components.Partials.Views.TimestampPage;
 
 public partial class DateView : ContentView
 {
-    private DateTime selectedDateTime;
-
-    public DateTime SelectedDateTime
+    public DateTime? SelectedDateTime
     {
-        get { return selectedDateTime; }
-        set
-        {
-            selectedDateTime = value;
-            OnPropertyChanged(nameof(SelectedDateTime));
-        }
+        get { return CombineDateAndTime(dPicker.Date, tPicker.Time); }
+        set { }
     }
 
     public DateView()
@@ -22,11 +16,18 @@ public partial class DateView : ContentView
         BindingContext = this;
     }
 
-    public event EventHandler<DateAndTimeChangedEventArgs> DateTimeChanged;
-
-    protected virtual void OnDateTimeChanged(DateAndTimeChangedEventArgs e)
+    public static DateTime CombineDateAndTime(DateTime? date, TimeSpan? time)
     {
-        EventHandler<DateAndTimeChangedEventArgs> handler = DateTimeChanged;
-        handler?.Invoke(this, e);
+        date ??= DateTime.Now.Date;
+        time ??= DateTime.Now.TimeOfDay;
+
+        return new DateTime(
+            date.Value.Year,
+            date.Value.Month,
+            date.Value.Day,
+            time.Value.Hours,
+            time.Value.Minutes,
+            0
+        );
     }
 }

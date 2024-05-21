@@ -42,10 +42,17 @@
                                 Header="Date &amp; Time"
                                 TextColor="{x:Static services:AppThemeColors.TextColor}">
                                 <tabView:SfTabItem.Content>
-                                    <VerticalStackLayout>
+                                    <StackLayout>
                                         <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
-                                        <views:DateView x:Name="dateView" />
-                                    </VerticalStackLayout>
+                                        <views:DateView x:Name="dateView" VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            FontSize="Micro"
+                                            HorizontalOptions="Center"
+                                            Opacity="0.8"
+                                            Text="This date and time selection view is bad i know i will change it."
+                                            TextColor="Gray"
+                                            VerticalOptions="End" />
+                                    </StackLayout>
                                 </tabView:SfTabItem.Content>
                             </tabView:SfTabItem>
                         </tabView:SfTabView.Items>

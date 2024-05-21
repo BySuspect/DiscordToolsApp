@@ -16,7 +16,6 @@ public partial class TimeStampGeneratorPage : ContentPage
      */
 
     private Models.TimestampModel timestamp = new Models.TimestampModel();
-    private DateTime? selectedDateTime = null;
     private string mode = "timer";
 
     public TimeStampGeneratorPage()
@@ -36,14 +35,20 @@ public partial class TimeStampGeneratorPage : ContentPage
         {
             while (true)
             {
-                var tmp = GetTimestamp(
-                    selectedDateTime,
-                    timestamp.Months,
-                    timestamp.Weeks,
-                    timestamp.Days,
-                    timestamp.Hours,
-                    timestamp.Minutes
-                );
+                long tmp;
+                if (this.mode is "timer")
+                {
+                    tmp = GetTimestamp(
+                        null,
+                        timestamp.Months,
+                        timestamp.Weeks,
+                        timestamp.Days,
+                        timestamp.Hours,
+                        timestamp.Minutes
+                    );
+                }
+                else
+                    tmp = GetTimestamp(dateView.SelectedDateTime);
 
                 tmpDate.MainText = $"<t:{tmp}:d>";
                 tmpDate.PreviewText = GetDateStringFromTimestamp(tmp, "date");
@@ -230,7 +235,6 @@ public partial class TimeStampGeneratorPage : ContentPage
         {
             case "Timer":
                 mode = "timer";
-                this.selectedDateTime = null;
                 break;
 
             case "Date & Time":
