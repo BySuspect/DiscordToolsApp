@@ -168,16 +168,16 @@
         <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomLoadingView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\TimestampPage\DateView.xaml">
+        <MauiXaml Update="Components\Partials\Views\TimestampPageViews\DateView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\TimestampPage\TimerUpDownView.xaml">
+        <MauiXaml Update="Components\Partials\Views\TimestampPageViews\TimerUpDownView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\TimestampPage\TimerView.xaml">
+        <MauiXaml Update="Components\Partials\Views\TimestampPageViews\TimerView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\TimestampPage\TimestampOutputView.xaml">
+        <MauiXaml Update="Components\Partials\Views\TimestampPageViews\TimestampOutputView.xaml">
           <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\CustomAlertPopup.xaml">
@@ -196,6 +196,7 @@
 
     <ItemGroup>
       <Folder Include="Components\Partials\Views\CommonViews\" />
+      <Folder Include="Components\Partials\Views\UserLookupViews\" />
     </ItemGroup>
 
 </Project>

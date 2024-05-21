@@ -20,6 +20,14 @@
         <toolkit:StatusBarBehavior StatusBarColor="{x:Static services:AppThemeColors.BackgroundColor}" StatusBarStyle="{x:Static services:AppThemeColors.StatusBarStyle}" />
     </Shell.Behaviors>
 
+    <ShellContent Route="UserLookupPage">
+        <ShellContent.ContentTemplate>
+            <DataTemplate>
+                <pages:UserLookupPage />
+            </DataTemplate>
+        </ShellContent.ContentTemplate>
+    </ShellContent>
+
     <ShellContent Route="MainPage">
         <ShellContent.ContentTemplate>
             <DataTemplate>

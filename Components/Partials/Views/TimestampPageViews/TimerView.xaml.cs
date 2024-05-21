@@ -1,7 +1,7 @@
 using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Partials.Events;
 
-namespace DiscordToolsApp.Components.Partials.Views.TimestampPage;
+namespace DiscordToolsApp.Components.Partials.Views.TimestampPageViews;
 
 public partial class TimerView : ContentView
 {

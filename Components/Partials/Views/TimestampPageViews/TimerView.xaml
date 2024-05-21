@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView
-    x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPage.TimerView"
+    x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPageViews.TimerView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
-    xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage"
+    xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPageViews"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPage">
+    xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPageViews">
     <VerticalStackLayout Spacing="10">
         <local:TimerUpDownView
             x:Name="MonthsView"
