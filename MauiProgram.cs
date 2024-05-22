@@ -1,10 +1,15 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
+
 using CommunityToolkit.Maui;
+
 using DiscordToolsApp.Handlers;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+
 using Plugin.MauiMTAdmob;
+
 using Syncfusion.Maui.Core.Hosting;
 
 namespace DiscordToolsApp
@@ -27,6 +32,10 @@ namespace DiscordToolsApp
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(
                 builder.Configuration.GetValue<string>("SYNCFUSION_KEY")
+            );
+
+            StaticPropertiesService.DiscordBotApiKey = builder.Configuration.GetValue<string>(
+                "DISCORD_API_KEY"
             );
 
 #if DEBUG

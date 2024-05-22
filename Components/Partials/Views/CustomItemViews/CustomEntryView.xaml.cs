@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Behaviors;
+
 namespace DiscordToolsApp.Components.Partials.Views.CustomItemViews;
 
 public partial class CustomEntryView : ContentView
@@ -127,6 +129,13 @@ public partial class CustomEntryView : ContentView
                 {
                     Input.Behaviors.Clear();
                     Input.Behaviors.Add(new InputBehaviors.WebhookUrlValidatorBehaviour());
+                }
+                else if (value is ValidationType.Numeric)
+                {
+                    Input.Behaviors.Clear();
+                    Input.Behaviors.Add(
+                        new CommunityToolkit.Maui.Behaviors.NumericValidationBehavior()
+                    );
                 }
                 else
                 {
@@ -270,4 +279,5 @@ public enum ValidationType
     Url,
     ImageUrl,
     WebhookUrl,
+    Numeric
 }
