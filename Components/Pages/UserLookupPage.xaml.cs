@@ -1,6 +1,7 @@
 using DiscordToolsApp.Components.Models;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DiscordToolsApp.Components.Pages;
 
@@ -24,7 +25,13 @@ public partial class UserLookupPage : ContentPage
             }
             catch
             {
-                _ = DisplayAlert("Warning!", "unknown id.", "Ok");
+                btnLookup.IsEnabled = true;
+                ApplicationService.HideLoadingView();
+                ApplicationService.ShowCustomAlert(
+                    "Error!",
+                    "Invalid User ID. Please enter a valid User ID.",
+                    "Ok"
+                );
                 return;
             }
 
@@ -59,19 +66,37 @@ public partial class UserLookupPage : ContentPage
                         ibView.Value = "Unverified Bot";
                 else
                     ibView.Value = "User";
+
+                if (user.avatar is not null)
+                    imgView.Avatar =
+                        $"https://cdn.discordapp.com/avatars/{user.id}/{user.avatar}?size=128";
+                else
+                    imgView.Avatar = string.Empty;
+
+                if (user.banner is not null)
+                    imgView.Banner =
+                        $"https://cdn.discordapp.com/banners/{user.id}/{user.banner}?size=512";
+                else
+                    imgView.Banner = string.Empty;
+
+                userDetailView.IsVisible = true;
+                entryId.Text = string.Empty;
             }
             else
             {
+                userDetailView.IsVisible = false;
                 var errorData = await res.Content.ReadAsStringAsync();
+                var error = JsonConvert.DeserializeObject<JObject>(errorData);
                 ApplicationService.ShowCustomAlert(
                     "Error!",
-                    "Something went wrong when attempting to get user details.",
+                    $"Something went wrong when attempting to get user details.\n\nResponse: {error["message"] ?? "-empty-"}",
                     "Ok"
                 );
             }
         }
         catch (Exception ex)
         {
+            userDetailView.IsVisible = false;
             ApplicationService.ShowCustomAlert("Error!", ex.Message, "Ok");
         }
         btnLookup.IsEnabled = true;

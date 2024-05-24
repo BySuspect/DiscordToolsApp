@@ -20,7 +20,6 @@
                         HasCharCounterText="False"
                         HorizontalOptions="Center"
                         Placeholder="User Id"
-                        Text="272665050672660501"
                         ValidationType="Numeric"
                         VerticalOptions="Center"
                         WidthRequest="200" />
@@ -37,14 +36,26 @@
                         VerticalOptions="Center"
                         WidthRequest="80" />
                 </StackLayout>
-                <StackLayout HorizontalOptions="Center" Spacing="10">
-                    <views:UserDataTextView x:Name="uidView" Title="User ID:" />
-                    <views:UserDataTextView x:Name="caView" Title="Created At:" />
-                    <views:UserDataTextView x:Name="unView" Title="User Name:" />
-                    <views:UserDataTextView x:Name="gnView" Title="Global Name:" />
-                    <views:UserDataTextView x:Name="ibView" Title="Is Bot:" />
-                    <views:UserDataBadgesView x:Name="badgesView" Title="Badges:" />
-                </StackLayout>
+                <Frame
+                    x:Name="userDetailView"
+                    Padding="0"
+                    BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                    CornerRadius="10"
+                    HorizontalOptions="Center"
+                    IsVisible="False">
+                    <StackLayout>
+                        <views:UserDataImagesView x:Name="imgView" />
+                        <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                        <StackLayout Margin="10">
+                            <views:UserDataTextView x:Name="uidView" Title="User ID:" />
+                            <views:UserDataTextView x:Name="caView" Title="Created At:" />
+                            <views:UserDataTextView x:Name="unView" Title="User Name:" />
+                            <views:UserDataTextView x:Name="gnView" Title="Global Name:" />
+                            <views:UserDataTextView x:Name="ibView" Title="Is Bot:" />
+                            <views:UserDataBadgesView x:Name="badgesView" Title="Badges:" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </StackLayout>

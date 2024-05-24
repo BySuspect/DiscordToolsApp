@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
+
 using DiscordToolsApp.Components.Popups.Common;
 
 namespace DiscordToolsApp.Services
@@ -56,9 +57,9 @@ namespace DiscordToolsApp.Services
             Task.Run(() => showShortToast(text));
         }
 
-        private static Task showShortToast(string text)
+        private static async Task showShortToast(string text)
         {
-            return Toast.Make(text, ToastDuration.Short).Show();
+            await Toast.Make(text, ToastDuration.Short).Show();
         }
 
         public static async Task ShowLongToastAsync(string text)
@@ -71,9 +72,9 @@ namespace DiscordToolsApp.Services
             Task.Run(() => showLongToast(text));
         }
 
-        public static Task showLongToast(string text)
+        public static async Task showLongToast(string text)
         {
-            return Toast.Make(text, ToastDuration.Long).Show();
+            await Toast.Make(text, ToastDuration.Long).Show();
         }
         #endregion
 

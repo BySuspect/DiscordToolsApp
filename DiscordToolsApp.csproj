@@ -200,6 +200,9 @@
         <MauiXaml Update="Components\Partials\Views\UserLookupViews\UserDataBadgesView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\UserLookupViews\UserDataImagesView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\UserLookupViews\UserDataTextView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
@@ -208,6 +211,9 @@
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\CustomInputPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Popups\Common\ImageViewPopup.xaml">
+          <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\LoadingViewPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
