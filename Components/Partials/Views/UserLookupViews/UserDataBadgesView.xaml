@@ -20,7 +20,7 @@
             Text="{Binding Title}"
             TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
             VerticalOptions="Center" />
-        <toolkit:UniformItemsLayout 
+        <toolkit:UniformItemsLayout
             BindableLayout.ItemsSource="{Binding Value}"
             HorizontalOptions="Start"
             MaxColumns="7">

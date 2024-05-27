@@ -1,19 +1,19 @@
 using DiscordToolsApp.Components.Popups.Common;
 
-namespace DiscordToolsApp.Components.Partials.Views.UserLookupViews;
+namespace DiscordToolsApp.Components.Partials.Views.Shared;
 
-public partial class UserDataImagesView : ContentView
+public partial class AvatarAndBannerView : ContentView
 {
     #region Avatar Binding
     public static readonly BindableProperty AvatarProperty = BindableProperty.Create(
         nameof(Avatar),
         typeof(string),
-        typeof(UserDataImagesView),
+        typeof(AvatarAndBannerView),
         defaultValue: string.Empty,
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanged: (bindable, oldValue, newValue) =>
         {
-            var view = (UserDataImagesView)bindable;
+            var view = (AvatarAndBannerView)bindable;
 
             if (string.IsNullOrWhiteSpace((string?)newValue))
                 view.Avatar = "discordlogo.png";
@@ -34,18 +34,18 @@ public partial class UserDataImagesView : ContentView
     public static readonly BindableProperty BannerProperty = BindableProperty.Create(
         nameof(Banner),
         typeof(string),
-        typeof(UserDataImagesView),
+        typeof(AvatarAndBannerView),
         defaultValue: string.Empty,
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanged: (bindable, oldValue, newValue) =>
         {
-            var view = (UserDataImagesView)bindable;
+            var view = (AvatarAndBannerView)bindable;
             if (string.IsNullOrWhiteSpace((string?)newValue))
             {
-                view.userDetailBannerView.IsVisible = false;
+                view.BannerView.IsVisible = false;
             }
             else
-                view.userDetailBannerView.IsVisible = true;
+                view.BannerView.IsVisible = true;
         }
     );
     public string Banner
@@ -59,7 +59,7 @@ public partial class UserDataImagesView : ContentView
     }
     #endregion
 
-    public UserDataImagesView()
+    public AvatarAndBannerView()
     {
         InitializeComponent();
         BindingContext = this;
@@ -72,7 +72,7 @@ public partial class UserDataImagesView : ContentView
 
     private void Banner_Tapped(object sender, TappedEventArgs e)
     {
-        if (userDetailBannerView.IsVisible)
+        if (BannerView.IsVisible)
             ApplicationService.ShowPopup(new ImageViewPopup(Banner.Split('?')[0] + "?size=1024"));
     }
 }

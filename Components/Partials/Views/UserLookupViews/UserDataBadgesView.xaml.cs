@@ -25,7 +25,7 @@ public partial class UserDataBadgesView : ContentView
     public static readonly BindableProperty ValueProperty = BindableProperty.Create(
         nameof(Value),
         typeof(string[]),
-        typeof(UserDataTextView),
+        typeof(UserDataBadgesView),
         defaultValue: null,
         defaultBindingMode: BindingMode.TwoWay
     );

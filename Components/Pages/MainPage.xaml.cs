@@ -1,4 +1,5 @@
 using System.Security.AccessControl;
+
 using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Partials.Views.MainPageViews;
 
@@ -27,6 +28,11 @@ public partial class MainPage : ContentPage
             case MainPageButtonsPageTypeModel.UserLookupPage:
                 ApplicationService.ActivePage = "UserLookupPage";
                 await Shell.Current.GoToAsync("//UserLookupPage", true);
+                break;
+
+            case MainPageButtonsPageTypeModel.InviteLookupPage:
+                ApplicationService.ActivePage = "InviteLookupPage";
+                await Shell.Current.GoToAsync("//InviteLookupPage", true);
                 break;
 
             case MainPageButtonsPageTypeModel.Empty:

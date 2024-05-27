@@ -5,8 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:UserLookupViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.UserLookupViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:sharedViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.Shared"
     xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.UserLookupViews">
@@ -44,14 +46,14 @@
                     HorizontalOptions="Center"
                     IsVisible="False">
                     <StackLayout>
-                        <views:UserDataImagesView x:Name="imgView" />
+                        <sharedViews:AvatarAndBannerView x:Name="imgView" />
                         <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
                         <StackLayout Margin="10">
-                            <views:UserDataTextView x:Name="uidView" Title="User ID:" />
-                            <views:UserDataTextView x:Name="caView" Title="Created At:" />
-                            <views:UserDataTextView x:Name="unView" Title="User Name:" />
-                            <views:UserDataTextView x:Name="gnView" Title="Global Name:" />
-                            <views:UserDataTextView x:Name="ibView" Title="Is Bot:" />
+                            <sharedViews:NameAndValueTextView x:Name="uidView" Title="User ID:" />
+                            <sharedViews:NameAndValueTextView x:Name="caView" Title="Created At:" />
+                            <sharedViews:NameAndValueTextView x:Name="unView" Title="User Name:" />
+                            <sharedViews:NameAndValueTextView x:Name="gnView" Title="Global Name:" />
+                            <sharedViews:NameAndValueTextView x:Name="ibView" Title="Is Bot:" />
                             <views:UserDataBadgesView x:Name="badgesView" Title="Badges:" />
                         </StackLayout>
                     </StackLayout>

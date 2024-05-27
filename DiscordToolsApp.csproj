@@ -185,6 +185,12 @@
         <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomLoadingView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\Shared\AvatarAndBannerView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\Shared\NameAndValueTextView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\TimestampPageViews\DateView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
@@ -198,12 +204,6 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\UserLookupViews\UserDataBadgesView.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\UserLookupViews\UserDataImagesView.xaml">
-          <Generator>MSBuild:Compile</Generator>
-        </MauiXaml>
-        <MauiXaml Update="Components\Partials\Views\UserLookupViews\UserDataTextView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\CustomAlertPopup.xaml">
@@ -224,7 +224,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Components\Partials\Views\InviteLookupViews\" />
+      <Folder Include="Components\Partials\Views\InviteLookupViews\" />
     </ItemGroup>
 
 </Project>

@@ -1,12 +1,12 @@
-namespace DiscordToolsApp.Components.Partials.Views.UserLookupViews;
+namespace DiscordToolsApp.Components.Partials.Views.Shared;
 
-public partial class UserDataTextView : ContentView
+public partial class NameAndValueTextView : ContentView
 {
     #region Title Binding
     public static readonly BindableProperty TitleProperty = BindableProperty.Create(
         nameof(Title),
         typeof(string),
-        typeof(UserDataTextView),
+        typeof(NameAndValueTextView),
         defaultValue: string.Empty,
         defaultBindingMode: BindingMode.TwoWay
     );
@@ -25,7 +25,7 @@ public partial class UserDataTextView : ContentView
     public static readonly BindableProperty ValueProperty = BindableProperty.Create(
         nameof(Value),
         typeof(string),
-        typeof(UserDataTextView),
+        typeof(NameAndValueTextView),
         defaultValue: string.Empty,
         defaultBindingMode: BindingMode.TwoWay
     );
@@ -39,8 +39,7 @@ public partial class UserDataTextView : ContentView
         }
     }
     #endregion
-
-    public UserDataTextView()
+    public NameAndValueTextView()
     {
         InitializeComponent();
         BindingContext = this;
