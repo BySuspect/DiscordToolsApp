@@ -167,6 +167,9 @@
         <MauiXaml Update="Components\Pages\UserLookupPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\InviteLookupViews\ImagesView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\MainPageViews\MainPagCustomButtonView.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
@@ -189,6 +192,9 @@
           <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\Shared\NameAndValueTextView.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Partials\Views\Shared\UserDetailView.xaml">
           <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\TimestampPageViews\DateView.xaml">
@@ -221,10 +227,6 @@
         <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Components\Partials\Views\InviteLookupViews\" />
     </ItemGroup>
 
 </Project>

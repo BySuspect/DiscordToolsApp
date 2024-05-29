@@ -14,14 +14,23 @@
         <Label
             FontSize="Caption"
             HorizontalOptions="Start"
+            Opacity="0.8"
             Text="{Binding Title}"
             TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
-            VerticalOptions="Center" />
+            VerticalOptions="Start" />
         <Label
+            x:Name="lblValue"
             FontSize="Caption"
             HorizontalOptions="Start"
+            LineBreakMode="WordWrap"
+            MaximumWidthRequest="250"
             Text="{Binding Value}"
             TextColor="{x:Static services:AppThemeColors.TextColor}"
-            VerticalOptions="Center" />
+            TextTransform="Default"
+            VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CopyValue_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
     </StackLayout>
 </ContentView>

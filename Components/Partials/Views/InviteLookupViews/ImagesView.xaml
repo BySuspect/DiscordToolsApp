@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="DiscordToolsApp.Components.Partials.Views.InviteLookupViews.ImagesView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
+    xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.UserLookupViews"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <StackLayout>
+        <StackLayout
+            x:Name="iconView"
+            Margin="0,5"
+            IsVisible="False">
+            <Label
+                Margin="10,0"
+                FontSize="Caption"
+                HorizontalOptions="Start"
+                Opacity="0.8"
+                Text="Server Icon:"
+                TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                VerticalOptions="Start" />
+            <Frame
+                Margin="0,10"
+                Padding="0"
+                CornerRadius="360"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Grid>
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="True"
+                        IsVisible="{Binding Source={x:Reference imgView}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                        VerticalOptions="Center"
+                        Color="{x:Static services:AppThemeColors.TextColor}" />
+                    <CustomItems:CustomImage
+                        x:Name="imgIcon"
+                        IsAnimationPlaying="True"
+                        Source="{Binding IconSource}"
+                        WidthRequest="200" />
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Icon_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+        </StackLayout>
+        <StackLayout
+            x:Name="bannerView"
+            Margin="0,5"
+            IsVisible="False">
+            <Label
+                Margin="10,0"
+                FontSize="Caption"
+                HorizontalOptions="Start"
+                Opacity="0.8"
+                Text="Server Banner:"
+                TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                VerticalOptions="Start" />
+            <Frame
+                Margin="0,10"
+                Padding="0"
+                CornerRadius="15"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Grid>
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="True"
+                        IsVisible="{Binding Source={x:Reference imgBanner}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                        VerticalOptions="Center"
+                        Color="{x:Static services:AppThemeColors.TextColor}" />
+                    <CustomItems:CustomImage
+                        x:Name="imgBanner"
+                        IsAnimationPlaying="True"
+                        Source="{Binding BannerSource}"
+                        WidthRequest="250" />
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Banner_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+        </StackLayout>
+        <StackLayout
+            x:Name="splashView"
+            Margin="0,5"
+            IsVisible="False">
+            <Label
+                Margin="10,0"
+                FontSize="Caption"
+                HorizontalOptions="Start"
+                Opacity="0.8"
+                Text="Server Splash:"
+                TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                VerticalOptions="Start" />
+            <Frame
+                Margin="0,10"
+                Padding="0"
+                CornerRadius="15"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Grid>
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="True"
+                        IsVisible="{Binding Source={x:Reference imgSplash}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                        VerticalOptions="Center"
+                        Color="{x:Static services:AppThemeColors.TextColor}" />
+                    <CustomItems:CustomImage
+                        x:Name="imgSplash"
+                        IsAnimationPlaying="True"
+                        Source="{Binding SplashSource}"
+                        WidthRequest="250" />
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Splash_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+        </StackLayout>
+    </StackLayout>
+</ContentView>

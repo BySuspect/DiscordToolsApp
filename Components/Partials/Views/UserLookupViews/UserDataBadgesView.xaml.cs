@@ -27,7 +27,17 @@ public partial class UserDataBadgesView : ContentView
         typeof(string[]),
         typeof(UserDataBadgesView),
         defaultValue: null,
-        defaultBindingMode: BindingMode.TwoWay
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var control = (UserDataBadgesView)bindable;
+            if (newValue is null)
+                control.IsVisible = false;
+            else if ((newValue as string[]).Length == 0)
+                control.IsVisible = false;
+            else
+                control.IsVisible = true;
+        }
     );
     public string[] Value
     {

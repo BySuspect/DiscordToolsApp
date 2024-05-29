@@ -43,7 +43,7 @@ namespace DiscordToolsApp.Components.Partials.InputBehaviors
             }
         }
 
-        private bool regexMatchs(string text)
+        public static bool regexMatchs(string text)
         {
             return Regex.IsMatch(text, pattern, RegexOptions.IgnoreCase);
         }

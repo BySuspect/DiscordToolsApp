@@ -20,14 +20,6 @@
         <toolkit:StatusBarBehavior StatusBarColor="{x:Static services:AppThemeColors.BackgroundColor}" StatusBarStyle="{x:Static services:AppThemeColors.StatusBarStyle}" />
     </Shell.Behaviors>
 
-    <ShellContent Route="InviteLookupPage">
-        <ShellContent.ContentTemplate>
-            <DataTemplate>
-                <pages:InviteLookupPage />
-            </DataTemplate>
-        </ShellContent.ContentTemplate>
-    </ShellContent>
-
     <ShellContent Route="MainPage">
         <ShellContent.ContentTemplate>
             <DataTemplate>
@@ -48,6 +40,14 @@
         <ShellContent.ContentTemplate>
             <DataTemplate>
                 <pages:UserLookupPage />
+            </DataTemplate>
+        </ShellContent.ContentTemplate>
+    </ShellContent>
+
+    <ShellContent Route="InviteLookupPage">
+        <ShellContent.ContentTemplate>
+            <DataTemplate>
+                <pages:InviteLookupPage />
             </DataTemplate>
         </ShellContent.ContentTemplate>
     </ShellContent>

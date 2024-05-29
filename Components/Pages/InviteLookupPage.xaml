@@ -21,7 +21,6 @@
                         HasCharCounterText="False"
                         HorizontalOptions="Center"
                         Placeholder="Invite Url"
-                        Text="https://discord.com/invite/aX4unxzZek"
                         ValidationType="Url"
                         VerticalOptions="Center"
                         WidthRequest="200" />
@@ -39,15 +38,47 @@
                         WidthRequest="80" />
                 </StackLayout>
                 <Frame
-                    x:Name="ServerDetailView"
+                    x:Name="InviteDetailView"
                     Padding="0"
                     BorderColor="{x:Static services:AppThemeColors.BorderColor}"
                     CornerRadius="10"
                     HorizontalOptions="Center"
-                    IsVisible="True">
+                    IsVisible="False"
+                    MinimumWidthRequest="350">
                     <StackLayout>
-                        <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
-                        <StackLayout Margin="10" />
+                        <views:ImagesView x:Name="imgView" />
+                        <StackLayout Margin="10" Spacing="5">
+                            <sharedViews:NameAndValueTextView x:Name="InvlinkView" Title="Invite Link:" />
+                            <sharedViews:NameAndValueTextView x:Name="VanitylinkView" Title="Vanity Invite Link:" />
+                            <sharedViews:NameAndValueTextView x:Name="TRView" Title="Time Remaining:" />
+                            <sharedViews:NameAndValueTextView x:Name="InvType" Title="Invite Type:" />
+                            <sharedViews:NameAndValueTextView x:Name="SIdView" Title="Server Id:" />
+                            <sharedViews:NameAndValueTextView x:Name="SNameView" Title="Server Name:" />
+                            <sharedViews:NameAndValueTextView x:Name="SDescView" Title="Server Description:" />
+                            <sharedViews:NameAndValueTextView x:Name="SCAView" Title="Server Created At:" />
+                            <sharedViews:NameAndValueTextView x:Name="SFeatView" Title="Server Features:" />
+                            <sharedViews:NameAndValueTextView x:Name="SVerifView" Title="Verification Level:" />
+                            <sharedViews:NameAndValueTextView x:Name="SMCountView" Title="Members Count:" />
+                            <sharedViews:NameAndValueTextView x:Name="SOMCountView" Title="Online Members Count:" />
+                            <sharedViews:NameAndValueTextView x:Name="SNCountView" Title="Nitro Count:" />
+                            <sharedViews:NameAndValueTextView x:Name="NSFWEnabledView" Title="NSFW:" />
+                            <sharedViews:NameAndValueTextView x:Name="NSFWLevelView" Title="NSFW Level:" />
+                            <sharedViews:NameAndValueTextView x:Name="SCId" Title="Channel Id:" />
+                            <sharedViews:NameAndValueTextView x:Name="SCType" Title="Channel Type:" />
+                            <sharedViews:NameAndValueTextView x:Name="SCName" Title="Channel Name:" />
+                            <StackLayout IsVisible="{Binding Source={x:Reference inviterDetailsView}, Path=IsVisible}" Spacing="5">
+                                <Label
+                                    FontSize="Caption"
+                                    HorizontalOptions="Start"
+                                    Opacity="0.8"
+                                    Text="Inviter:"
+                                    TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                                    VerticalOptions="Start" />
+                                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                                <sharedViews:UserDetailView x:Name="inviterDetailsView" />
+                            </StackLayout>
+                        </StackLayout>
+
                     </StackLayout>
                 </Frame>
             </StackLayout>

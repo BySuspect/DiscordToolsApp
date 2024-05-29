@@ -37,7 +37,7 @@
                                 <models:MainPageButtonsModel
                                     Image="icons/soonicon.png"
                                     PageType="Empty"
-                                    Text="Coming Soon..." />
+                                    Text="Suggest a tool idea" />
                             </x:Array>
                         </BindableLayout.ItemsSource>
                         <BindableLayout.ItemTemplate>

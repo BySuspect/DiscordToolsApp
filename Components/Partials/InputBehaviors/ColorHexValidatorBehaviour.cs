@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+
 using DiscordToolsApp.Services;
 
 namespace DiscordToolsApp.Components.Partials.InputBehaviors
@@ -42,7 +43,7 @@ namespace DiscordToolsApp.Components.Partials.InputBehaviors
             }
         }
 
-        private bool regexMatchs(string text)
+        public static bool regexMatchs(string text)
         {
             string pattern = @"^#([A-Fa-f0-9]{6})$";
             return Regex.IsMatch(text, pattern, RegexOptions.IgnoreCase);
