@@ -161,6 +161,9 @@
         <MauiXaml Update="Components\Pages\InviteLookupPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
+        <MauiXaml Update="Components\Pages\TextToEmojiPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
         <MauiXaml Update="Components\Pages\TimeStampGeneratorPage.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>

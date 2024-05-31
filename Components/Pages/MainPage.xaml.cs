@@ -34,6 +34,10 @@ public partial class MainPage : ContentPage
                 ApplicationService.ActivePage = "InviteLookupPage";
                 await Shell.Current.GoToAsync("//InviteLookupPage", true);
                 break;
+            case MainPageButtonsPageTypeModel.TextToEmojiPage:
+                ApplicationService.ActivePage = "TextToEmojiPage";
+                await Shell.Current.GoToAsync("//TextToEmojiPage", true);
+                break;
 
             case MainPageButtonsPageTypeModel.Empty:
                 break;

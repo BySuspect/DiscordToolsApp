@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services">
 
     <Style TargetType="ScrollView">
         <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
@@ -16,10 +19,27 @@
 
     <Style TargetType="Frame">
         <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BorderColor" Value="{x:Static services:AppThemeColors.BorderColor}" />
     </Style>
 
     <Style TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="TextColor" Value="{x:Static services:AppThemeColors.TextColor}" />
     </Style>
+
+    <Style TargetType="Editor">
+        <Setter Property="TextColor" Value="{x:Static services:AppThemeColors.TextColor}" />
+        <Setter Property="PlaceholderColor" Value="{x:Static services:AppThemeColors.PlaceholderTextColor}" />
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{x:Static services:AppThemeColors.TextColor}" />
+        <Setter Property="PlaceholderColor" Value="{x:Static services:AppThemeColors.PlaceholderTextColor}" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="TextColor" Value="{x:Static services:AppThemeColors.TextColor}" />
+    </Style>
+
 </ResourceDictionary>

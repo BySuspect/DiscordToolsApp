@@ -52,4 +52,11 @@
         </ShellContent.ContentTemplate>
     </ShellContent>
 
+    <ShellContent Route="TextToEmojiPage">
+        <ShellContent.ContentTemplate>
+            <DataTemplate>
+                <pages:TextToEmojiPage />
+            </DataTemplate>
+        </ShellContent.ContentTemplate>
+    </ShellContent>
 </Shell>
