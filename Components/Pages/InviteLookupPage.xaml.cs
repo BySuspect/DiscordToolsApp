@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 using DiscordToolsApp.Components.Models;
+using DiscordToolsApp.Helpers;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -40,7 +41,7 @@ public partial class InviteLookupPage : ContentPage
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add(
                 "Authorization",
-                $"Bot {StaticPropertiesService.DiscordBotApiKey}"
+                $"Bot {EncryptionHelper.Decrypt(StaticPropertiesService.DiscordBotApiKey)}"
             );
 
             var res = await client.GetAsync(

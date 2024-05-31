@@ -1,4 +1,5 @@
 using DiscordToolsApp.Components.Models;
+using DiscordToolsApp.Helpers;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -39,7 +40,7 @@ public partial class UserLookupPage : ContentPage
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add(
                 "Authorization",
-                $"Bot {StaticPropertiesService.DiscordBotApiKey}"
+                $"Bot {EncryptionHelper.Decrypt(StaticPropertiesService.DiscordBotApiKey)}"
             );
 
             var res = await client.GetAsync($"https://discord.com/api/users/{uID}");

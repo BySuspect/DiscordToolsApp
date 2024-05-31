@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using CommunityToolkit.Maui;
 
 using DiscordToolsApp.Handlers;
+using DiscordToolsApp.Helpers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -34,11 +35,11 @@ namespace DiscordToolsApp
                 builder.Configuration.GetValue<string>("SYNCFUSION_KEY")
             );
 
-            StaticPropertiesService.DiscordBotApiKey = builder.Configuration.GetValue<string>(
-                "DISCORD_API_KEY"
+            StaticPropertiesService.DiscordBotApiKey = EncryptionHelper.Encrypt(
+                builder.Configuration.GetValue<string>("DISCORD_API_KEY")
             );
-            StaticPropertiesService.SuggestIdeaWebhookUrl = builder.Configuration.GetValue<string>(
-                "SUGGEST_IDEA_WEBHOOK_URL"
+            StaticPropertiesService.SuggestIdeaWebhookUrl = EncryptionHelper.Encrypt(
+                builder.Configuration.GetValue<string>("SUGGEST_IDEA_WEBHOOK_URL")
             );
 
 #if DEBUG

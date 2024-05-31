@@ -2,6 +2,8 @@ using System.Text;
 
 using CommunityToolkit.Maui.Views;
 
+using DiscordToolsApp.Helpers;
+
 using Newtonsoft.Json;
 
 namespace DiscordToolsApp.Components.Popups.Feedback;
@@ -71,7 +73,7 @@ public partial class SuggestToolIdePopup : Popup
             using (var httpClient = new HttpClient())
             {
                 var httpRes = await httpClient.PostAsync(
-                    StaticPropertiesService.SuggestIdeaWebhookUrl,
+                    EncryptionHelper.Decrypt(StaticPropertiesService.SuggestIdeaWebhookUrl),
                     content
                 );
                 if (httpRes.IsSuccessStatusCode)
