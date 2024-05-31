@@ -1,4 +1,5 @@
 ﻿using DiscordToolsApp.Components.Pages;
+using DiscordToolsApp.Components.Popups.Common;
 
 namespace DiscordToolsApp
 {
@@ -7,6 +8,8 @@ namespace DiscordToolsApp
         public AppShell()
         {
             InitializeComponent();
+            if (Preferences.Get("PrivacyPolicyV1Accepted", false))
+                ApplicationService.ShowPopup(new PrivacyPolicyPopup());
         }
 
         protected override bool OnBackButtonPressed()

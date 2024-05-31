@@ -134,6 +134,7 @@
         <None Remove="Resources\Images\badges\verified_developer.png" />
         <None Remove="Resources\Images\discordlogo.png" />
         <None Remove="Resources\Images\icons\copyicon.png" />
+        <None Remove="Resources\Images\icons\ideaicon.png" />
         <None Remove="Resources\Images\icons\soonicon.png" />
         <None Remove="Resources\Images\icons\texticon.png" />
         <None Remove="Resources\Splash\splash_logo.png" />
@@ -229,6 +230,9 @@
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Popups\Feedback\SuggestToolIdePopup.xaml">
+          <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
     </ItemGroup>
 

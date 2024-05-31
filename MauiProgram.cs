@@ -37,6 +37,9 @@ namespace DiscordToolsApp
             StaticPropertiesService.DiscordBotApiKey = builder.Configuration.GetValue<string>(
                 "DISCORD_API_KEY"
             );
+            StaticPropertiesService.SuggestIdeaWebhookUrl = builder.Configuration.GetValue<string>(
+                "SUGGEST_IDEA_WEBHOOK_URL"
+            );
 
 #if DEBUG
             builder.Logging.AddDebug();

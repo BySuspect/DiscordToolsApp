@@ -11,6 +11,7 @@
     <VerticalStackLayout>
         <Frame
             BackgroundColor="#77767676"
+            BorderColor="Transparent"
             CornerRadius="15"
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="CenterAndExpand">

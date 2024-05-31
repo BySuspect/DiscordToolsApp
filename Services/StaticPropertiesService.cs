@@ -9,5 +9,6 @@ namespace DiscordToolsApp.Services
     public static class StaticPropertiesService
     {
         public static string? DiscordBotApiKey { get; set; }
+        public static string? SuggestIdeaWebhookUrl { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace DiscordToolsApp.Components.Models
     public enum MainPageButtonsPageTypeModel
     {
         Empty,
+        Custom,
         MainPage,
         UserLookupPage,
         InviteLookupPage,

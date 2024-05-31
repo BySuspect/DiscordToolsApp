@@ -1,7 +1,6 @@
-using System.Security.AccessControl;
-
 using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Partials.Views.MainPageViews;
+using DiscordToolsApp.Components.Popups.Feedback;
 
 namespace DiscordToolsApp.Components.Pages;
 
@@ -37,6 +36,19 @@ public partial class MainPage : ContentPage
             case MainPageButtonsPageTypeModel.TextToEmojiPage:
                 ApplicationService.ActivePage = "TextToEmojiPage";
                 await Shell.Current.GoToAsync("//TextToEmojiPage", true);
+                break;
+
+            case MainPageButtonsPageTypeModel.Custom:
+#if !DEBUG
+                if (Preferences.Get("toolSuggestDate", DateTime.MinValue).Date == DateTime.Now.Date)
+                    ApplicationService.ShowCustomAlert(
+                        "Warning!",
+                        "You can send Daily 1 Suggestion.",
+                        "Ok"
+                    );
+                else
+#endif
+                ApplicationService.ShowPopup(new SuggestToolIdePopup());
                 break;
 
             case MainPageButtonsPageTypeModel.Empty:
