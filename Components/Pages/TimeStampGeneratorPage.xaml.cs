@@ -1,4 +1,5 @@
 using DiscordToolsApp.Components.Partials.CustomItems;
+
 using Newtonsoft.Json;
 
 namespace DiscordToolsApp.Components.Pages;
@@ -232,17 +233,17 @@ public partial class TimeStampGeneratorPage : ContentPage
             return value + 1;
     }
 
-    private void TabItemTapped(object sender, Syncfusion.Maui.TabView.TabItemTappedEventArgs e)
-    {
-        switch (e.TabItem.Header)
-        {
-            case "Timer":
-                mode = "timer";
-                break;
+    //private void TabItemTapped(object sender, Syncfusion.Maui.TabView.TabItemTappedEventArgs e)
+    //{
+    //    switch (e.TabItem.Header)
+    //    {
+    //        case "Timer":
+    //            mode = "timer";
+    //            break;
 
-            case "Date & Time":
-                mode = "datetime";
-                break;
-        }
-    }
+    //        case "Date & Time":
+    //            mode = "datetime";
+    //            break;
+    //    }
+    //}
 }

@@ -7,7 +7,6 @@
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
-    xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPageViews"
     BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
@@ -21,43 +20,25 @@
                     BorderColor="{x:Static services:AppThemeColors.BorderColor}"
                     CornerRadius="15">
                     <StackLayout>
-                        <tabView:SfTabView TabItemTapped="TabItemTapped">
-                            <tabView:SfTabView.Items>
-                                <tabView:SfTabItem
-                                    FontSize="Caption"
-                                    Header="Timer"
-                                    TextColor="{x:Static services:AppThemeColors.TextColor}">
-                                    <tabView:SfTabItem.Content>
-                                        <VerticalStackLayout>
-                                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
-                                            <views:TimerView
-                                                x:Name="timerView"
-                                                Margin="20,10"
-                                                TimestampChanged="TimestampChanged"
-                                                VerticalOptions="CenterAndExpand" />
-                                        </VerticalStackLayout>
-                                    </tabView:SfTabItem.Content>
-                                </tabView:SfTabItem>
-                                <tabView:SfTabItem
-                                    FontSize="Caption"
-                                    Header="Date &amp; Time"
-                                    TextColor="{x:Static services:AppThemeColors.TextColor}">
-                                    <tabView:SfTabItem.Content>
-                                        <StackLayout>
-                                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
-                                            <views:DateView x:Name="dateView" VerticalOptions="CenterAndExpand" />
-                                            <Label
-                                                FontSize="Micro"
-                                                HorizontalOptions="Center"
-                                                Opacity="0.8"
-                                                Text="This date and time selection view is bad i know i will change it."
-                                                TextColor="Gray"
-                                                VerticalOptions="End" />
-                                        </StackLayout>
-                                    </tabView:SfTabItem.Content>
-                                </tabView:SfTabItem>
-                            </tabView:SfTabView.Items>
-                        </tabView:SfTabView>
+                        <VerticalStackLayout>
+                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                            <views:TimerView
+                                x:Name="timerView"
+                                Margin="20,10"
+                                TimestampChanged="TimestampChanged"
+                                VerticalOptions="CenterAndExpand" />
+                        </VerticalStackLayout>
+                        <StackLayout IsVisible="False">
+                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                            <views:DateView x:Name="dateView" VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Opacity="0.8"
+                                Text="This date and time selection view is bad i know i will change it."
+                                TextColor="Gray"
+                                VerticalOptions="End" />
+                        </StackLayout>
 
                         <BoxView
                             Margin="0,5"

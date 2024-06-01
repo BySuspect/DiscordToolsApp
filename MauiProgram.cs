@@ -11,8 +11,6 @@ using Microsoft.Extensions.Logging;
 
 using Plugin.MauiMTAdmob;
 
-using Syncfusion.Maui.Core.Hosting;
-
 namespace DiscordToolsApp
 {
     public static class MauiProgram
@@ -20,20 +18,12 @@ namespace DiscordToolsApp
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .UseMauiMTAdmob()
-                .ConfigureSyncfusionCore()
-                .UseMauiCommunityToolkit();
+            builder.UseMauiApp<App>().UseMauiMTAdmob().UseMauiCommunityToolkit();
 
             builder.AddEnvJson();
 
             FormHandler.RemoveBorders();
             AppThemeService.SetTheme(AppThemeTypes.Discord);
-
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(
-                builder.Configuration.GetValue<string>("SYNCFUSION_KEY")
-            );
 
             StaticPropertiesService.DiscordBotApiKey = EncryptionHelper.Encrypt(
                 builder.Configuration.GetValue<string>("DISCORD_API_KEY")
