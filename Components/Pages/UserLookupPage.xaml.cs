@@ -13,6 +13,12 @@ public partial class UserLookupPage : ContentPage
         InitializeComponent();
     }
 
+    protected override void OnAppearing()
+    {
+        userDetailView.IsVisible = false;
+        base.OnAppearing();
+    }
+
     private async void btnLookup_Clicked(object sender, EventArgs e)
     {
         ApplicationService.ShowLoadingView();

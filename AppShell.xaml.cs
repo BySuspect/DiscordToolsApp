@@ -8,8 +8,11 @@ namespace DiscordToolsApp
         public AppShell()
         {
             InitializeComponent();
-            if (Preferences.Get("PrivacyPolicyV1Accepted", false))
-                ApplicationService.ShowPopup(new PrivacyPolicyPopup());
+            Routing.RegisterRoute("MainPage", typeof(MainPage));
+            Routing.RegisterRoute("TimeStampGeneratorPage", typeof(TimeStampGeneratorPage));
+            Routing.RegisterRoute("UserLookupPage", typeof(UserLookupPage));
+            Routing.RegisterRoute("InviteLookupPage", typeof(InviteLookupPage));
+            Routing.RegisterRoute("TextToEmojiPage", typeof(TextToEmojiPage));
         }
 
         protected override bool OnBackButtonPressed()
@@ -17,7 +20,7 @@ namespace DiscordToolsApp
             if (Shell.Current.CurrentPage is not MainPage)
             {
                 ApplicationService.ActivePage = "MainPage";
-                Shell.Current.GoToAsync("//MainPage", true);
+                Shell.Current.Navigation.PopAsync(true);
                 return true;
             }
 

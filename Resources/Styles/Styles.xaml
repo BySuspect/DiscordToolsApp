@@ -10,6 +10,7 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Never" />
         <Setter Property="VerticalOptions" Value="FillAndExpand" />
     </Style>
+
     <Style TargetType="ListView">
         <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
         <Setter Property="VerticalScrollBarVisibility" Value="Never" />
@@ -26,6 +27,10 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="TextColor" Value="{x:Static services:AppThemeColors.TextColor}" />
+    </Style>
+
+    <Style TargetType="Image">
+        <Setter Property="IsAnimationPlaying" Value="True" />
     </Style>
 
     <Style TargetType="Editor">

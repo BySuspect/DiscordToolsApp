@@ -24,7 +24,7 @@
                         <ActivityIndicator
                             HorizontalOptions="Center"
                             IsRunning="True"
-                            IsVisible="{Binding Source={x:Reference imgView}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                            IsVisible="{Binding Source={x:Reference imgView}, Path=IsImageLoaded, Converter={toolkit:InvertedBoolConverter}}"
                             VerticalOptions="Center"
                             Color="{x:Static services:AppThemeColors.TextColor}" />
                         <CustomItems:CustomImage

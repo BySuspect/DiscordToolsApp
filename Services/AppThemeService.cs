@@ -51,7 +51,7 @@ namespace DiscordToolsApp.Services
             AppThemeColors.TextBackColor = Color.Parse("#665E5E5E");
             AppThemeColors.PlaceholderTextColor = Color.Parse("#98aab5");
             AppThemeColors.BorderColor = Color.Parse("#98aab5");
-            AppThemeColors.BackgroundColor = Color.Parse("#09090E");
+            AppThemeColors.BackgroundColor = Color.Parse("#14181B");
             AppThemeColors.StatusBarStyle = StatusBarStyle.LightContent;
             AppThemeColors.backgroundImg = null;
         }

@@ -154,7 +154,7 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="Plugin.MauiMTAdmob" Version="1.4.2" />
-        <PackageReference Include="Syncfusion.Maui.TabView" Version="25.2.4" />
+        <PackageReference Include="Syncfusion.Maui.TabView" Version="25.2.6" />
         <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="8.13.0.3" />
     </ItemGroup>
 
@@ -163,7 +163,7 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Pages\TextToEmojiPage.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Pages\TimeStampGeneratorPage.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -172,7 +172,7 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\InviteLookupViews\ImagesView.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\MainPageViews\MainPagCustomButtonView.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -193,13 +193,13 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\Shared\AvatarAndBannerView.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\Shared\NameAndValueTextView.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\Shared\UserDetailView.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\TimestampPageViews\DateView.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -223,7 +223,7 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\ImageViewPopup.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Common\LoadingViewPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -232,8 +232,14 @@
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Feedback\SuggestToolIdePopup.xaml">
-          <Generator>MSBuild:Compile</Generator>
+            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
     </ItemGroup>
+
+    <ProjectExtensions>
+        <VisualStudio>
+            <UserProperties XamarinHotReloadUnhandledDeviceExceptionDiscordToolsAppHideInfoBar="True" />
+        </VisualStudio>
+    </ProjectExtensions>
 
 </Project>

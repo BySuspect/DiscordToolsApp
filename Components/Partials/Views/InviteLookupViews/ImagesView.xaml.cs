@@ -83,6 +83,7 @@ public partial class ImagesView : ContentView
         }
     }
     #endregion
+
     public ImagesView()
     {
         InitializeComponent();

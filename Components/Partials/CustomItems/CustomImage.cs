@@ -8,31 +8,31 @@ using DiscordToolsApp.Components.Popups.Common;
 
 namespace DiscordToolsApp.Components.Partials.CustomItems
 {
-    class CustomImage : Image
+    public class CustomImage : Image
     {
-        public static readonly BindableProperty IsLoadedProperty = BindableProperty.Create(
-            nameof(IsLoaded),
+        public static readonly BindableProperty IsImageLoadedProperty = BindableProperty.Create(
+            nameof(IsImageLoaded),
             typeof(bool),
             typeof(CustomImage),
             false
         );
 
-        public bool IsLoaded
+        public bool IsImageLoaded
         {
-            get { return (bool)GetValue(IsLoadedProperty); }
-            set { SetValue(IsLoadedProperty, value); }
+            get { return (bool)GetValue(IsImageLoadedProperty); }
+            set { SetValue(IsImageLoadedProperty, value); }
         }
 
         public CustomImage()
         {
             this.Loaded += (object? sender, EventArgs e) =>
             {
-                IsLoaded = true;
+                IsImageLoaded = true;
             };
 
             this.Unloaded += (object? sender, EventArgs e) =>
             {
-                IsLoaded = false;
+                IsImageLoaded = false;
             };
         }
     }

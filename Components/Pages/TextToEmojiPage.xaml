@@ -9,7 +9,9 @@
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:sharedViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.Shared"
     xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+    BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}">
     <StackLayout>
         <Grid
             Margin="5"
@@ -90,5 +92,10 @@
                     VerticalOptions="FillAndExpand" />
             </Frame>
         </Grid>
+        <controls:MTAdView
+            AdsId="ca-app-pub-3881259676793306/3196838854"
+            HeightRequest="{OnIdiom Phone=50,
+                                    Tablet=90}"
+            VerticalOptions="End" />
     </StackLayout>
 </ContentPage>

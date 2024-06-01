@@ -16,6 +16,12 @@ public partial class InviteLookupPage : ContentPage
         InitializeComponent();
     }
 
+    protected override void OnAppearing()
+    {
+        InviteDetailView.IsVisible = false;
+        base.OnAppearing();
+    }
+
     private async void btnLookup_Clicked(object sender, EventArgs e)
     {
         ApplicationService.ShowLoadingView();

@@ -1,5 +1,6 @@
 using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Partials.Views.MainPageViews;
+using DiscordToolsApp.Components.Popups.Common;
 using DiscordToolsApp.Components.Popups.Feedback;
 
 namespace DiscordToolsApp.Components.Pages;
@@ -12,7 +13,14 @@ public partial class MainPage : ContentPage
         ApplicationService.ActivePage = "MainPage";
     }
 
-    private async void MainPagCustomButtonView_Clicked(object sender, ClickedEventArgs e)
+    protected override void OnAppearing()
+    {
+        if (!Preferences.Get("PrivacyPolicyV1Accepted", false))
+            ApplicationService.ShowPopup(new PrivacyPolicyPopup());
+        base.OnAppearing();
+    }
+
+    private void MainPagCustomButtonView_Clicked(object sender, ClickedEventArgs e)
     {
         var clicked = ((MainPagCustomButtonView)sender);
         clicked.IsEnabled = false;
@@ -21,21 +29,21 @@ public partial class MainPage : ContentPage
         {
             case MainPageButtonsPageTypeModel.TimeStampGeneratorPage:
                 ApplicationService.ActivePage = "TimeStampGeneratorPage";
-                await Shell.Current.GoToAsync("//TimeStampGeneratorPage", true);
+                Shell.Current.GoToAsync("TimeStampGeneratorPage", true);
                 break;
 
             case MainPageButtonsPageTypeModel.UserLookupPage:
                 ApplicationService.ActivePage = "UserLookupPage";
-                await Shell.Current.GoToAsync("//UserLookupPage", true);
+                Shell.Current.GoToAsync("UserLookupPage", true);
                 break;
 
             case MainPageButtonsPageTypeModel.InviteLookupPage:
                 ApplicationService.ActivePage = "InviteLookupPage";
-                await Shell.Current.GoToAsync("//InviteLookupPage", true);
+                Shell.Current.GoToAsync("InviteLookupPage", true);
                 break;
             case MainPageButtonsPageTypeModel.TextToEmojiPage:
                 ApplicationService.ActivePage = "TextToEmojiPage";
-                await Shell.Current.GoToAsync("//TextToEmojiPage", true);
+                Shell.Current.GoToAsync("TextToEmojiPage", true);
                 break;
 
             case MainPageButtonsPageTypeModel.Custom:
@@ -56,7 +64,7 @@ public partial class MainPage : ContentPage
 
             default:
                 ApplicationService.ActivePage = "MainPage";
-                await Shell.Current.GoToAsync("//MainPage", true);
+                Shell.Current.GoToAsync("MainPage", true);
                 break;
         }
 

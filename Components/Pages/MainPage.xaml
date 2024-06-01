@@ -3,57 +3,65 @@
     x:Class="DiscordToolsApp.Components.Pages.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
     xmlns:Views="clr-namespace:DiscordToolsApp.Components.Partials.Views.MainPageViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:models="clr-namespace:DiscordToolsApp.Components.Models"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+    BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}">
     <ContentPage.Content>
-        <VerticalStackLayout>
-            <StackLayout HorizontalOptions="Center">
-                <ScrollView Margin="10" VerticalOptions="FillAndExpand">
-                    <toolkit:UniformItemsLayout HorizontalOptions="Center">
-                        <BindableLayout.ItemsSource>
-                            <x:Array Type="{x:Type models:MainPageButtonsModel}">
-                                <models:MainPageButtonsModel
-                                    Image="icons/clockicon.png"
-                                    PageType="TimeStampGeneratorPage"
-                                    Text="Timestamp Generator" />
-                                <models:MainPageButtonsModel
-                                    Image="icons/usericon.png"
-                                    PageType="UserLookupPage"
-                                    Text="User Lookup" />
-                                <models:MainPageButtonsModel
-                                    Image="icons/linkicon.png"
-                                    PageType="InviteLookupPage"
-                                    Text="Invite Lookup" />
-                                <models:MainPageButtonsModel
-                                    Image="icons/texticon.png"
-                                    PageType="TextToEmojiPage"
-                                    Text="Text to Emoji" />
-                                <models:MainPageButtonsModel
-                                    Image="icons/ideaicon.png"
-                                    PageType="Custom"
-                                    Text="Suggest a tool idea" />
-                            </x:Array>
-                        </BindableLayout.ItemsSource>
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <Views:MainPagCustomButtonView
-                                    Margin="5"
-                                    Clicked="MainPagCustomButtonView_Clicked"
-                                    HorizontalOptions="Center"
-                                    Image="{Binding Image}"
-                                    PageType="{Binding PageType}"
-                                    Text="{Binding Text}" />
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </toolkit:UniformItemsLayout>
-                </ScrollView>
-            </StackLayout>
-        </VerticalStackLayout>
+        <StackLayout>
+            <ScrollView
+                Margin="10"
+                HorizontalOptions="Center"
+                VerticalOptions="FillAndExpand">
+                <toolkit:UniformItemsLayout HorizontalOptions="Center">
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type models:MainPageButtonsModel}">
+                            <models:MainPageButtonsModel
+                                Image="icons/clockicon.png"
+                                PageType="TimeStampGeneratorPage"
+                                Text="Timestamp Generator" />
+                            <models:MainPageButtonsModel
+                                Image="icons/usericon.png"
+                                PageType="UserLookupPage"
+                                Text="User Lookup" />
+                            <models:MainPageButtonsModel
+                                Image="icons/linkicon.png"
+                                PageType="InviteLookupPage"
+                                Text="Invite Lookup" />
+                            <models:MainPageButtonsModel
+                                Image="icons/texticon.png"
+                                PageType="TextToEmojiPage"
+                                Text="Text to Emoji" />
+                            <models:MainPageButtonsModel
+                                Image="icons/ideaicon.png"
+                                PageType="Custom"
+                                Text="Suggest a tool idea" />
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Views:MainPagCustomButtonView
+                                Margin="5"
+                                Clicked="MainPagCustomButtonView_Clicked"
+                                HorizontalOptions="Center"
+                                Image="{Binding Image}"
+                                PageType="{Binding PageType}"
+                                Text="{Binding Text}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </toolkit:UniformItemsLayout>
+            </ScrollView>
+            <controls:MTAdView
+                AdsId="ca-app-pub-3881259676793306/3196838854"
+                HeightRequest="{OnIdiom Phone=50,
+                                        Tablet=90}"
+                IsVisible="False"
+                VerticalOptions="End" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

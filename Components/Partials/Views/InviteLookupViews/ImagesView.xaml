@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
-    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.UserLookupViews"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
@@ -33,7 +32,7 @@
                     <ActivityIndicator
                         HorizontalOptions="Center"
                         IsRunning="True"
-                        IsVisible="{Binding Source={x:Reference imgView}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                        IsVisible="{Binding Source={x:Reference imgView}, Path=IsImageLoaded, Converter={toolkit:InvertedBoolConverter}}"
                         VerticalOptions="Center"
                         Color="{x:Static services:AppThemeColors.TextColor}" />
                     <CustomItems:CustomImage
@@ -70,7 +69,7 @@
                     <ActivityIndicator
                         HorizontalOptions="Center"
                         IsRunning="True"
-                        IsVisible="{Binding Source={x:Reference imgBanner}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                        IsVisible="{Binding Source={x:Reference imgBanner}, Path=IsImageLoaded, Converter={toolkit:InvertedBoolConverter}}"
                         VerticalOptions="Center"
                         Color="{x:Static services:AppThemeColors.TextColor}" />
                     <CustomItems:CustomImage
@@ -107,7 +106,7 @@
                     <ActivityIndicator
                         HorizontalOptions="Center"
                         IsRunning="True"
-                        IsVisible="{Binding Source={x:Reference imgSplash}, Path=IsLoaded, Converter={toolkit:InvertedBoolConverter}}"
+                        IsVisible="{Binding Source={x:Reference imgSplash}, Path=IsImageLoaded, Converter={toolkit:InvertedBoolConverter}}"
                         VerticalOptions="Center"
                         Color="{x:Static services:AppThemeColors.TextColor}" />
                     <CustomItems:CustomImage
