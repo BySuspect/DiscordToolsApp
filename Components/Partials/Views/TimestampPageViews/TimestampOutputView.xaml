@@ -38,10 +38,14 @@
 
         <ImageButton
             Clicked="Copy_Clicked"
-            HeightRequest="18"
+            HeightRequest="20"
             HorizontalOptions="EndAndExpand"
             Source="copyicon.png"
             VerticalOptions="Center"
-            WidthRequest="18" />
+            WidthRequest="20">
+            <ImageButton.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{x:Static services:AppThemeColors.TextColor}" />
+            </ImageButton.Behaviors>
+        </ImageButton>
     </StackLayout>
 </ContentView>

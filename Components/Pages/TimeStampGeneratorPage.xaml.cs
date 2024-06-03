@@ -233,17 +233,28 @@ public partial class TimeStampGeneratorPage : ContentPage
             return value + 1;
     }
 
-    //private void TabItemTapped(object sender, Syncfusion.Maui.TabView.TabItemTappedEventArgs e)
-    //{
-    //    switch (e.TabItem.Header)
-    //    {
-    //        case "Timer":
-    //            mode = "timer";
-    //            break;
+    private void Control_Clicked(object sender, EventArgs e)
+    {
+        var control = (Button)sender;
+        switch (control.AutomationId)
+        {
+            case "Timer":
+                mode = "timer";
+                btnTimer.BackgroundColor = AppThemeColors.BorderColor;
+                btnDateTime.BackgroundColor = Colors.Transparent;
 
-    //        case "Date & Time":
-    //            mode = "datetime";
-    //            break;
-    //    }
-    //}
+                timerMainView.IsVisible = true;
+                dateTimeMainView.IsVisible = false;
+                break;
+
+            case "DateTime":
+                mode = "datetime";
+                btnTimer.BackgroundColor = Colors.Transparent;
+                btnDateTime.BackgroundColor = AppThemeColors.BorderColor;
+
+                timerMainView.IsVisible = false;
+                dateTimeMainView.IsVisible = true;
+                break;
+        }
+    }
 }
