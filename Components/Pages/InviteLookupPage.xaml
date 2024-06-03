@@ -9,11 +9,10 @@
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:sharedViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.Shared"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.InviteLookupViews"
     BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
     BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}">
     <StackLayout>
-        <ScrollView>
+        <ScrollView Margin="10">
             <StackLayout>
                 <StackLayout Margin="50,100,50,50">
                     <CustomViews:CustomEntryView
@@ -47,7 +46,66 @@
                     IsVisible="False"
                     MinimumWidthRequest="350">
                     <StackLayout>
-                        <views:ImagesView x:Name="imgView" />
+                        <StackLayout
+                            x:Name="iconView"
+                            Margin="0,5"
+                            IsVisible="False">
+                            <Label
+                                Margin="10,0"
+                                FontSize="Caption"
+                                HorizontalOptions="Start"
+                                Opacity="0.8"
+                                Text="Server Icon:"
+                                TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                                VerticalOptions="Start" />
+                            <CustomViews:CustomImageView
+                                x:Name="imgIcon"
+                                Margin="0,10"
+                                CornerRadius="360"
+                                Tapped="Icon_Tapped"
+                                WidthRequest="200" />
+                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                        </StackLayout>
+                        <StackLayout
+                            x:Name="bannerView"
+                            Margin="0,5"
+                            IsVisible="False">
+                            <Label
+                                Margin="10,0"
+                                FontSize="Caption"
+                                HorizontalOptions="Start"
+                                Opacity="0.8"
+                                Text="Server Banner:"
+                                TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                                VerticalOptions="Start" />
+                            <CustomViews:CustomImageView
+                                x:Name="imgBanner"
+                                Margin="0,10"
+                                CornerRadius="10"
+                                Tapped="Banner_Tapped"
+                                WidthRequest="250" />
+                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                        </StackLayout>
+                        <StackLayout
+                            x:Name="splashView"
+                            Margin="0,5"
+                            IsVisible="False">
+                            <Label
+                                Margin="10,0"
+                                FontSize="Caption"
+                                HorizontalOptions="Start"
+                                Opacity="0.8"
+                                Text="Server Splash:"
+                                TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
+                                VerticalOptions="Start" />
+                            <CustomViews:CustomImageView
+                                x:Name="imgSplash"
+                                Margin="0,10"
+                                CornerRadius="10"
+                                Tapped="Splash_Tapped"
+                                WidthRequest="250" />
+                            <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                        </StackLayout>
                         <StackLayout Margin="10" Spacing="5">
                             <sharedViews:NameAndValueTextView x:Name="InvlinkView" Title="Invite Link:" />
                             <sharedViews:NameAndValueTextView x:Name="VanitylinkView" Title="Vanity Invite Link:" />
@@ -87,6 +145,6 @@
             AdsId="ca-app-pub-3881259676793306/3196838854"
             HeightRequest="{OnIdiom Phone=50,
                                     Tablet=90}"
-            VerticalOptions="EndAndExpand" />
+            VerticalOptions="End" />
     </StackLayout>
 </ContentPage>

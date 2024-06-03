@@ -4,29 +4,16 @@ namespace DiscordToolsApp.Components.Popups.Common;
 
 public partial class ImageViewPopup : Popup
 {
-    private string imgSource;
-
-    public string ImgSource
-    {
-        get { return imgSource; }
-        set
-        {
-            imgSource = value;
-            OnPropertyChanged(nameof(ImgSource));
-        }
-    }
-
     public ImageViewPopup(string source)
     {
         InitializeComponent();
         BindingContext = this;
-
-        ImgSource = source;
+        imgView.Source = source;
     }
 
     private async void Copy_Clicked(object sender, EventArgs e)
     {
-        await Clipboard.SetTextAsync(ImgSource);
+        await Clipboard.SetTextAsync(imgView.Source);
         await ApplicationService.ShowShortToastAsync("Copied to clipboard!");
     }
 

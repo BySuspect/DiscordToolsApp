@@ -13,6 +13,9 @@ namespace DiscordToolsApp
             Routing.RegisterRoute("UserLookupPage", typeof(UserLookupPage));
             Routing.RegisterRoute("InviteLookupPage", typeof(InviteLookupPage));
             Routing.RegisterRoute("TextToEmojiPage", typeof(TextToEmojiPage));
+#if DEBUG
+            Routing.RegisterRoute("TestPage", typeof(TestPage));
+#endif
         }
 
         protected override bool OnBackButtonPressed()

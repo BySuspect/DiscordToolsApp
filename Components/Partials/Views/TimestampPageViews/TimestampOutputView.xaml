@@ -3,12 +3,10 @@
     x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPageViews.TimestampOutputView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
-    xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
     <StackLayout
@@ -21,6 +19,7 @@
             BorderColor="{x:Static services:AppThemeColors.TextBackColor}"
             CornerRadius="5"
             HorizontalOptions="Start"
+            IsVisible="False"
             VerticalOptions="Center"
             WidthRequest="125">
             <Label
@@ -39,10 +38,10 @@
 
         <ImageButton
             Clicked="Copy_Clicked"
-            HeightRequest="12"
+            HeightRequest="18"
             HorizontalOptions="EndAndExpand"
             Source="copyicon.png"
             VerticalOptions="Center"
-            WidthRequest="12" />
+            WidthRequest="18" />
     </StackLayout>
 </ContentView>

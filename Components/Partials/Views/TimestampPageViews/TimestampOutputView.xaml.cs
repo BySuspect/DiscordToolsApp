@@ -49,6 +49,6 @@ public partial class TimestampOutputView : ContentView
     private async void Copy_Clicked(object sender, EventArgs e)
     {
         await Clipboard.SetTextAsync(MainText);
-        await ApplicationService.ShowShortToastAsync("Copied to clipboard");
+        await ApplicationService.ShowShortToastAsync(PreviewText + " Copied to clipboard");
     }
 }

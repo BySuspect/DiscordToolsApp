@@ -11,6 +11,10 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         ApplicationService.ActivePage = "MainPage";
+
+#if DEBUG
+        btnTest.IsVisible = true;
+#endif
     }
 
     protected override void OnAppearing()
@@ -69,5 +73,10 @@ public partial class MainPage : ContentPage
         }
 
         clicked.IsEnabled = true;
+    }
+
+    private void btnTest_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("TestPage");
     }
 }

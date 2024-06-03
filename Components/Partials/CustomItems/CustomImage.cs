@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,29 +11,68 @@ namespace DiscordToolsApp.Components.Partials.CustomItems
 {
     public class CustomImage : Image
     {
-        public static readonly BindableProperty IsImageLoadedProperty = BindableProperty.Create(
-            nameof(IsImageLoaded),
+        #region IsLoaded Binding
+        public static readonly BindableProperty IsLoadedProperty = BindableProperty.Create(
+            nameof(IsLoaded),
             typeof(bool),
             typeof(CustomImage),
-            false
+            defaultValue: false,
+            defaultBindingMode: BindingMode.TwoWay
         );
-
-        public bool IsImageLoaded
+        public bool IsLoaded
         {
-            get { return (bool)GetValue(IsImageLoadedProperty); }
-            set { SetValue(IsImageLoadedProperty, value); }
+            get { return (bool)GetValue(IsLoadedProperty); }
+            set
+            {
+                SetValue(IsLoadedProperty, value);
+                OnPropertyChanged(nameof(IsLoaded));
+            }
         }
+        #endregion
+
+        #region IsLoading Binding
+        public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(
+            nameof(IsLoading),
+            typeof(bool),
+            typeof(CustomImage),
+            defaultValue: true,
+            defaultBindingMode: BindingMode.TwoWay
+        );
+        public bool IsLoading
+        {
+            get { return (bool)GetValue(IsLoadingProperty); }
+            set
+            {
+                SetValue(IsLoadingProperty, value);
+                OnPropertyChanged(nameof(IsLoading));
+            }
+        }
+        #endregion
 
         public CustomImage()
         {
+            IsLoading = true;
             this.Loaded += (object? sender, EventArgs e) =>
             {
-                IsImageLoaded = true;
+                this.IsAnimationPlaying = false;
+
+                IsLoaded = true;
+                IsLoading = false;
+
+                this.IsAnimationPlaying = true;
             };
 
             this.Unloaded += (object? sender, EventArgs e) =>
             {
-                IsImageLoaded = false;
+                IsLoaded = false;
+            };
+
+            this.PropertyChanged += (object? sender, PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName == nameof(Source))
+                {
+                    var test = Source.ToString();
+                }
             };
         }
     }

@@ -11,14 +11,14 @@
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPageViews"
     BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
     BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}">
-
     <ContentPage.Content>
         <StackLayout Margin="20" Spacing="10">
             <ScrollView>
                 <Frame
                     Padding="0"
                     BorderColor="{x:Static services:AppThemeColors.BorderColor}"
-                    CornerRadius="15">
+                    CornerRadius="15"
+                    VerticalOptions="Start">
                     <StackLayout>
                         <VerticalStackLayout>
                             <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />

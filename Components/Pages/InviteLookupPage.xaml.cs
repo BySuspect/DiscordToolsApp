@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 using DiscordToolsApp.Components.Models;
+using DiscordToolsApp.Components.Popups.Common;
 using DiscordToolsApp.Helpers;
 
 using Newtonsoft.Json;
@@ -44,6 +45,12 @@ public partial class InviteLookupPage : ContentPage
             }
             string invCode = invUrl.Split("/").Last();
 
+            ApplicationService.ShowCustomAlert(
+                "Info.",
+                "Some times images may not be animated.",
+                "Ok"
+            );
+
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add(
                 "Authorization",
@@ -59,27 +66,50 @@ public partial class InviteLookupPage : ContentPage
                 var resData = await res.Content.ReadAsStringAsync();
                 var invData = JsonConvert.DeserializeObject<DiscordInviteModel>(resData);
 
-                if (invData.guild.icon is not null)
-                    imgView.IconSource =
-                        $"https://cdn.discordapp.com/icons/{invData.guild.id}/{invData.guild.icon}?size=256";
-                else
-                    imgView.IconSource = "";
+                if (invData is null)
+                    return;
 
-                if (invData.guild.banner is not null)
+                if (invData.guild is not null)
                 {
-                    imgView.BannerSource =
-                        $"https://cdn.discordapp.com/banners/{invData.guild.id}/{invData.guild.banner}?size=256";
-                }
-                else
-                    imgView.BannerSource = "";
+                    if (invData.guild.icon is not null)
+                    {
+                        var icon =
+                            $"https://cdn.discordapp.com/icons/{invData.guild.id}/{invData.guild.icon}?size=256";
+                        imgIcon.Source = icon;
+                        iconView.IsVisible = true;
+                    }
+                    else
+                    {
+                        imgIcon.Source = string.Empty;
+                        iconView.IsVisible = false;
+                    }
 
-                if (invData.guild.splash is not null)
-                {
-                    imgView.SplashSource =
-                        $"https://cdn.discordapp.com/splashes/{invData.guild.id}/{invData.guild.splash}?size=512";
+                    if (invData.guild.banner is not null)
+                    {
+                        var banner =
+                            $"https://cdn.discordapp.com/banners/{invData.guild.id}/{invData.guild.banner}?size=256";
+                        imgBanner.Source = banner;
+                        bannerView.IsVisible = true;
+                    }
+                    else
+                    {
+                        imgBanner.Source = string.Empty;
+                        bannerView.IsVisible = false;
+                    }
+
+                    if (invData.guild.splash is not null)
+                    {
+                        var splash =
+                            $"https://cdn.discordapp.com/splashes/{invData.guild.id}/{invData.guild.splash}?size=512";
+                        imgSplash.Source = splash;
+                        splashView.IsVisible = true;
+                    }
+                    else
+                    {
+                        imgSplash.Source = string.Empty;
+                        splashView.IsVisible = false;
+                    }
                 }
-                else
-                    imgView.SplashSource = "";
 
                 InvType.Value =
                     invData.type == 0
@@ -210,6 +240,24 @@ public partial class InviteLookupPage : ContentPage
         }
         btnLookup.IsEnabled = true;
         ApplicationService.HideLoadingView();
+    }
+
+    private void Icon_Tapped(object sender, TappedEventArgs e)
+    {
+        var icon = imgIcon.Source.Split('?')[0] + "?size=1024";
+        ApplicationService.ShowPopup(new ImageViewPopup(icon));
+    }
+
+    private void Banner_Tapped(object sender, TappedEventArgs e)
+    {
+        var banner = imgBanner.Source.Split('?')[0] + "?size=1024";
+        ApplicationService.ShowPopup(new ImageViewPopup(banner));
+    }
+
+    private void Splash_Tapped(object sender, TappedEventArgs e)
+    {
+        var splash = imgSplash.Source.Split('?')[0] + "?size=1024";
+        ApplicationService.ShowPopup(new ImageViewPopup(splash));
     }
 
     private static bool isInviteUrl(string url)

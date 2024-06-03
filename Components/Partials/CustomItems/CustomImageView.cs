@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using DiscordWebhookRemoteApp.Services;
 
 namespace DiscordToolsApp.Components.Partials.CustomItems
@@ -14,24 +15,13 @@ namespace DiscordToolsApp.Components.Partials.CustomItems
             nameof(Source),
             typeof(string),
             typeof(CustomImageView),
-            default(string),
-            propertyChanged: OnSourcePropertyChanged
+            default(string)
         );
 
         public string Source
         {
             get { return (string)GetValue(SourceProperty); }
             set { SetValue(SourceProperty, value); }
-        }
-
-        private static void OnSourcePropertyChanged(
-            BindableObject bindable,
-            object oldValue,
-            object newValue
-        )
-        {
-            var customImageView = (CustomImageView)bindable;
-            customImageView.OnPropertyChanged(nameof(Source));
         }
         #endregion
 

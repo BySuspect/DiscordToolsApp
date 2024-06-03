@@ -15,26 +15,11 @@
             BorderColor="{x:Static services:AppThemeColors.BorderColor}"
             CornerRadius="15">
             <StackLayout>
-                <Frame
+                <CustomViews:CustomImageView
+                    x:Name="imgView"
                     Margin="10"
-                    Padding="0"
                     CornerRadius="10"
-                    WidthRequest="300">
-                    <Grid>
-                        <ActivityIndicator
-                            HorizontalOptions="Center"
-                            IsRunning="True"
-                            IsVisible="{Binding Source={x:Reference imgView}, Path=IsImageLoaded, Converter={toolkit:InvertedBoolConverter}}"
-                            VerticalOptions="Center"
-                            Color="{x:Static services:AppThemeColors.TextColor}" />
-                        <CustomItems:CustomImage
-                            x:Name="imgView"
-                            Aspect="AspectFill"
-                            IsAnimationPlaying="True"
-                            Source="{Binding ImgSource}"
-                            WidthRequest="300" />
-                    </Grid>
-                </Frame>
+                    WidthRequest="300" />
                 <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
                 <StackLayout
                     Margin="10"

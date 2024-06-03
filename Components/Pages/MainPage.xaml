@@ -56,6 +56,13 @@
                     </BindableLayout.ItemTemplate>
                 </toolkit:UniformItemsLayout>
             </ScrollView>
+            <Button
+                x:Name="btnTest"
+                Margin="10"
+                Clicked="btnTest_Clicked"
+                HorizontalOptions="Center"
+                IsVisible="False"
+                Text="test" />
             <controls:MTAdView
                 AdsId="ca-app-pub-3881259676793306/3196838854"
                 HeightRequest="{OnIdiom Phone=50,

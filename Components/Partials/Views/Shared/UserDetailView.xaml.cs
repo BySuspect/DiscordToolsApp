@@ -1,4 +1,7 @@
 using DiscordToolsApp.Components.Models;
+using DiscordToolsApp.Components.Popups.Common;
+
+using DiscordWebhookRemoteApp.Services;
 
 namespace DiscordToolsApp.Components.Partials.Views.Shared;
 
@@ -41,16 +44,24 @@ public partial class UserDetailView : ContentView
                 control.ibView.Value = "User";
 
             if (user.avatar is not null)
-                control.imgView.Avatar =
-                    $"https://cdn.discordapp.com/avatars/{user.id}/{user.avatar}?size=128";
+            {
+                var avatar = $"https://cdn.discordapp.com/avatars/{user.id}/{user.avatar}?size=128";
+                control.imgAvatar.Source = avatar;
+            }
             else
-                control.imgView.Avatar = string.Empty;
+                control.imgAvatar.Source = string.Empty;
 
             if (user.banner is not null)
-                control.imgView.Banner =
-                    $"https://cdn.discordapp.com/banners/{user.id}/{user.banner}?size=512";
+            {
+                var banner = $"https://cdn.discordapp.com/banners/{user.id}/{user.banner}?size=512";
+                control.imgBanner.Source = banner;
+                control.BannerView.IsVisible = true;
+            }
             else
-                control.imgView.Banner = string.Empty;
+            {
+                control.imgBanner.Source = string.Empty;
+                control.BannerView.IsVisible = false;
+            }
 
             if (user.banner_color is not null && user.banner_color is not "#000000")
                 control.BColorView.Value = user.banner_color.ToUpper();
@@ -77,6 +88,20 @@ public partial class UserDetailView : ContentView
     {
         InitializeComponent();
         BindingContext = this;
+    }
+
+    private void Avatar_Tapped(object sender, TappedEventArgs e)
+    {
+        ApplicationService.ShowPopup(
+            new ImageViewPopup(imgAvatar.Source.Split('?')[0] + "?size=1024")
+        );
+    }
+
+    private void Banner_Tapped(object sender, TappedEventArgs e)
+    {
+        ApplicationService.ShowPopup(
+            new ImageViewPopup(imgBanner.Source.Split('?')[0] + "?size=1024")
+        );
     }
 
     public static Color DecodeAccentColor(int hexColor)
