@@ -1,15 +1,13 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
-
 using CommunityToolkit.Maui;
-
 using DiscordToolsApp.Handlers;
 using DiscordToolsApp.Helpers;
-
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-
 using Plugin.MauiMTAdmob;
+#if DEBUG
+using Microsoft.Extensions.Logging;
+#endif
 
 namespace DiscordToolsApp
 {

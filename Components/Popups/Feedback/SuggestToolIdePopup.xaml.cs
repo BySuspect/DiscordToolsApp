@@ -62,7 +62,8 @@ public partial class SuggestToolIdePopup : Popup
                     {
                         title = entryTitle.Text.Trim(),
                         description = entryContent.Text.Trim(),
-                        color = 10364355
+                        color = 10364355,
+                        timestamp = DateTime.UtcNow.ToString("o")
                     }
                 }
             };
