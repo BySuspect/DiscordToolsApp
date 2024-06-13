@@ -1,10 +1,8 @@
 using System.Linq;
 using System.Text.RegularExpressions;
-
 using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Popups.Common;
 using DiscordToolsApp.Helpers;
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -262,7 +260,7 @@ public partial class InviteLookupPage : ContentPage
 
     private static bool isInviteUrl(string url)
     {
-        string pattern = @"(https?://)?(www.)?(discord.gg|discordapp.com/invite)/*";
+        string pattern = @"(https?://)?(www.)?(discord.gg|discordapp.com|discord.com/invite)/*";
         return Regex.IsMatch(url, pattern);
     }
 

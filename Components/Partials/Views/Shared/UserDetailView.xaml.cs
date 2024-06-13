@@ -1,6 +1,5 @@
 using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Popups.Common;
-
 using DiscordWebhookRemoteApp.Services;
 
 namespace DiscordToolsApp.Components.Partials.Views.Shared;
@@ -49,7 +48,7 @@ public partial class UserDetailView : ContentView
                 control.imgAvatar.Source = avatar;
             }
             else
-                control.imgAvatar.Source = string.Empty;
+                control.imgAvatar.Source = "discordlogo.png";
 
             if (user.banner is not null)
             {
@@ -92,9 +91,10 @@ public partial class UserDetailView : ContentView
 
     private void Avatar_Tapped(object sender, TappedEventArgs e)
     {
-        ApplicationService.ShowPopup(
-            new ImageViewPopup(imgAvatar.Source.Split('?')[0] + "?size=1024")
-        );
+        if (imgAvatar.Source is not "discordlogo.png")
+            ApplicationService.ShowPopup(
+                new ImageViewPopup(imgAvatar.Source.Split('?')[0] + "?size=1024")
+            );
     }
 
     private void Banner_Tapped(object sender, TappedEventArgs e)
