@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DiscordToolsApp.Components.Pages.WebhookSendPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:sharedViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.Shared"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+    BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}">
+    <StackLayout>
+        <Frame
+            Margin="15"
+            Padding="0"
+            CornerRadius="15"
+            VerticalOptions="Center">
+            <StackLayout>
+                <!--<Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="AUTO" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="btnSimple"
+                        Grid.Column="0"
+                        AutomationId="simple"
+                        BackgroundColor="{x:Static services:AppThemeColors.BorderColor}"
+                        Clicked="Control_Clicked"
+                        CornerRadius="0"
+                        FontSize="Caption"
+                        HorizontalOptions="Fill"
+                        Text="Send Simple Message"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}" />
+                    <BoxView
+                        Grid.Column="1"
+                        WidthRequest="1"
+                        Color="{x:Static services:AppThemeColors.BorderColor}" />
+                    <Button
+                        x:Name="btnJson"
+                        Grid.Column="2"
+                        AutomationId="json"
+                        BackgroundColor="Transparent"
+                        Clicked="Control_Clicked"
+                        CornerRadius="0"
+                        FontSize="Caption"
+                        HorizontalOptions="Fill"
+                        Text="Send Custom Json"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}" />
+                </Grid>
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />-->
+                <ScrollView Margin="10">
+                    <StackLayout Spacing="10">
+                        <CustomViews:CustomEntryView
+                            x:Name="entryWebhookUrl"
+                            Margin="0,10,0,0"
+                            HasCharCounterText="False"
+                            Placeholder="Webhook Url"
+                            ValidationType="WebhookUrl" />
+                        <CustomViews:CustomEntryView
+                            x:Name="entryName"
+                            MaxLength="80"
+                            Placeholder="Webhook Name" />
+                        <CustomViews:CustomEntryView
+                            x:Name="entryImg"
+                            HasCharCounterText="False"
+                            Placeholder="Webhook Image"
+                            ValidationType="ImageUrl" />
+                        <CustomViews:CustomEditorView
+                            x:Name="entryContent"
+                            HeightRequest="200"
+                            MaxLength="2000"
+                            Placeholder="Message Content" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Margin="0,0,0,10" Spacing="5">
+                    <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                    <Label
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="If you want send detailed webhook mesage click " />
+                                <Span
+                                    FontSize="Body"
+                                    Text="Here"
+                                    TextColor="LightBlue">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="WebhookRemoteAppLink_Tapped" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <CustomItems:CustomButton
+                            x:Name="btnSend"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                            Clicked="btnSend_Clicked"
+                            CornerRadius="15"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Send"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            VerticalOptions="Center"
+                            WidthRequest="80" />
+                        <CustomItems:CustomButton
+                            x:Name="btnClear"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                            Clicked="btnClear_Clicked"
+                            CornerRadius="15"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Clear"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            VerticalOptions="Center"
+                            WidthRequest="80" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

@@ -13,8 +13,10 @@ namespace DiscordToolsApp
             Routing.RegisterRoute("UserLookupPage", typeof(UserLookupPage));
             Routing.RegisterRoute("InviteLookupPage", typeof(InviteLookupPage));
             Routing.RegisterRoute("TextToEmojiPage", typeof(TextToEmojiPage));
+            Routing.RegisterRoute("WebhookSendPage", typeof(WebhookSendPage));
 #if DEBUG
             Routing.RegisterRoute("TestPage", typeof(TestPage));
+            //this.GoToAsync("WebhookSendPage");
 #endif
         }
 

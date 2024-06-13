@@ -23,5 +23,6 @@ namespace DiscordToolsApp.Components.Models
         ServerLookupPage,
         TimeStampGeneratorPage,
         TextToEmojiPage,
+        WebhookSendPage,
     }
 }

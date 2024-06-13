@@ -143,6 +143,7 @@
         <None Remove="Resources\Images\icons\ideaicon.png" />
         <None Remove="Resources\Images\icons\soonicon.png" />
         <None Remove="Resources\Images\icons\texticon.png" />
+        <None Remove="Resources\Images\icons\webhookicon.png" />
         <None Remove="Resources\Splash\splash_logo.png" />
     </ItemGroup>
 
@@ -178,6 +179,9 @@
         </MauiXaml>
         <MauiXaml Update="Components\Pages\UserLookupPage.xaml">
             <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+        <MauiXaml Update="Components\Pages\WebhookSendPage.xaml">
+          <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Partials\Views\CustomItemViews\CustomImageView.xaml">
           <Generator>MSBuild:Compile</Generator>

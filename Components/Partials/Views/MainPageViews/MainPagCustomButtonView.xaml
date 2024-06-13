@@ -19,14 +19,17 @@
                 VerticalOptions="Center"
                 WidthRequest="85">
                 <StackLayout Spacing="5">
-                    <CustomItems:CustomImageView
+                    <Image
                         Margin="0,5,0,0"
-                        CornerRadius="15"
                         HeightRequest="40"
                         HorizontalOptions="Center"
                         Source="{Binding Image}"
                         VerticalOptions="Start"
-                        WidthRequest="40" />
+                        WidthRequest="40">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{x:Static services:AppThemeColors.TextColor}" />
+                        </Image.Behaviors>
+                    </Image>
                     <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
                         <Label
                             FontSize="Caption"

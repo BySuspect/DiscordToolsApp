@@ -62,6 +62,10 @@ public partial class MainPage : ContentPage
 #endif
                 ApplicationService.ShowPopup(new SuggestToolIdePopup());
                 break;
+            case MainPageButtonsPageTypeModel.WebhookSendPage:
+                ApplicationService.ActivePage = "WebhookSendPage";
+                Shell.Current.GoToAsync("WebhookSendPage", true);
+                break;
 
             case MainPageButtonsPageTypeModel.Empty:
                 break;

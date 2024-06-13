@@ -38,6 +38,10 @@
                                 PageType="TextToEmojiPage"
                                 Text="Text to Emoji" />
                             <models:MainPageButtonsModel
+                                Image="icons/webhookicon.png"
+                                PageType="WebhookSendPage"
+                                Text="Webhook Sender" />
+                            <models:MainPageButtonsModel
                                 Image="icons/ideaicon.png"
                                 PageType="Custom"
                                 Text="Suggest a tool idea" />
