@@ -41,10 +41,10 @@
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
         <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
         <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationVersion>5</ApplicationVersion>
         <AndroidUseAapt2>True</AndroidUseAapt2>
         <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
         <AndroidPackageFormat>apk</AndroidPackageFormat>
@@ -53,32 +53,32 @@
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+        <ApplicationVersion>5</ApplicationVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+        <ApplicationVersion>5</ApplicationVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+        <ApplicationVersion>5</ApplicationVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
         <AndroidPackageFormat>aab</AndroidPackageFormat>
         <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
         <AndroidLinkTool>r8</AndroidLinkTool>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationVersion>5</ApplicationVersion>
         <AndroidUseAapt2>True</AndroidUseAapt2>
         <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     </PropertyGroup>
@@ -86,22 +86,22 @@
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+        <ApplicationVersion>5</ApplicationVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+        <ApplicationVersion>5</ApplicationVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
         <ApplicationTitle>Discord Tools</ApplicationTitle>
         <ApplicationId>com.discordtoolsapp</ApplicationId>
-        <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
-        <ApplicationVersion>4</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+        <ApplicationVersion>5</ApplicationVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -126,7 +126,7 @@
         <None Remove="Resources\AppIcon\icon.png" />
         <None Remove="Resources\Images\app_logo.png" />
         <None Remove="Resources\Images\badges\active_developer.png" />
-        <None Remove="Resources\Images\badges\Bot.png" />
+        <None Remove="Resources\Images\badges\bot.png" />
         <None Remove="Resources\Images\badges\bug_hunter_level1.png" />
         <None Remove="Resources\Images\badges\bug_hunter_level2.png" />
         <None Remove="Resources\Images\badges\certified_moderator.png" />

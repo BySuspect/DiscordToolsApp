@@ -1,9 +1,6 @@
 using System.Text;
-
 using CommunityToolkit.Maui.Views;
-
 using DiscordToolsApp.Helpers;
-
 using Newtonsoft.Json;
 
 namespace DiscordToolsApp.Components.Popups.Feedback;

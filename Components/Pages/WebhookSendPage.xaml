@@ -101,18 +101,6 @@
                         Orientation="Horizontal"
                         Spacing="10">
                         <CustomItems:CustomButton
-                            x:Name="btnSend"
-                            BackgroundColor="Transparent"
-                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
-                            Clicked="btnSend_Clicked"
-                            CornerRadius="15"
-                            FontSize="Caption"
-                            HorizontalOptions="Center"
-                            Text="Send"
-                            TextColor="{x:Static services:AppThemeColors.TextColor}"
-                            VerticalOptions="Center"
-                            WidthRequest="80" />
-                        <CustomItems:CustomButton
                             x:Name="btnClear"
                             BackgroundColor="Transparent"
                             BorderColor="{x:Static services:AppThemeColors.BorderColor}"
@@ -121,6 +109,18 @@
                             FontSize="Caption"
                             HorizontalOptions="Center"
                             Text="Clear"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            VerticalOptions="Center"
+                            WidthRequest="80" />
+                        <CustomItems:CustomButton
+                            x:Name="btnSend"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                            Clicked="btnSend_Clicked"
+                            CornerRadius="15"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Send"
                             TextColor="{x:Static services:AppThemeColors.TextColor}"
                             VerticalOptions="Center"
                             WidthRequest="80" />

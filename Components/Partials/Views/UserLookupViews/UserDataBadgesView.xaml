@@ -8,7 +8,6 @@
     xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:local="clr-namespace:DiscordToolsApp.Components.Partials.Views.UserLookupViews"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
-    xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <StackLayout
         HorizontalOptions="Fill"
@@ -20,19 +19,19 @@
             Text="{Binding Title}"
             TextColor="{x:Static services:AppThemeColors.PlaceholderTextColor}"
             VerticalOptions="Center" />
-        <toolkit:UniformItemsLayout
+        <StackLayout
             BindableLayout.ItemsSource="{Binding Value}"
-            HorizontalOptions="Start"
-            MaxColumns="7">
+            HorizontalOptions="Start" Spacing="1"
+            Orientation="Horizontal">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Image
-                        Margin="0,5"
+                        Margin="0"
                         Aspect="AspectFit"
                         HeightRequest="24"
                         Source="{Binding .}" />
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
-        </toolkit:UniformItemsLayout>
+        </StackLayout>
     </StackLayout>
 </ContentView>

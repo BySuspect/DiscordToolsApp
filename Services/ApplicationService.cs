@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
-
 using DiscordToolsApp.Components.Popups.Common;
 
 namespace DiscordToolsApp.Services

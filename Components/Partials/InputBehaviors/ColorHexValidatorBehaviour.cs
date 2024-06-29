@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-
 using DiscordToolsApp.Services;
 
 namespace DiscordToolsApp.Components.Partials.InputBehaviors
