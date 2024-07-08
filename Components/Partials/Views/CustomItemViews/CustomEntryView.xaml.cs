@@ -196,6 +196,25 @@ public partial class CustomEntryView : ContentView
     }
     #endregion
 
+    #region HorizontalTextAlignment Binding
+    public static readonly BindableProperty HorizontalTextAlignmentProperty = BindableProperty.Create(
+        nameof(HorizontalTextAlignment),
+        typeof(TextAlignment),
+        typeof(CustomEntryView),
+        defaultValue: TextAlignment.Start,
+        defaultBindingMode: BindingMode.TwoWay
+    );
+    public TextAlignment HorizontalTextAlignment
+    {
+        get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+        set
+        {
+            SetValue(HorizontalTextAlignmentProperty, value);
+            OnPropertyChanged(nameof(HorizontalTextAlignment));
+        }
+    }
+    #endregion
+
     public CustomEntryView()
     {
         InitializeComponent();

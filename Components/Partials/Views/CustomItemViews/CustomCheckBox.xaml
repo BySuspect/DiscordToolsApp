@@ -2,23 +2,33 @@
 <ContentView
     x:Class="DiscordToolsApp.Components.Partials.Views.CustomItemViews.CustomCheckBox"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <HorizontalStackLayout>
-        <CheckBox
-            IsChecked="{Binding IsChecked}"
-            VerticalOptions="Center"
-            Color="{Binding Color}" />
-        <Label
-            Text="{Binding Title}"
-            TextColor="{Binding Color}"
-            VerticalOptions="Center"
-            VerticalTextAlignment="Center">
-            <Label.GestureRecognizers>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal">
+            <CheckBox
+                CheckedChanged="CheckBox_CheckedChanged"
+                IsChecked="{Binding IsChecked}"
+                VerticalOptions="Center"
+                Color="{Binding Color}" />
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label
+                    FontSize="Caption"
+                    Text="{Binding Title}"
+                    TextColor="{Binding Color}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+                <Label
+                    FontSize="Body"
+                    IsVisible="{Binding IsImportant}"
+                    Text="*"
+                    TextColor="Red"
+                    VerticalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CheckBox_Tapped" />
-            </Label.GestureRecognizers>
-        </Label>
-        <HorizontalStackLayout.GestureRecognizers>
-            <TapGestureRecognizer Tapped="CheckBox_Tapped" />
-        </HorizontalStackLayout.GestureRecognizers>
-    </HorizontalStackLayout>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+    </ContentView.Content>
 </ContentView>

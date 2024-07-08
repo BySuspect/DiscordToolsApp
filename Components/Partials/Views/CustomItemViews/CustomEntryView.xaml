@@ -18,6 +18,7 @@
                         x:Name="Input"
                         FontSize="Caption"
                         HorizontalOptions="Fill"
+                        HorizontalTextAlignment="{Binding HorizontalTextAlignment}"
                         MaxLength="{Binding MaxLength}"
                         Placeholder="{Binding Placeholder}"
                         PlaceholderColor="Transparent"

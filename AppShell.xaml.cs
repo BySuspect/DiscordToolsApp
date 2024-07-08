@@ -14,6 +14,7 @@ namespace DiscordToolsApp
             Routing.RegisterRoute("InviteLookupPage", typeof(InviteLookupPage));
             Routing.RegisterRoute("TextToEmojiPage", typeof(TextToEmojiPage));
             Routing.RegisterRoute("WebhookSendPage", typeof(WebhookSendPage));
+            Routing.RegisterRoute("PermissionCalculatorPage", typeof(PermissionCalculatorPage));
 #if DEBUG
             Routing.RegisterRoute("TestPage", typeof(TestPage));
             //this.GoToAsync("WebhookSendPage");

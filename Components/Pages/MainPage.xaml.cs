@@ -45,6 +45,7 @@ public partial class MainPage : ContentPage
                 ApplicationService.ActivePage = "InviteLookupPage";
                 Shell.Current.GoToAsync("InviteLookupPage", true);
                 break;
+
             case MainPageButtonsPageTypeModel.TextToEmojiPage:
                 ApplicationService.ActivePage = "TextToEmojiPage";
                 Shell.Current.GoToAsync("TextToEmojiPage", true);
@@ -62,9 +63,15 @@ public partial class MainPage : ContentPage
 #endif
                 ApplicationService.ShowPopup(new SuggestToolIdePopup());
                 break;
+
             case MainPageButtonsPageTypeModel.WebhookSendPage:
                 ApplicationService.ActivePage = "WebhookSendPage";
                 Shell.Current.GoToAsync("WebhookSendPage", true);
+                break;
+
+            case MainPageButtonsPageTypeModel.PermissionCalculatorPage:
+                ApplicationService.ActivePage = "PermissionCalculatorPage";
+                Shell.Current.GoToAsync("PermissionCalculatorPage", true);
                 break;
 
             case MainPageButtonsPageTypeModel.Empty:

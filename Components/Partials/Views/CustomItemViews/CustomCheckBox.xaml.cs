@@ -26,7 +26,7 @@ public partial class CustomCheckBox : ContentView
         nameof(Title),
         typeof(string),
         typeof(CustomCheckBox),
-        "",
+        string.Empty,
         BindingMode.TwoWay
     );
     public string Title
@@ -59,14 +59,41 @@ public partial class CustomCheckBox : ContentView
     }
     #endregion
 
+    #region IsImportant Binding
+    public static readonly BindableProperty IsImportantProperty = BindableProperty.Create(
+        nameof(IsImportant),
+        typeof(bool),
+        typeof(CustomCheckBox),
+        false,
+        BindingMode.TwoWay
+    );
+    public bool IsImportant
+    {
+        get { return (bool)GetValue(IsImportantProperty); }
+        set
+        {
+            SetValue(IsImportantProperty, value);
+            OnPropertyChanged(nameof(IsImportant));
+        }
+    }
+    #endregion
+
     public CustomCheckBox()
     {
         InitializeComponent();
         BindingContext = this;
+
     }
 
     private void CheckBox_Tapped(object sender, TappedEventArgs e)
     {
         IsChecked = !IsChecked;
+    }
+    public event EventHandler<CheckedChangedEventArgs> CheckedChanged;
+
+    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        EventHandler<CheckedChangedEventArgs> handler = CheckedChanged;
+        handler?.Invoke(this, e);
     }
 }

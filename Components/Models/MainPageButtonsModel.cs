@@ -20,9 +20,9 @@ namespace DiscordToolsApp.Components.Models
         MainPage,
         UserLookupPage,
         InviteLookupPage,
-        ServerLookupPage,
         TimeStampGeneratorPage,
         TextToEmojiPage,
         WebhookSendPage,
+        PermissionCalculatorPage,
     }
 }
