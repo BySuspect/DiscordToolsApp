@@ -9,7 +9,25 @@ public partial class PermissionsView : ContentView
     public PermissionsView()
     {
         InitializeComponent();
-        //this.FindByName<CustomCheckBox>("cbADMINISTRATOR").IsChecked = true;
+    }
+    public void SetPermissions(List<string> permissions)
+    {
+        try
+        {
+            if (permissions is null)
+                return;
+            foreach (var permission in permissions)
+            {
+                var checkBox = (CustomCheckBox)FindByName("cb" + permission);
+                if (checkBox != null)
+                {
+                    checkBox.IsChecked = true;
+                }
+            }
+        }
+        catch
+        {
+        }
     }
 
     private void CustomCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)

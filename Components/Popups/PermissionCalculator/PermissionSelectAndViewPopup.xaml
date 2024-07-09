@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:Popup
+    x:Class="DiscordToolsApp.Components.Popups.PermissionCalculator.PermissionSelectAndViewPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:Views="clr-namespace:DiscordToolsApp.Components.Partials.Views.PermissionCalculatorViews"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Color="Transparent">
+    <StackLayout
+        Margin="50"
+        MaximumWidthRequest="360"
+        VerticalOptions="Center"
+        WidthRequest="{x:Static services:ScreenServices._90PercentWidth}">
+        <Frame
+            Padding="0"
+            BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+            CornerRadius="15"
+            MaximumHeightRequest="{x:Static services:ScreenServices._90PercentHeight}"
+            VerticalOptions="Center">
+            <StackLayout Margin="10">
+                <Views:PermissionsView x:Name="cbPermsView" MaximumHeightRequest="{x:Static services:ScreenServices._70PercentHeight}" />
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                <StackLayout
+                    Margin="10"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <CustomItems:CustomButton
+                        x:Name="bynCancel"
+                        Padding="5,7"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}"
+                        Clicked="bynCancel_Clicked"
+                        CornerRadius="15"
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        Text="Cancel"
+                        VerticalOptions="Center"
+                        WidthRequest="80" />
+                    <CustomItems:CustomButton
+                        x:Name="btnSave"
+                        Padding="5,7"
+                        BackgroundColor="Transparent"
+                        BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                        Clicked="btnSave_Clicked"
+                        CornerRadius="15"
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        Text="Save"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}"
+                        VerticalOptions="Center"
+                        WidthRequest="80" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</toolkit:Popup>

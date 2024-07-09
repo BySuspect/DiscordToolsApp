@@ -1,7 +1,5 @@
 ﻿
-using CommunityToolkit.Maui.Core.Extensions;
-
-using DiscordToolsApp.Components.Models;
+using DiscordToolsApp.Components.Popups.PermissionCalculator;
 
 namespace DiscordToolsApp.Components.Pages
 {
@@ -12,22 +10,37 @@ namespace DiscordToolsApp.Components.Pages
             InitializeComponent();
         }
 
-        private void btnConvert_Clicked(object sender, EventArgs e)
-        {
-            ulong permission = ulong.Parse(entryPermissionInteger.Text);
-            List<string> permissionList = DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission);
-            ulong perNum = DiscordPermissionHelper.ConvertPermissionStringsToInteger(cbPermsView.PermissionsList);
 
-            lblOut.Text = $"{string.Join(", ", permissionList)}\n--\n{perNum}";
+        private void btnClear_Clicked(object sender, EventArgs e)
+        {
+            btnClear.IsEnabled = false;
+            entryPermsInt.Text = "0";
+            btnClear.IsEnabled = true;
         }
 
-        private void cbPermsView_PermissionsChanged(object sender, PermissionsChangedEventArgs e)
+        private async void btnCopy_Clicked(object sender, EventArgs e)
         {
-            ulong permission = ulong.Parse(entryPermissionInteger.Text);
-            List<string> permissionList = DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission);
-            ulong perNum = DiscordPermissionHelper.ConvertPermissionStringsToInteger(cbPermsView.PermissionsList);
+            btnCopy.IsEnabled = false;
+            await Clipboard.SetTextAsync(entryPermsInt.Text);
+            btnCopy.IsEnabled = true;
+        }
 
-            lblOut.Text = $"{string.Join(", ", permissionList)}\n--\n{perNum}";
+        private void entryPermsInt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ulong.TryParse(entryPermsInt.Text, out ulong permission);
+            List<string> permissionList = DiscordPermissionHelper.ConvertPermissionIdsToTitles(DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission));
+
+            lblOut.Text = $"{string.Join(", ", permissionList)}";
+        }
+
+        private async void btnSelect_Clicked(object sender, EventArgs e)
+        {
+            btnSelect.IsEnabled = false;
+            ulong.TryParse(entryPermsInt.Text, out ulong perNum);
+            var perms = await ApplicationService.ShowPopupAsync(new PermissionSelectAndViewPopup(DiscordPermissionHelper.ConvertIntegerToPermissionStrings(perNum)));
+            if (perms is null) perms = new List<string>();
+            entryPermsInt.Text = DiscordPermissionHelper.ConvertPermissionStringsToInteger((List<string>)perms).ToString();
+            btnSelect.IsEnabled = true;
         }
     }
 }

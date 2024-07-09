@@ -15,29 +15,80 @@
     BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
     BackgroundImageSource="{x:Static services:AppThemeColors.backgroundImg}">
     <ContentPage.Content>
-        <Grid Margin="10">
-            <ScrollView
-                Margin="10"
-                HorizontalOptions="Center"
-                VerticalOptions="FillAndExpand">
-                <StackLayout Spacing="5" VerticalOptions="Fill">
-                    <Views:PermissionsView x:Name="cbPermsView" PermissionsChanged="cbPermsView_PermissionsChanged" />
-                    <CustomViews:CustomEntryView
-                        x:Name="entryPermissionInteger"
-                        HasCharCounterText="False"
-                        HasTitle="False"
-                        HorizontalTextAlignment="Center"
-                        Text="0" />
-                    <CustomItems:CustomButton
-                        x:Name="btnConvert"
-                        Clicked="btnConvert_Clicked"
+        <StackLayout Margin="10">
+            <ScrollView HorizontalOptions="Center">
+                <StackLayout Spacing="5">
+                    <StackLayout
+                        Margin="0,15,0,0"
                         HorizontalOptions="Center"
-                        Text="Convert"
-                        WidthRequest="70" />
-                    <Label x:Name="lblOut" Text="out" />
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        <CustomItems:CustomButton
+                            x:Name="btnClear"
+                            Padding="5,7"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                            Clicked="btnClear_Clicked"
+                            CornerRadius="5"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Clear"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            WidthRequest="90" />
+                        <CustomViews:CustomEntryView
+                            x:Name="entryPermsInt"
+                            CornerRadius="5"
+                            HasCharCounterText="False"
+                            HasTitle="False"
+                            HorizontalTextAlignment="Center"
+                            Text="0"
+                            TextChanged="entryPermsInt_TextChanged"
+                            ValidationType="Numeric"
+                            VerticalOptions="Fill"
+                            WidthRequest="150" />
+                        <CustomItems:CustomButton
+                            x:Name="btnCopy"
+                            Padding="5,7"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                            Clicked="btnCopy_Clicked"
+                            CornerRadius="5"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Copy"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            WidthRequest="90" />
+                    </StackLayout>
+                    <StackLayout
+                        Margin="0,5"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        <CustomItems:CustomButton
+                            x:Name="btnSelect"
+                            Padding="5,7"
+                            BackgroundColor="Transparent"
+                            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                            Clicked="btnSelect_Clicked"
+                            CornerRadius="5"
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Select"
+                            TextColor="{x:Static services:AppThemeColors.TextColor}"
+                            VerticalOptions="Center"
+                            WidthRequest="90" />
+                    </StackLayout>
+                    <Label
+                        x:Name="lblOut"
+                        Margin="20"
+                        Text="out" />
                 </StackLayout>
             </ScrollView>
-
-        </Grid>
+            <controls:MTAdView
+                AdsId="ca-app-pub-3881259676793306/3196838854"
+                HeightRequest="{OnIdiom Phone=50,
+                Tablet=90}"
+                VerticalOptions="End" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

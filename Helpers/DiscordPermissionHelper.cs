@@ -54,10 +54,66 @@
             {"SEND_POLLS", 0x0002000000000000},
             {"USE_EXTERNAL_APPS", 0x0004000000000000}
         };
-
+        private static readonly Dictionary<string, string> PermissionTitleMap = new Dictionary<string, string>
+        {
+            {"CREATE_INSTANT_INVITE", "Create Instant Invite"},
+            {"KICK_MEMBERS", "Kick Members"},
+            {"BAN_MEMBERS", "Ban Members"},
+            {"ADMINISTRATOR", "Administrator"},
+            {"MANAGE_CHANNELS", "Manage Channels"},
+            {"MANAGE_GUILD", "Manage Guild"},
+            {"ADD_REACTIONS", "Add Reactions"},
+            {"VIEW_AUDIT_LOG", "View Audit Log"},
+            {"PRIORITY_SPEAKER", "Priority Speaker"},
+            {"STREAM", "Stream"},
+            {"VIEW_CHANNEL", "View Channel"},
+            {"SEND_MESSAGES", "Send Messages"},
+            {"SEND_TTS_MESSAGES", "Send TTS Messages"},
+            {"MANAGE_MESSAGES", "Manage Messages"},
+            {"EMBED_LINKS", "Embed Links"},
+            {"ATTACH_FILES", "Attach Files"},
+            {"READ_MESSAGE_HISTORY", "Read Message History"},
+            {"MENTION_EVERYONE", "Mention Everyone"},
+            {"USE_EXTERNAL_EMOJIS", "Use External Emojis"},
+            {"VIEW_GUILD_INSIGHTS", "View Guild Insights"},
+            {"CONNECT", "Connect"},
+            {"SPEAK", "Speak"},
+            {"MUTE_MEMBERS", "Mute Members"},
+            {"DEAFEN_MEMBERS", "Deafen Members"},
+            {"MOVE_MEMBERS", "Move Members"},
+            {"USE_VAD", "Use Voice Activity"},
+            {"CHANGE_NICKNAME", "Change Nickname"},
+            {"MANAGE_NICKNAMES", "Manage Nicknames"},
+            {"MANAGE_ROLES", "Manage Roles"},
+            {"MANAGE_WEBHOOKS", "Manage Webhooks"},
+            {"MANAGE_GUILD_EXPRESSIONS", "Manage Guild Expressions"},
+            {"USE_APPLICATION_COMMANDS", "Use Application Commands"},
+            {"REQUEST_TO_SPEAK", "Request to Speak"},
+            {"MANAGE_EVENTS", "Manage Events"},
+            {"MANAGE_THREADS", "Manage Threads"},
+            {"CREATE_PUBLIC_THREADS", "Create Public Threads"},
+            {"CREATE_PRIVATE_THREADS", "Create Private Threads"},
+            {"USE_EXTERNAL_STICKERS", "Use External Stickers"},
+            {"SEND_MESSAGES_IN_THREADS", "Send Messages in Threads"},
+            {"USE_EMBEDDED_ACTIVITIES", "Use Embedded Activities"},
+            {"MODERATE_MEMBERS", "Moderate Members"},
+            {"VIEW_CREATOR_MONETIZATION_ANALYTICS", "View Creator Monetization Analytics"},
+            {"USE_SOUNDBOARD", "Use Soundboard"},
+            {"CREATE_GUILD_EXPRESSIONS", "Create Guild Expressions"},
+            {"CREATE_EVENTS", "Create Events"},
+            {"USE_EXTERNAL_SOUNDS", "Use External Sounds"},
+            {"SEND_VOICE_MESSAGES", "Send Voice Messages"},
+            {"SEND_POLLS", "Send Polls"},
+            {"USE_EXTERNAL_APPS", "Use External Apps"}
+        };
         public static ulong ConvertPermissionStringsToInteger(List<string> permissions)
         {
             ulong result = 0;
+
+            if (permissions.Contains("ADMINISTRATOR"))
+            {
+                return permissionMap["ADMINISTRATOR"];
+            }
 
             foreach (var permission in permissions)
             {
@@ -83,6 +139,27 @@
             }
 
             return result;
+        }
+
+        public static string GetPermissionTitle(string permissionId)
+        {
+            if (PermissionTitleMap.TryGetValue(permissionId, out string title))
+            {
+                return title;
+            }
+            return permissionId;
+        }
+        public static List<string> ConvertPermissionIdsToTitles(List<string> permissionIds)
+        {
+            List<string> titles = new List<string>();
+
+            foreach (var permissionId in permissionIds)
+            {
+                string title = GetPermissionTitle(permissionId);
+                titles.Add(title);
+            }
+
+            return titles;
         }
     }
 }
