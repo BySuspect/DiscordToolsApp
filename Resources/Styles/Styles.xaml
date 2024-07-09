@@ -10,7 +10,6 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Never" />
         <Setter Property="VerticalOptions" Value="FillAndExpand" />
     </Style>
-
     <Style TargetType="ListView">
         <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
         <Setter Property="VerticalScrollBarVisibility" Value="Never" />
@@ -22,7 +21,6 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="BorderColor" Value="{x:Static services:AppThemeColors.BorderColor}" />
     </Style>
-
     <Style TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -45,6 +43,10 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{x:Static services:AppThemeColors.TextColor}" />
+        <Setter Property="BorderColor" Value="{x:Static services:AppThemeColors.BorderColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="Caption" />
+        <Setter Property="CornerRadius" Value="10" />
     </Style>
 
 </ResourceDictionary>
