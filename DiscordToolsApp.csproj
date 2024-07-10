@@ -140,10 +140,14 @@
         <None Remove="Resources\Images\badges\verified_developer.png" />
         <None Remove="Resources\Images\discordlogo.png" />
         <None Remove="Resources\Images\icons\copyicon.png" />
+        <None Remove="Resources\Images\icons\downsquarearrowicon.png" />
         <None Remove="Resources\Images\icons\ideaicon.png" />
+        <None Remove="Resources\Images\icons\leftsquarearrowicon.png" />
+        <None Remove="Resources\Images\icons\rightsquarearrowicon.png" />
         <None Remove="Resources\Images\icons\shieldicon.png" />
         <None Remove="Resources\Images\icons\soonicon.png" />
         <None Remove="Resources\Images\icons\texticon.png" />
+        <None Remove="Resources\Images\icons\upsquarearrowicon.png" />
         <None Remove="Resources\Images\icons\webhookicon.png" />
         <None Remove="Resources\Images\icons\worldicon.png" />
         <None Remove="Resources\Splash\splash_logo.png" />
@@ -156,13 +160,13 @@
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.61" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.61" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Plugin.MauiMTAdmob" Version="1.4.4" />
+        <PackageReference Include="Plugin.MauiMTAdmob" Version="1.4.5" />
         <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="8.13.0.3" />
     </ItemGroup>
 

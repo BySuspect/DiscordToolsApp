@@ -8,293 +8,461 @@
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <ContentView.Content>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView>
+
             <StackLayout>
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+
                 <!--#region Administrative Permissions-->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    Text="Administrative Permissions" />
-                <StackLayout>
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbADMINISTRATOR"
-                        Title="Administrator"
-                        AutomationId="ADMINISTRATOR"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_GUILD"
-                        Title="Manage Server"
-                        AutomationId="MANAGE_GUILD"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMODERATE_MEMBERS"
-                        Title="Moderate Members"
-                        AutomationId="MODERATE_MEMBERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbVIEW_AUDIT_LOG"
-                        Title="View Audit Log"
-                        AutomationId="VIEW_AUDIT_LOG"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbVIEW_GUILD_INSIGHTS"
-                        Title="View Server Insights"
-                        AutomationId="VIEW_GUILD_INSIGHTS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbVIEW_CREATOR_MONETIZATION_ANALYTICS"
-                        Title="View Creator Monetization Analytics"
-                        AutomationId="VIEW_CREATOR_MONETIZATION_ANALYTICS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                </StackLayout>
+                <toolkit:Expander x:Name="expT1">
+                    <toolkit:Expander.Header>
+                        <StackLayout Margin="10,5" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="Administrative Permissions"
+                                VerticalOptions="Center" />
+                            <Grid HorizontalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT1}, Path=IsExpanded, Converter={toolkit:InvertedBoolConverter}}"
+                                    Source="icons/leftsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT1}, Path=IsExpanded}"
+                                    Source="icons/downsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <StackLayout>
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbADMINISTRATOR"
+                                Title="Administrator"
+                                AutomationId="ADMINISTRATOR"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_GUILD"
+                                Title="Manage Server"
+                                AutomationId="MANAGE_GUILD"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMODERATE_MEMBERS"
+                                Title="Moderate Members"
+                                AutomationId="MODERATE_MEMBERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbVIEW_AUDIT_LOG"
+                                Title="View Audit Log"
+                                AutomationId="VIEW_AUDIT_LOG"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbVIEW_GUILD_INSIGHTS"
+                                Title="View Server Insights"
+                                AutomationId="VIEW_GUILD_INSIGHTS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbVIEW_CREATOR_MONETIZATION_ANALYTICS"
+                                Title="View Creator Monetization Analytics"
+                                AutomationId="VIEW_CREATOR_MONETIZATION_ANALYTICS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                        </StackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
                 <!--#endregion-->
+
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
 
                 <!--#region Moderation Permissions-->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    Text="Moderation Permissions" />
-                <StackLayout>
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbKICK_MEMBERS"
-                        Title="Kick Members"
-                        AutomationId="KICK_MEMBERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbBAN_MEMBERS"
-                        Title="Ban Members"
-                        AutomationId="BAN_MEMBERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_ROLES"
-                        Title="Manage Roles"
-                        AutomationId="MANAGE_ROLES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_NICKNAMES"
-                        Title="Manage Nicknames"
-                        AutomationId="MANAGE_NICKNAMES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMUTE_MEMBERS"
-                        Title="Mute Members"
-                        AutomationId="MUTE_MEMBERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbDEAFEN_MEMBERS"
-                        Title="Deafen Members"
-                        AutomationId="DEAFEN_MEMBERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMOVE_MEMBERS"
-                        Title="Move Members"
-                        AutomationId="MOVE_MEMBERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbCREATE_GUILD_EXPRESSIONS"
-                        Title="Create Expressions"
-                        AutomationId="CREATE_GUILD_EXPRESSIONS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbCREATE_EVENTS"
-                        Title="Create Events"
-                        AutomationId="CREATE_EVENTS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                </StackLayout>
+                <toolkit:Expander x:Name="expT2">
+                    <toolkit:Expander.Header>
+                        <StackLayout Margin="10,5" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="Moderation Permissions"
+                                VerticalOptions="Center" />
+                            <Grid HorizontalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT2}, Path=IsExpanded, Converter={toolkit:InvertedBoolConverter}}"
+                                    Source="icons/leftsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT2}, Path=IsExpanded}"
+                                    Source="icons/downsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <StackLayout>
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbKICK_MEMBERS"
+                                Title="Kick Members"
+                                AutomationId="KICK_MEMBERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbBAN_MEMBERS"
+                                Title="Ban Members"
+                                AutomationId="BAN_MEMBERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_ROLES"
+                                Title="Manage Roles"
+                                AutomationId="MANAGE_ROLES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_NICKNAMES"
+                                Title="Manage Nicknames"
+                                AutomationId="MANAGE_NICKNAMES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMUTE_MEMBERS"
+                                Title="Mute Members"
+                                AutomationId="MUTE_MEMBERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbDEAFEN_MEMBERS"
+                                Title="Deafen Members"
+                                AutomationId="DEAFEN_MEMBERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMOVE_MEMBERS"
+                                Title="Move Members"
+                                AutomationId="MOVE_MEMBERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_GUILD_EXPRESSIONS"
+                                Title="Manage Expressions"
+                                AutomationId="MANAGE_GUILD_EXPRESSIONS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCREATE_GUILD_EXPRESSIONS"
+                                Title="Create Expressions"
+                                AutomationId="CREATE_GUILD_EXPRESSIONS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCREATE_EVENTS"
+                                Title="Create Events"
+                                AutomationId="CREATE_EVENTS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                        </StackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
                 <!--#endregion-->
+
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
 
                 <!--#region Channel Management Permissions-->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    Text="Channel Management Permissions" />
-                <StackLayout>
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_CHANNELS"
-                        Title="Manage Channels"
-                        AutomationId="MANAGE_CHANNELS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_MESSAGES"
-                        Title="Manage Messages"
-                        AutomationId="MANAGE_MESSAGES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_WEBHOOKS"
-                        Title="Manage Webhooks"
-                        AutomationId="MANAGE_WEBHOOKS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMANAGE_THREADS"
-                        Title="Manage Threads"
-                        AutomationId="MANAGE_THREADS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                </StackLayout>
+                <toolkit:Expander x:Name="expT3">
+                    <toolkit:Expander.Header>
+                        <StackLayout Margin="10,5" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="Channel Management Permissions"
+                                VerticalOptions="Center" />
+                            <Grid HorizontalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT3}, Path=IsExpanded, Converter={toolkit:InvertedBoolConverter}}"
+                                    Source="icons/leftsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT3}, Path=IsExpanded}"
+                                    Source="icons/downsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <StackLayout>
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_CHANNELS"
+                                Title="Manage Channels"
+                                AutomationId="MANAGE_CHANNELS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_MESSAGES"
+                                Title="Manage Messages"
+                                AutomationId="MANAGE_MESSAGES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_WEBHOOKS"
+                                Title="Manage Webhooks"
+                                AutomationId="MANAGE_WEBHOOKS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_THREADS"
+                                Title="Manage Threads"
+                                AutomationId="MANAGE_THREADS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMANAGE_EVENTS"
+                                Title="Manage Events"
+                                AutomationId="MANAGE_EVENTS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                        </StackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
                 <!--#endregion-->
 
-                <!--#region Message Permissions-->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    Text="Message Permissions" />
-                <StackLayout>
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSEND_MESSAGES"
-                        Title="Send Messages"
-                        AutomationId="SEND_MESSAGES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSEND_TTS_MESSAGES"
-                        Title="Send TTS Messages"
-                        AutomationId="SEND_TTS_MESSAGES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbREAD_MESSAGE_HISTORY"
-                        Title="Read Message History"
-                        AutomationId="READ_MESSAGE_HISTORY"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbMENTION_EVERYONE"
-                        Title="Mention Everyone"
-                        AutomationId="MENTION_EVERYONE"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSEND_VOICE_MESSAGES"
-                        Title="Send Voice Messages"
-                        AutomationId="SEND_VOICE_MESSAGES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSEND_POLLS"
-                        Title="Send Polls"
-                        AutomationId="SEND_POLLS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbEMBED_LINKS"
-                        Title="Embed Links"
-                        AutomationId="EMBED_LINKS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbATTACH_FILES"
-                        Title="Attach Files"
-                        AutomationId="ATTACH_FILES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_EXTERNAL_EMOJIS"
-                        Title="Use External Emojis"
-                        AutomationId="USE_EXTERNAL_EMOJIS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_APPLICATION_COMMANDS"
-                        Title="Use Application Commands"
-                        AutomationId="USE_APPLICATION_COMMANDS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_EXTERNAL_STICKERS"
-                        Title="Use External Stickers"
-                        AutomationId="USE_EXTERNAL_STICKERS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbADD_REACTIONS"
-                        Title="Add Reactions"
-                        AutomationId="ADD_REACTIONS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbCREATE_PUBLIC_THREADS"
-                        Title="Create Public Threads"
-                        AutomationId="CREATE_PUBLIC_THREADS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbCREATE_PRIVATE_THREADS"
-                        Title="Create Private Threads"
-                        AutomationId="CREATE_PRIVATE_THREADS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSEND_MESSAGES_IN_THREADS"
-                        Title="Send Messages in Threads"
-                        AutomationId="SEND_MESSAGES_IN_THREADS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                </StackLayout>
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+
+                <!--#region Channel Permissions-->
+                <toolkit:Expander x:Name="expT4">
+                    <toolkit:Expander.Header>
+                        <StackLayout Margin="10,5" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="Channel Permissions"
+                                VerticalOptions="Center" />
+                            <Grid HorizontalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT4}, Path=IsExpanded, Converter={toolkit:InvertedBoolConverter}}"
+                                    Source="icons/leftsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT4}, Path=IsExpanded}"
+                                    Source="icons/downsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <StackLayout>
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbVIEW_CHANNEL"
+                                Title="View Channel"
+                                AutomationId="VIEW_CHANNEL"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSEND_MESSAGES"
+                                Title="Send Messages"
+                                AutomationId="SEND_MESSAGES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSEND_TTS_MESSAGES"
+                                Title="Send TTS Messages"
+                                AutomationId="SEND_TTS_MESSAGES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbREAD_MESSAGE_HISTORY"
+                                Title="Read Message History"
+                                AutomationId="READ_MESSAGE_HISTORY"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbMENTION_EVERYONE"
+                                Title="Mention Everyone"
+                                AutomationId="MENTION_EVERYONE"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCREATE_INSTANT_INVITE"
+                                Title="Create Invite"
+                                AutomationId="CREATE_INSTANT_INVITE"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSEND_VOICE_MESSAGES"
+                                Title="Send Voice Messages"
+                                AutomationId="SEND_VOICE_MESSAGES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSEND_POLLS"
+                                Title="Send Polls"
+                                AutomationId="SEND_POLLS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbEMBED_LINKS"
+                                Title="Embed Links"
+                                AutomationId="EMBED_LINKS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbATTACH_FILES"
+                                Title="Attach Files"
+                                AutomationId="ATTACH_FILES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_EXTERNAL_EMOJIS"
+                                Title="Use External Emojis"
+                                AutomationId="USE_EXTERNAL_EMOJIS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_APPLICATION_COMMANDS"
+                                Title="Use Application Commands"
+                                AutomationId="USE_APPLICATION_COMMANDS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_EXTERNAL_STICKERS"
+                                Title="Use External Stickers"
+                                AutomationId="USE_EXTERNAL_STICKERS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbADD_REACTIONS"
+                                Title="Add Reactions"
+                                AutomationId="ADD_REACTIONS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCREATE_PUBLIC_THREADS"
+                                Title="Create Public Threads"
+                                AutomationId="CREATE_PUBLIC_THREADS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCREATE_PRIVATE_THREADS"
+                                Title="Create Private Threads"
+                                AutomationId="CREATE_PRIVATE_THREADS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSEND_MESSAGES_IN_THREADS"
+                                Title="Send Messages in Threads"
+                                AutomationId="SEND_MESSAGES_IN_THREADS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_EXTERNAL_APPS"
+                                Title="Use External Apps"
+                                AutomationId="USE_EXTERNAL_APPS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                        </StackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
                 <!--#endregion-->
+
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
 
                 <!--#region Voice and Video Permissions-->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    Text="Voice and Video Permissions" />
-                <StackLayout>
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbCONNECT"
-                        Title="Connect"
-                        AutomationId="CONNECT"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSPEAK"
-                        Title="Speak"
-                        AutomationId="SPEAK"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbSTREAM"
-                        Title="Stream"
-                        AutomationId="STREAM"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbPRIORITY_SPEAKER"
-                        Title="Priority Speaker"
-                        AutomationId="PRIORITY_SPEAKER"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbREQUEST_TO_SPEAK"
-                        Title="Request to Speak"
-                        AutomationId="REQUEST_TO_SPEAK"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_VAD"
-                        Title="Use Voice Activity Detection"
-                        AutomationId="USE_VAD"
-                        CheckedChanged="CustomCheckBox_CheckedChanged"
-                        IsImportant="True" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_SOUNDBOARD"
-                        Title="Use Soundboard"
-                        AutomationId="USE_SOUNDBOARD"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_EXTERNAL_SOUNDS"
-                        Title="Use External Sounds"
-                        AutomationId="USE_EXTERNAL_SOUNDS"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbUSE_EMBEDDED_ACTIVITIES"
-                        Title="Use Activities"
-                        AutomationId="USE_EMBEDDED_ACTIVITIES"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                </StackLayout>
+                <toolkit:Expander x:Name="expT5">
+                    <toolkit:Expander.Header>
+                        <StackLayout Margin="10,5" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="Voice and Video Permissions"
+                                VerticalOptions="Center" />
+                            <Grid HorizontalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT5}, Path=IsExpanded, Converter={toolkit:InvertedBoolConverter}}"
+                                    Source="icons/leftsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT5}, Path=IsExpanded}"
+                                    Source="icons/downsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <StackLayout>
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCONNECT"
+                                Title="Connect"
+                                AutomationId="CONNECT"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSPEAK"
+                                Title="Speak"
+                                AutomationId="SPEAK"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbSTREAM"
+                                Title="Stream"
+                                AutomationId="STREAM"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbPRIORITY_SPEAKER"
+                                Title="Priority Speaker"
+                                AutomationId="PRIORITY_SPEAKER"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbREQUEST_TO_SPEAK"
+                                Title="Request to Speak"
+                                AutomationId="REQUEST_TO_SPEAK"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_VAD"
+                                Title="Use Voice Activity Detection"
+                                AutomationId="USE_VAD"
+                                CheckedChanged="CustomCheckBox_CheckedChanged"
+                                IsImportant="True" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_SOUNDBOARD"
+                                Title="Use Soundboard"
+                                AutomationId="USE_SOUNDBOARD"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_EXTERNAL_SOUNDS"
+                                Title="Use External Sounds"
+                                AutomationId="USE_EXTERNAL_SOUNDS"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbUSE_EMBEDDED_ACTIVITIES"
+                                Title="Use Activities"
+                                AutomationId="USE_EMBEDDED_ACTIVITIES"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                        </StackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
                 <!--#endregion-->
 
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+
                 <!--#region Other Permissions-->
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Small"
-                    Text="Other Permissions" />
-                <StackLayout>
-                    <CustomViews:CustomCheckBox
-                        x:Name="cbCHANGE_NICKNAME"
-                        Title="Change Nickname"
-                        AutomationId="CHANGE_NICKNAME"
-                        CheckedChanged="CustomCheckBox_CheckedChanged" />
-                </StackLayout>
+                <toolkit:Expander x:Name="expT6">
+                    <toolkit:Expander.Header>
+                        <StackLayout Margin="10,5" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="Other Permissions"
+                                VerticalOptions="Center" />
+                            <Grid HorizontalOptions="EndAndExpand">
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT6}, Path=IsExpanded, Converter={toolkit:InvertedBoolConverter}}"
+                                    Source="icons/leftsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    HeightRequest="18"
+                                    IsVisible="{Binding Source={x:Reference expT6}, Path=IsExpanded}"
+                                    Source="icons/downsquarearrowicon.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <StackLayout>
+                            <CustomViews:CustomCheckBox
+                                x:Name="cbCHANGE_NICKNAME"
+                                Title="Change Nickname"
+                                AutomationId="CHANGE_NICKNAME"
+                                CheckedChanged="CustomCheckBox_CheckedChanged" />
+                        </StackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
                 <!--#endregion-->
+
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
             </StackLayout>
         </ScrollView>
     </ContentView.Content>

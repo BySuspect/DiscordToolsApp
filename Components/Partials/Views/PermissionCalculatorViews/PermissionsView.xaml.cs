@@ -10,24 +10,42 @@ public partial class PermissionsView : ContentView
     {
         InitializeComponent();
     }
-    public void SetPermissions(List<string> permissions)
+    public Task ClearPermissions()
     {
         try
         {
+            var list = DiscordPermissionHelper.PermissionIds;
+            foreach (var permission in list)
+            {
+                var checkBox = (CustomCheckBox)FindByName($"cb{permission}");
+                if (checkBox != null)
+                {
+                    checkBox.IsChecked = false;
+                }
+            }
+        }
+        catch { }
+
+        return Task.CompletedTask;
+    }
+    public async void SetPermissions(List<string> permissions)
+    {
+        try
+        {
+            await ClearPermissions();
             if (permissions is null)
                 return;
+
             foreach (var permission in permissions)
             {
-                var checkBox = (CustomCheckBox)FindByName("cb" + permission);
+                var checkBox = (CustomCheckBox)FindByName($"cb{permission}");
                 if (checkBox != null)
                 {
                     checkBox.IsChecked = true;
                 }
             }
         }
-        catch
-        {
-        }
+        catch { }
     }
 
     private void CustomCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
