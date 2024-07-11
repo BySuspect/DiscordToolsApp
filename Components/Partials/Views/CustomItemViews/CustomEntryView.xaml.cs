@@ -237,9 +237,9 @@ public partial class CustomEntryView : ContentView
             titleView.TranslationY = 0;
         }
 
-        Input.Completed += (s, e) => OnTextComplated(s, e);
-        Input.Unfocused += (s, e) => OnTextComplated(s, null);
-        this.Unfocused += (s, e) => OnTextComplated(s, null);
+        Input.Completed += (s, e) => OnTextComplated(this, e);
+        Input.Unfocused += (s, e) => OnTextComplated(this, null);
+        this.Unfocused += (s, e) => OnTextComplated(this, null);
     }
 
     private void titleTapped(object sender, EventArgs e)

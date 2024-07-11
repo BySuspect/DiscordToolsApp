@@ -61,6 +61,160 @@ public partial class CustomEditorView : ContentView
     }
     #endregion
 
+    #region CornerRadius Binding
+    public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
+        nameof(CornerRadius),
+        typeof(int),
+        typeof(CustomEditorView),
+        defaultValue: 15,
+        defaultBindingMode: BindingMode.TwoWay
+    );
+    public int CornerRadius
+    {
+        get { return (int)GetValue(CornerRadiusProperty); }
+        set
+        {
+            SetValue(CornerRadiusProperty, value);
+            OnPropertyChanged(nameof(CornerRadius));
+        }
+    }
+    #endregion
+
+    #region BorderColor Binding
+    public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(
+        nameof(BorderColor),
+        typeof(Color),
+        typeof(CustomEditorView),
+        defaultValue: AppThemeColors.BorderColor,
+        defaultBindingMode: BindingMode.TwoWay
+    );
+    public Color BorderColor
+    {
+        get { return (Color)GetValue(BorderColorProperty); }
+        set
+        {
+            SetValue(BorderColorProperty, value);
+            OnPropertyChanged(nameof(BorderColor));
+        }
+    }
+    #endregion
+
+    #region ValidationType Binding
+    private ValidationType validationType;
+    public ValidationType ValidationType
+    {
+        get { return validationType; }
+        set
+        {
+            if (validationType != value)
+            {
+                validationType = value;
+
+                if (value is ValidationType.ColorHex)
+                {
+                    Input.Behaviors.Clear();
+                    Input.Behaviors.Add(new InputBehaviors.ColorHexValidatorBehaviour());
+                }
+                else if (value is ValidationType.Url)
+                {
+                    Input.Behaviors.Clear();
+                    Input.Behaviors.Add(new InputBehaviors.UrlValidatorBehaviour());
+                }
+                else if (value is ValidationType.ImageUrl)
+                {
+                    Input.Behaviors.Clear();
+                    Input.Behaviors.Add(new InputBehaviors.ImageUrlValidatorBehaviour());
+                }
+                else if (value is ValidationType.WebhookUrl)
+                {
+                    Input.Behaviors.Clear();
+                    Input.Behaviors.Add(new InputBehaviors.WebhookUrlValidatorBehaviour());
+                }
+                else if (value is ValidationType.Numeric)
+                {
+                    Input.Behaviors.Clear();
+                    Input.Behaviors.Add(
+                        new CommunityToolkit.Maui.Behaviors.NumericValidationBehavior()
+                    );
+                }
+                else
+                {
+                    Input.Behaviors.Clear();
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region HasTitle Binding
+    public static readonly BindableProperty HasTitleProperty = BindableProperty.Create(
+        nameof(HasTitle),
+        typeof(bool),
+        typeof(CustomEditorView),
+        defaultValue: true,
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var control = (CustomEditorView)bindable;
+            if ((bool)newValue)
+            {
+                control.Input.PlaceholderColor = Colors.Transparent;
+            }
+            else
+            {
+                control.Input.PlaceholderColor = AppThemeColors.PlaceholderTextColor;
+            }
+        }
+    );
+    public bool HasTitle
+    {
+        get { return (bool)GetValue(HasTitleProperty); }
+        set
+        {
+            SetValue(HasTitleProperty, value);
+            OnPropertyChanged(nameof(HasTitle));
+        }
+    }
+    #endregion
+
+    #region HasCharCounterText Binding
+    public static readonly BindableProperty HasCharCounterTextProperty = BindableProperty.Create(
+        nameof(HasCharCounterText),
+        typeof(bool),
+        typeof(CustomEditorView),
+        defaultValue: true,
+        defaultBindingMode: BindingMode.TwoWay
+    );
+    public bool HasCharCounterText
+    {
+        get { return (bool)GetValue(HasCharCounterTextProperty); }
+        set
+        {
+            SetValue(HasCharCounterTextProperty, value);
+            OnPropertyChanged(nameof(HasCharCounterText));
+        }
+    }
+    #endregion
+
+    #region HorizontalTextAlignment Binding
+    public static readonly BindableProperty HorizontalTextAlignmentProperty = BindableProperty.Create(
+        nameof(HorizontalTextAlignment),
+        typeof(TextAlignment),
+        typeof(CustomEditorView),
+        defaultValue: TextAlignment.Start,
+        defaultBindingMode: BindingMode.TwoWay
+    );
+    public TextAlignment HorizontalTextAlignment
+    {
+        get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+        set
+        {
+            SetValue(HorizontalTextAlignmentProperty, value);
+            OnPropertyChanged(nameof(HorizontalTextAlignment));
+        }
+    }
+    #endregion
+
     public CustomEditorView()
     {
         InitializeComponent();

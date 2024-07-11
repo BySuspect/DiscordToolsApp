@@ -10,28 +10,29 @@
         <Grid>
             <Frame
                 Padding="10,5"
-                BorderColor="{x:Static services:AppThemeColors.BorderColor}"
-                CornerRadius="15"
+                BorderColor="{Binding BorderColor}"
+                CornerRadius="{Binding CornerRadius}"
                 HorizontalOptions="FillAndExpand">
                 <Grid>
                     <Editor
                         x:Name="Input"
-                        Margin="0,20,0,10"
                         FontSize="Caption"
                         HeightRequest="{Binding HeightRequest}"
                         HorizontalOptions="Fill"
+                        HorizontalTextAlignment="{Binding HorizontalTextAlignment}"
                         MaxLength="{Binding MaxLength}"
                         Placeholder="{Binding Placeholder}"
                         PlaceholderColor="Transparent"
                         Text="{Binding Text}"
                         TextChanged="Input_TextChanged"
                         TextColor="{x:Static services:AppThemeColors.TextColor}"
-                        VerticalOptions="Fill" />
+                        VerticalOptions="FillAndExpand" />
                     <Label
                         x:Name="lblInputLenght"
                         Margin="0,0,5,5"
                         FontSize="Caption"
                         HorizontalOptions="End"
+                        IsVisible="{Binding HasCharCounterText}"
                         Text="0/0"
                         TextColor="{x:Static services:AppThemeColors.TextColor}"
                         VerticalOptions="End">
@@ -51,7 +52,7 @@
                 Padding="10,2"
                 CornerRadius="15"
                 HorizontalOptions="Start"
-                IsVisible="true"
+                IsVisible="{Binding HasTitle}"
                 TranslationX="0"
                 TranslationY="13"
                 VerticalOptions="Start"
