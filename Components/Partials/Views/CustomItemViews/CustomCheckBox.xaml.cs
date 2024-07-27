@@ -82,13 +82,13 @@ public partial class CustomCheckBox : ContentView
     {
         InitializeComponent();
         BindingContext = this;
-
     }
 
     private void CheckBox_Tapped(object sender, TappedEventArgs e)
     {
         IsChecked = !IsChecked;
     }
+
     public event EventHandler<CheckedChangedEventArgs> CheckedChanged;
 
     private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)

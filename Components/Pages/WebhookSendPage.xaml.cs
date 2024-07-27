@@ -1,8 +1,6 @@
 using System.Text;
-
 using DiscordToolsApp.Components.Partials.Views.CustomItemViews;
 using DiscordToolsApp.Helpers;
-
 using Newtonsoft.Json;
 
 namespace DiscordToolsApp.Components.Pages;
@@ -10,20 +8,21 @@ namespace DiscordToolsApp.Components.Pages;
 public partial class WebhookSendPage : ContentPage
 {
     private string mode = "simple";
+
     public WebhookSendPage()
     {
         InitializeComponent();
-
     }
+
     protected override void OnAppearing()
     {
         btnSimple.IsEnabled = false;
         btnAdvanced.IsEnabled = true;
         mode = "simple";
 
-        editorJsonContent.Text = @"{""content"": ""Hello There!"",""username"": ""Webhook"",""avatar_url"": ""https://i.imgur.com/cy0P10O.png""}";
+        editorJsonContent.Text =
+            @"{""content"": ""Hello There!"",""username"": ""Webhook"",""avatar_url"": ""https://i.imgur.com/cy0P10O.png""}";
         editorJsonContent.Text = JsonHelper.BeautifyJson(editorJsonContent.Text);
-
 
         base.OnAppearing();
     }
@@ -82,8 +81,12 @@ public partial class WebhookSendPage : ContentPage
                     var data = new
                     {
                         content = entryContent.Text.Trim(),
-                        username = string.IsNullOrWhiteSpace(entryName.Text) ? null : entryName.Text,
-                        avatar_url = string.IsNullOrWhiteSpace(entryImg.Text) ? null : entryImg.Text,
+                        username = string.IsNullOrWhiteSpace(entryName.Text)
+                            ? null
+                            : entryName.Text,
+                        avatar_url = string.IsNullOrWhiteSpace(entryImg.Text)
+                            ? null
+                            : entryImg.Text,
                     };
 
                     var json = JsonConvert.SerializeObject(data);
@@ -91,10 +94,17 @@ public partial class WebhookSendPage : ContentPage
 
                     using (var httpClient = new HttpClient())
                     {
-                        var httpRes = await httpClient.PostAsync(entryWebhookUrlSimple.Text.Trim(), content);
+                        var httpRes = await httpClient.PostAsync(
+                            entryWebhookUrlSimple.Text.Trim(),
+                            content
+                        );
                         if (httpRes.IsSuccessStatusCode)
                         {
-                            ApplicationService.ShowCustomAlert("Success!", "Webhook Message Sent.", "Ok");
+                            ApplicationService.ShowCustomAlert(
+                                "Success!",
+                                "Webhook Message Sent.",
+                                "Ok"
+                            );
                         }
                         else
                         {
@@ -121,7 +131,11 @@ public partial class WebhookSendPage : ContentPage
                 }
                 if (!JsonHelper.IsValidJson(editorJsonContent.Text))
                 {
-                    ApplicationService.ShowCustomAlert("Error!", "Please enter a valid JSON.", "Ok");
+                    ApplicationService.ShowCustomAlert(
+                        "Error!",
+                        "Please enter a valid JSON.",
+                        "Ok"
+                    );
                     break;
                 }
                 var resQ2 = await ApplicationService.ShowCustomAlertAsync(
@@ -133,14 +147,25 @@ public partial class WebhookSendPage : ContentPage
                 if (resQ2)
                 {
                     ApplicationService.ShowLoadingView();
-                    var content = new StringContent(editorJsonContent.Text, Encoding.UTF8, "application/json");
+                    var content = new StringContent(
+                        editorJsonContent.Text,
+                        Encoding.UTF8,
+                        "application/json"
+                    );
 
                     using (var httpClient = new HttpClient())
                     {
-                        var httpRes = await httpClient.PostAsync(entryWebhookUrlAdvanced.Text.Trim(), content);
+                        var httpRes = await httpClient.PostAsync(
+                            entryWebhookUrlAdvanced.Text.Trim(),
+                            content
+                        );
                         if (httpRes.IsSuccessStatusCode)
                         {
-                            ApplicationService.ShowCustomAlert("Success!", "Webhook Message Sent.", "Ok");
+                            ApplicationService.ShowCustomAlert(
+                                "Success!",
+                                "Webhook Message Sent.",
+                                "Ok"
+                            );
                         }
                         else
                         {
@@ -153,12 +178,12 @@ public partial class WebhookSendPage : ContentPage
                     }
                 }
 
-
                 break;
         }
         btnSend.IsEnabled = true;
         ApplicationService.HideLoadingView();
     }
+
     private void btnBeautify_Clicked(object sender, EventArgs e)
     {
         editorJsonContent.Text = JsonHelper.BeautifyJson(editorJsonContent.Text);

@@ -10,6 +10,7 @@ public partial class PermissionsView : ContentView
     {
         InitializeComponent();
     }
+
     public Task ClearPermissions()
     {
         try
@@ -28,6 +29,7 @@ public partial class PermissionsView : ContentView
 
         return Task.CompletedTask;
     }
+
     public async void SetPermissions(List<string> permissions)
     {
         try
@@ -66,6 +68,6 @@ public partial class PermissionsView : ContentView
 
         PermissionsList = list;
     }
-    public event EventHandler<PermissionsChangedEventArgs> PermissionsChanged;
 
+    public event EventHandler<PermissionsChangedEventArgs> PermissionsChanged;
 }

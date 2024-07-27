@@ -197,13 +197,14 @@ public partial class CustomEditorView : ContentView
     #endregion
 
     #region HorizontalTextAlignment Binding
-    public static readonly BindableProperty HorizontalTextAlignmentProperty = BindableProperty.Create(
-        nameof(HorizontalTextAlignment),
-        typeof(TextAlignment),
-        typeof(CustomEditorView),
-        defaultValue: TextAlignment.Start,
-        defaultBindingMode: BindingMode.TwoWay
-    );
+    public static readonly BindableProperty HorizontalTextAlignmentProperty =
+        BindableProperty.Create(
+            nameof(HorizontalTextAlignment),
+            typeof(TextAlignment),
+            typeof(CustomEditorView),
+            defaultValue: TextAlignment.Start,
+            defaultBindingMode: BindingMode.TwoWay
+        );
     public TextAlignment HorizontalTextAlignment
     {
         get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }

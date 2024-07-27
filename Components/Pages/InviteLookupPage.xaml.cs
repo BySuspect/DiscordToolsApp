@@ -41,7 +41,8 @@ public partial class InviteLookupPage : ContentPage
                 );
                 return;
             }
-            string invCode = invUrl.Split("/").Last();
+            //TODO: needs testings
+            string invCode = invUrl.Trim().Split("/").Last().Trim();
 
             ApplicationService.ShowCustomAlert(
                 "Info.",

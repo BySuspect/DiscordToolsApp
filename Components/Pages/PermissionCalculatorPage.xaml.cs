@@ -1,7 +1,5 @@
-﻿
-using DiscordToolsApp.Components.Partials.Views.PermissionCalculatorViews;
+﻿using DiscordToolsApp.Components.Partials.Views.PermissionCalculatorViews;
 using DiscordToolsApp.Components.Popups.PermissionCalculator;
-
 using Microsoft.Maui.Controls.Compatibility;
 
 namespace DiscordToolsApp.Components.Pages
@@ -12,7 +10,6 @@ namespace DiscordToolsApp.Components.Pages
         {
             InitializeComponent();
         }
-
 
         private async void btnClear_Clicked(object sender, EventArgs e)
         {
@@ -33,19 +30,25 @@ namespace DiscordToolsApp.Components.Pages
         private void entryPermsInt_TextChanged(object sender, TextChangedEventArgs e)
         {
             ulong.TryParse(entryPermsInt.Text, out ulong permission);
-            List<string> permissionList = DiscordPermissionHelper.ConvertPermissionIdsToTitles(DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission));
+            List<string> permissionList = DiscordPermissionHelper.ConvertPermissionIdsToTitles(
+                DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission)
+            );
             lblOut.Text = $"{string.Join(", ", permissionList)}";
         }
 
         private void PermsView_PermissionsChanged(object sender, PermissionsChangedEventArgs e)
         {
-            entryPermsInt.Text = DiscordPermissionHelper.ConvertPermissionStringsToInteger(e.NewValue).ToString();
+            entryPermsInt.Text = DiscordPermissionHelper
+                .ConvertPermissionStringsToInteger(e.NewValue)
+                .ToString();
         }
 
         private void entryPermsInt_TextComplated(object sender, EventArgs e)
         {
             ulong.TryParse(entryPermsInt.Text, out ulong permission);
-            PermsView.SetPermissions(DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission));
+            PermsView.SetPermissions(
+                DiscordPermissionHelper.ConvertIntegerToPermissionStrings(permission)
+            );
         }
     }
 }

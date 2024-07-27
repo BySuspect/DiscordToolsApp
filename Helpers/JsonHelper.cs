@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DiscordToolsApp.Helpers
 {
@@ -27,6 +26,7 @@ namespace DiscordToolsApp.Helpers
                 return false;
             }
         }
+
         public static string BeautifyJson(string jsonString)
         {
             try
@@ -41,7 +41,11 @@ namespace DiscordToolsApp.Helpers
             }
             catch (Exception ex)
             {
-                ApplicationService.ShowCustomAlert("Error!", $"Something went wrong while trying beautify json data\n Error Message: {ex.Message}", "Ok");
+                ApplicationService.ShowCustomAlert(
+                    "Error!",
+                    $"Something went wrong while trying beautify json data\n Error Message: {ex.Message}",
+                    "Ok"
+                );
                 return jsonString;
             }
         }

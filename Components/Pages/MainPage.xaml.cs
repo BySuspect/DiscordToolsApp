@@ -1,4 +1,4 @@
-using DiscordToolsApp.Components.Models;
+﻿using DiscordToolsApp.Components.Models;
 using DiscordToolsApp.Components.Partials.Views.MainPageViews;
 using DiscordToolsApp.Components.Popups.Common;
 using DiscordToolsApp.Components.Popups.Feedback;
@@ -21,6 +21,13 @@ public partial class MainPage : ContentPage
     {
         if (!Preferences.Get("PrivacyPolicyV1Accepted", false))
             ApplicationService.ShowPopup(new PrivacyPolicyPopup());
+
+        ApplicationService.ShowPopup(
+            new NoticePopup(
+                "In light of Google's new policies, I�ve decided to remove my apps from the Play Store. I will make them fully open source and share updates as APKs on GitHub. If you'd like to stay informed about developments, please join my Discord server."
+            )
+        );
+
         base.OnAppearing();
     }
 
