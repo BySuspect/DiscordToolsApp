@@ -1,6 +1,8 @@
 using System.Text;
+
 using DiscordToolsApp.Components.Partials.Views.CustomItemViews;
 using DiscordToolsApp.Helpers;
+
 using Newtonsoft.Json;
 
 namespace DiscordToolsApp.Components.Pages;
@@ -30,7 +32,7 @@ public partial class WebhookSendPage : ContentPage
     private async void WebhookRemoteAppLink_Tapped(object sender, EventArgs e)
     {
         await Launcher.OpenAsync(
-            "https://play.google.com/store/apps/details?id=com.discordwebhookremote.android"
+            "https://github.com/BySuspect/DiscordWebhookRemoteApp/releases/latest"
         );
     }
 
