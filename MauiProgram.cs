@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
+
 using CommunityToolkit.Maui;
+
 using DiscordToolsApp.Handlers;
 using DiscordToolsApp.Helpers;
+
 using Microsoft.Extensions.Configuration;
-using Plugin.MauiMTAdmob;
 #if DEBUG
 using Microsoft.Extensions.Logging;
 #endif
@@ -16,7 +18,7 @@ namespace DiscordToolsApp
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder.UseMauiApp<App>().UseMauiMTAdmob().UseMauiCommunityToolkit();
+            builder.UseMauiApp<App>().UseMauiCommunityToolkit();
 
             builder.AddEnvJson();
 

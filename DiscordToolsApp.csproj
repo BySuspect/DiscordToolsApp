@@ -141,6 +141,7 @@
         <None Remove="Resources\Images\discordlogo.png" />
         <None Remove="Resources\Images\icons\copyicon.png" />
         <None Remove="Resources\Images\icons\downsquarearrowicon.png" />
+        <None Remove="Resources\Images\icons\hearticon.png" />
         <None Remove="Resources\Images\icons\ideaicon.png" />
         <None Remove="Resources\Images\icons\leftsquarearrowicon.png" />
         <None Remove="Resources\Images\icons\rightsquarearrowicon.png" />
@@ -166,9 +167,7 @@
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Plugin.MauiMTAdmob" Version="1.4.5" />
         <PackageReference Include="System.Text.Json" Version="8.0.4" />
-        <PackageReference Include="Xamarin.Google.iOS.MobileAds" Version="8.13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -250,11 +249,8 @@
         <MauiXaml Update="Components\Popups\Common\LoadingViewPopup.xaml">
             <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
-        <MauiXaml Update="Components\Popups\Common\NoticePopup.xaml">
+        <MauiXaml Update="Components\Popups\Common\NewVersionNotifyPopup.xaml">
           <Generator>MSBuild:Compile</Generator>
-        </MauiXaml>
-        <MauiXaml Update="Components\Popups\Common\PrivacyPolicyPopup.xaml">
-            <Generator>MSBuild:Compile</Generator>
         </MauiXaml>
         <MauiXaml Update="Components\Popups\Feedback\SuggestToolIdePopup.xaml">
             <Generator>MSBuild:Compile</Generator>

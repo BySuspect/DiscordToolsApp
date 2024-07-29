@@ -1,9 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
-using Plugin.MauiMTAdmob;
 
 namespace DiscordToolsApp
 {

@@ -19,16 +19,9 @@ public partial class MainPage : ContentPage
 
     protected override void OnAppearing()
     {
-        if (!Preferences.Get("PrivacyPolicyV1Accepted", false))
-            ApplicationService.ShowPopup(new PrivacyPolicyPopup());
-
-        ApplicationService.ShowPopup(
-            new NoticePopup(
-                "In light of Google's new policies, I�ve decided to remove my apps from the Play Store. I will make them fully open source and share updates as APKs on GitHub. If you'd like to stay informed about developments, please join my Discord server."
-            )
-        );
-
         base.OnAppearing();
+
+        Task.Run(AppVersionCheckService.CheckVersion);
     }
 
     private void MainPagCustomButtonView_Clicked(object sender, ClickedEventArgs e)

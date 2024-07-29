@@ -3,10 +3,8 @@
     x:Class="DiscordToolsApp.Components.Partials.Views.TimestampPageViews.DateView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:CommonViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CommonViews"
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
-    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:DiscordToolsApp.Components.Partials.Views.TimestampPageViews">

@@ -6,7 +6,6 @@
     xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
     xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
     xmlns:Views="clr-namespace:DiscordToolsApp.Components.Partials.Views.MainPageViews"
-    xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
     xmlns:models="clr-namespace:DiscordToolsApp.Components.Models"
     xmlns:services="clr-namespace:DiscordToolsApp.Services"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -71,11 +70,6 @@
                 HorizontalOptions="Center"
                 IsVisible="False"
                 Text="test" />
-            <controls:MTAdView
-                AdsId="ca-app-pub-3881259676793306/3196838854"
-                HeightRequest="{OnIdiom Phone=50,
-                Tablet=90}"
-                VerticalOptions="End" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

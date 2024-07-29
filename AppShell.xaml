@@ -12,6 +12,7 @@
     Shell.NavBarIsVisible="True">
 
     <Shell.ToolbarItems>
+        <ToolbarItem Clicked="Support_Clicked" IconImageSource="hearticon.png" />
         <ToolbarItem Clicked="Discord_Clicked" IconImageSource="discordlogo.png" />
     </Shell.ToolbarItems>
 

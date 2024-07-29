@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<toolkit:Popup
+    x:Class="DiscordToolsApp.Components.Popups.Common.NewVersionNotifyPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomItems="clr-namespace:DiscordToolsApp.Components.Partials.CustomItems"
+    xmlns:CustomViews="clr-namespace:DiscordToolsApp.Components.Partials.Views.CustomItemViews"
+    xmlns:services="clr-namespace:DiscordToolsApp.Services"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    CanBeDismissedByTappingOutsideOfPopup="False"
+    Color="Transparent">
+    <StackLayout MaximumWidthRequest="320" WidthRequest="{x:Static services:ScreenServices._80PercentWidth}">
+        <Frame
+            Padding="0"
+            BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+            BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+            CornerRadius="15">
+            <StackLayout>
+                <Label
+                    x:Name="lblTitle"
+                    Margin="10,10,10,5"
+                    FontSize="Small"
+                    Text="Info"
+                    TextColor="{x:Static services:AppThemeColors.TextColor}" />
+                <BoxView HeightRequest="1" Color="{x:Static services:AppThemeColors.BorderColor}" />
+                <StackLayout Margin="15">
+                    <Label
+                        x:Name="lblContent"
+                        FontSize="Caption"
+                        Text="Content"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}" />
+                </StackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <CustomItems:CustomButton
+                        x:Name="btnClose"
+                        Grid.Column="0"
+                        Margin="0,10"
+                        Padding="5,6"
+                        BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+                        BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                        BorderWidth="1"
+                        Clicked="btnClose_Clicked"
+                        CornerRadius="15"
+                        FontSize="Caption"
+                        Text="Close"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}"
+                        WidthRequest="70" />
+                    <CustomItems:CustomButton
+                        x:Name="btnOpen"
+                        Grid.Column="1"
+                        Margin="0,10"
+                        Padding="5,6"
+                        BackgroundColor="{x:Static services:AppThemeColors.BackgroundColor}"
+                        BorderColor="{x:Static services:AppThemeColors.BorderColor}"
+                        BorderWidth="1"
+                        Clicked="btnOpen_Clicked"
+                        CornerRadius="15"
+                        FontSize="Caption"
+                        Text="Open"
+                        TextColor="{x:Static services:AppThemeColors.TextColor}"
+                        WidthRequest="70" />
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</toolkit:Popup>

@@ -33,6 +33,13 @@ namespace DiscordToolsApp
             return true;
         }
 
+        private void Support_Clicked(object sender, EventArgs e)
+        {
+            string supportLink = "https://apps.shiroko.dev/supportus/";
+
+            Launcher.OpenAsync(supportLink);
+        }
+
         private void Discord_Clicked(object sender, EventArgs e)
         {
             string discorInvite = "https://discord.gg/aX4unxzZek";

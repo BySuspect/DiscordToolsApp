@@ -1,4 +1,7 @@
 {
+  // Discord application token
   "DISCORD_API_KEY": "key",
+
+  // Discord webhook URL for sending tool ideas
   "SUGGEST_IDEA_WEBHOOK_URL": "webhook_url"
 }
